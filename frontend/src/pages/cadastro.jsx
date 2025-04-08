@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '../styles/cadastro.css';
+import '../styles/loginEcadastro.css';
 
 function Cadastro() {
     return(

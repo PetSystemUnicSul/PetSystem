@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '../styles/login.css';
+import '../styles/loginEcadastro.css';
 
 function Login() {
     return(

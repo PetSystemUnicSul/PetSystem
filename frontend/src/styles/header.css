@@ -7,7 +7,7 @@
   background-color: #ffffff;
   padding: 10px 20px;
   position: fixed;
-  width: 100%;
+  width: 100vw;
 }
 
 .header-buttons {

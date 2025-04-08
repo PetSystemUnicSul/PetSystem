@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/home.css";
 import cachorro from "../assets/images/cachorro.jpg";
+import patinha from "../assets/images/icone-patinha.png";
 import Header from "../components/header";
 
 function Home() {
@@ -34,7 +35,7 @@ function Home() {
             {/* funcionalidade 1 */}
             <div className="func">
               <div className="icon">
-                <img src={cachorro} alt="" className="func-icon" />
+                <img src={patinha} alt="" className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Cadastro de Pets</h2>
@@ -47,7 +48,7 @@ function Home() {
             {/* funcionalidade 2 */}
             <div className="func">
               <div className="icon">
-                <img src={cachorro} alt="" className="func-icon" />
+                <img src={patinha} alt="" className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Agendamento de Consultas</h2>
@@ -60,7 +61,7 @@ function Home() {
             {/* ------ Funcionalidade 3 ------*/}
             <div className="func">
               <div className="icon">
-                <img src={cachorro} alt="" className="func-icon" />
+                <img src={patinha} alt="" className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Cadastro de clientes</h2>
@@ -70,7 +71,7 @@ function Home() {
             {/* ------ Funcionalidade 4 ------ */}
             <div className="func">
               <div className="icon">
-                <img src={cachorro} alt="" className="func-icon" />
+                <img src={patinha} alt="" className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Dashboard</h2>
@@ -94,11 +95,14 @@ function Home() {
                 <li>Cadastro de clientes</li>
                 <li>Agendamento de consultas</li>
               </ul>
+              <div className="preco">
               <span className="valor">R$ 80,00</span>
               <div className="btn-plano">Assinar</div>
+              </div>
             </div>
             {/* ------- Plano 2 ------- */}
-            <div className="plano">
+            <div className="plano-premium">
+            <span className="span">Recomendado</span>
               <h2 className="plano-title">Premium Mensal</h2>
               <ul>
                 <li>Cadastro de pets</li>
@@ -108,17 +112,17 @@ function Home() {
               </ul>
               <div className="preco">
               <span className="valor">R$ 120,00</span>
-              </div>
               <div className="btn-plano">Assinar</div>
+              </div>
             </div>
             {/* ------- Plano 3 ------- */}
             <div className="plano-anual">
               <h2 className="plano-title">Anual</h2>
-              <p>Todas as funcionalidades do plano Premium Mensal.</p>
+              <p>Todas as funcionalidades do plano Premium Mensal inclusas.</p>
               <div className="preco">
               <span className="valor">R$ 1200,00</span>
-              </div>
               <div className="btn-plano">Assinar</div>
+              </div>
             </div>
           </div>
         </section>

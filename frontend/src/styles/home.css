@@ -42,7 +42,7 @@ h2 {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin: 40px;
+  margin: 100px auto;
 }
 
 .intro p {
@@ -67,11 +67,9 @@ h2 {
   justify-content: center;
   align-items: center;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto 100px;
   padding: 20px;
-  background-color: #fff;
   border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
 }
 
 .funcionalidades-container {
@@ -80,6 +78,10 @@ h2 {
   flex-direction: row;
   justify-content: center;
   align-items: start;
+  height: 200px;
+  background-color: #D9E4EE;
+  border-radius: 12px;
+  padding: 12px 20px;
 }
 
 .func {
@@ -118,24 +120,99 @@ h2 {
 
 /* ------ Section Planos ------ */
 .planos {
- 
-}
-
-.planos-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  align-items: start;
+  align-items: center;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  font-size: 0.94rem;
+}
+
+.plano, .plano-anual, .plano-premium {
+  height: 260px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+  padding: 20px 40px 0px 24px;
 }
 
 .plano-premium {
-  background-color: #0F0F0F;
-  width: 200px;
+  position: relative;
 }
 
+.plano-premium ul {
 
+}
 
+.span {
+  background: #00ACEF;
+  padding: 2px 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  top: -12px;
+  left: 64px;
+  position: absolute;
+}
+
+.plano-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0F0F0F;
+  margin-bottom: 8px;
+}
+
+.planos ul {
+  list-style: none;
+  position: relative;
+  left: 12px;
+  margin-bottom: 32px;
+}
+
+.plano li::before, .plano-premium li::before {
+  content: '✔';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  left: -16px;
+  color: #00ACEF;
+}
+
+.planos-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: start;
+  gap: 40px;
+}
+
+.btn-plano {
+  width: fit-content;
+  background-color: #00ACEF;
+  color: white;
+  font-size: 1.125rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.plano-anual p {
+  font-size: 0.94rem;
+  margin-bottom: 32px;
+  width: 20ch;
+  text-align: start;
+}
+
+.preco {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
 
 
 @media (max-width: 1200px) {
@@ -164,5 +241,8 @@ h2 {
   
   .intro-img {
     height: 260px;
+  }
+  .planos-container {
+    grid-template-columns: 1fr;
   }
 }

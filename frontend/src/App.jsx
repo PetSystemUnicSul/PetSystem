@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Cadastro from "./pages/cadastro";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/cadastro" element={<Cadastro/>} />
+          
+          <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
     </Router>
   );

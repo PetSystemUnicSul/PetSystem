@@ -12,7 +12,7 @@ function Login() {
                 <label>Senha:</label>
                 <input type="password" name="senha" id="senha" />
 
-                <button type="submit">Entrar</button>
+                <button className="buttonLoginCadastro" type="submit">Entrar</button>
 
                 <p><a href="">Esqueci minha senha.</a></p>
                 <p><Link to="/dashboard" className='link-create-account'>Ir para o deshboard</Link></p>

@@ -1,0 +1,37 @@
+.barraLateralNav{
+    background-color: #EFEFF0;
+    min-height: 100vh;
+    width: 250px;
+    padding: 10px;
+}
+
+.barraLateralNav img {
+    width: 100%;
+}
+
+.groupButtonNav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.groupButtonNav > button {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.buttonAtivo{
+    background-color: white;
+    color: #00ACEF;
+}
+
+
+
+
+
+

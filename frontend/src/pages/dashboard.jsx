@@ -1,7 +1,11 @@
-function deshboard(){
+import BarraLateral from "../components/barraLateral";
+
+function Deshboard(){
     return (
-        <h1>oi</h1>
+        <div>
+            <BarraLateral/>
+        </div>
     )
 }
 
-export default deshboard;
+export default Deshboard;

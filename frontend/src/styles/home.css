@@ -1,13 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 body {
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
   margin: 0px;
 }
 
-p, h1, h2 {
-  font-family: 'Nunito', sans-serif;
+p,
+h1,
+h2 {
+  font-family: "Nunito", sans-serif;
   width: 100ch;
+}
+
+.main {
+  padding-top: 91px;
 }
 
 .intro {
@@ -45,8 +51,7 @@ p, h1, h2 {
   object-fit: cover;
 }
 
-@media (max-width: 1200px) 
-{
+@media (max-width: 1200px) {
   .intro-img {
     height: 360px;
   }

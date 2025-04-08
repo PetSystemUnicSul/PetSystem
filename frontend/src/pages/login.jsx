@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import '../styles/login.css';
 
 function Login() {
     return(
-        <div>
+        <div className='divLoginCadastro'>
             <form>
                 <h1 className='form-title'>Login</h1>
                 <label>Email:</label>
@@ -15,7 +16,7 @@ function Login() {
 
                 <p><a href="">Esqueci minha senha.</a></p>
 
-                <p>Não tem conta? <a href="" className='link-create-account'>Criar nova conta.</a></p>
+                <p>Não tem conta? <Link to="/cadastro" className='link-create-account'>Criar nova conta.</Link></p>
             </form>
         </div>
     )

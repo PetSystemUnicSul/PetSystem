@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import '../styles/cadastro.css';
 
 function Cadastro() {
     return(
-        <div>
+        <div className='divLoginCadastro'>
             <form>
                 <h1 className='form-title'>Cadastro</h1>
 
@@ -23,7 +24,8 @@ function Cadastro() {
 
                 <button type="submit">Cadastrar</button>
 
-                <p>Já tem uma conta? <a href="/login">Entrar</a></p>
+                <p>Já tem uma conta? <Link to="/login" className='link-create-account'>Criar nova conta.</Link></p>
+
             </form>
         </div>
     )

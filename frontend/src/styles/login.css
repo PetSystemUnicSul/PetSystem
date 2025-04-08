@@ -5,7 +5,7 @@
     font-family: "Nunito", sans-serif;
 }
 
-div {
+.divLoginCadastro {
     background: linear-gradient(-45deg, #00ACEF, #fff);
     width: 100%;
     height: 100vh;
@@ -78,5 +78,9 @@ p {
 
 a {
     text-decoration: none;
+    color: #000;
+}
+
+.link-create-account {
     color: #00ACEF;
 }

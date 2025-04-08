@@ -6,7 +6,8 @@
   align-items: center;
   background-color: #ffffff;
   padding: 10px 20px;
-  margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
 }
 
 .header-buttons {

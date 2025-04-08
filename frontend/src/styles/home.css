@@ -78,7 +78,7 @@ h2 {
   flex-direction: row;
   justify-content: center;
   align-items: start;
-  height: 200px;
+  height: fit-content;
   background-color: #D9E4EE;
   border-radius: 12px;
   padding: 12px 20px;

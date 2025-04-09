@@ -37,3 +37,24 @@ body {
     font-family: var(--font-family);
     color: var(--text-dark);
 }
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-medium);
+    background: var(--input-bg);
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}

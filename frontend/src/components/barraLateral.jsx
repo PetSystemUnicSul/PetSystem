@@ -1,6 +1,6 @@
 import { Calendar, User } from "lucide-react";
 import "../styles/barraLateral.css";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/Logo.png";
 
 function BarraLateral({ activeButton, setActiveButton }) {
   const buttonStyle = (btn) =>

@@ -34,9 +34,29 @@
 
 .campoSearch {
     display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.iconeSearch {
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }
 
 .campoFiltro {
     display: flex;
+    gap: 5px;
+}
+
+.filtroClientes {
+    width: 100%;
+    height: 30px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-medium);
+    background: var(--input-bg);
+    outline: none;
 }
 

@@ -11,18 +11,18 @@ function ClienteDashboard() {
         </div>
         <div className="searchEfiltro">
           <div className="campoSearch">
-            <input type="search" />
-            <Search size={32} />
+            <input type="search" placeholder="Buscar cliente..."/>
+            <Search size={25} className="iconeSearch"/>
           </div>
           <div className="campoFiltro">
-            <select name="filtroCliente" id="filtroClientes">
+            <select name="filtroCliente" id="filtroClientes" className="filtroClientes">
               <option value="Nome">Nome</option>
               <option value="Telefone">Telefone</option>
               <option value="CPF">CPF</option>
               <option value="Email">Email</option>
               <option value="Endereço">Endereço</option>
             </select>
-            <Funnel size={32} />
+            <Funnel size={25} />
           </div>
         </div>
       </div>

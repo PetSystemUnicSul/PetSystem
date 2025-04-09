@@ -22,7 +22,7 @@ function ClienteDashboard() {
               <option value="Email">Email</option>
               <option value="Endereço">Endereço</option>
             </select>
-            <Funnel size={30} className="iconFiltro"/>
+            <Funnel size={40} className="iconFiltro"/>
           </div>
         </div>
       </div>

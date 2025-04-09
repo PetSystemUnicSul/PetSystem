@@ -42,6 +42,8 @@
     display: flex;
     align-items: center;
     position: relative;
+    width: 100%;
+    max-width: 300px;
 }
 
 .iconeSearch {
@@ -65,9 +67,5 @@
     outline: none;
     margin: 0px 0px 15px;
     cursor: pointer;
-}
-
-.iconFiltro {
-    margin-top: 5px;
 }
 

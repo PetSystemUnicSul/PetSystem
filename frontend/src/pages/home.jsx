@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/home.css";
 import cachorro from "../assets/images/cachorro.jpg";
-import patinha from "../assets/images/icone-patinha.png";
 import Header from "../components/header";
 import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react"
 

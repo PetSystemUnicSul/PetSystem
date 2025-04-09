@@ -67,7 +67,9 @@ Por favor, tenha isso em mente ao explorar o código e a documentação. Novas a
 - autenticação com JWT
 ## ⬇️Instalação
 
-Para a instalação deste projeto, você precisa ter o **Node.js** instalado na versão **20 ou superior**.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 Para rodar este projeto na sua máquina, siga as seguintes instruções:
 

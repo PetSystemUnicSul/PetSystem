@@ -3,6 +3,7 @@ import "../styles/home.css";
 import cachorro from "../assets/images/cachorro.jpg";
 import patinha from "../assets/images/icone-patinha.png";
 import Header from "../components/header";
+import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react"
 
 function Home() {
   return (
@@ -35,7 +36,7 @@ function Home() {
             {/* funcionalidade 1 */}
             <div className="func">
               <div className="icon">
-                <img src={patinha} alt="" className="func-icon" />
+              <Dog size={50} className="func-icon"/>
               </div>
               <div className="text">
                 <h2 className="func-title">Cadastro de Pets</h2>
@@ -48,7 +49,7 @@ function Home() {
             {/* funcionalidade 2 */}
             <div className="func">
               <div className="icon">
-                <img src={patinha} alt="" className="func-icon" />
+                <CalendarCheck size={50} className="func-icon"/>
               </div>
               <div className="text">
                 <h2 className="func-title">Agendamento de Consultas</h2>
@@ -61,7 +62,7 @@ function Home() {
             {/* ------ Funcionalidade 3 ------*/}
             <div className="func">
               <div className="icon">
-                <img src={patinha} alt="" className="func-icon" />
+              <UserRoundCheck size={50} className="func-icon"/>
               </div>
               <div className="text">
                 <h2 className="func-title">Cadastro de clientes</h2>
@@ -71,7 +72,7 @@ function Home() {
             {/* ------ Funcionalidade 4 ------ */}
             <div className="func">
               <div className="icon">
-                <img src={patinha} alt="" className="func-icon" />
+                <ChartColumn size={50} className="func-icon"/>
               </div>
               <div className="text">
                 <h2 className="func-title">Dashboard</h2>

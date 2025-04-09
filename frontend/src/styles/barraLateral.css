@@ -5,6 +5,11 @@
     padding: 10px;
 }
 
+.divImagem{
+    width: 150px;
+    margin: 0px auto 50px;
+}
+
 .barraLateralNav img {
     width: 100%;
 }
@@ -19,6 +24,7 @@
     border: none;
     cursor: pointer;
     display: flex;
+    align-items: center;
     padding: 10px 20px;
     border-radius: 10px;
     font-weight: bold;

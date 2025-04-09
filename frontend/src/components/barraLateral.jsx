@@ -1,34 +1,35 @@
-import { useState } from "react";
+import { Calendar, User } from "lucide-react";
 import "../styles/barraLateral.css";
 import logo from "../assets/images/logo.png";
-import { Calendar, User } from "lucide-react"
 
+function BarraLateral({ activeButton, setActiveButton }) {
+  // Função para aplicar a classe com base no botão ativo
+  const buttonStyle = (btn) =>
+    activeButton === btn ? 'buttonAtivo' : 'buttonInativo';
 
-
-
-function BarraLateral() {
-    const [activeButton, setActiveButton] = useState('btn1');
-
-    const buttonStyle = (btn) =>
-        activeButton === btn ? 'buttonAtivo' : 'buttonInativo';
-
-    return (
-        <nav className="barraLateralNav">
-            <div className="divImagem">
-                <img src={logo} alt="Logo" />
-            </div>
-            <div className="groupButtonNav">
-                <button className={buttonStyle('btn1')} onClick={() => setActiveButton('btn1')}>
-                    <Calendar />
-                    <p>Agenda</p>
-                </button>
-                <button className={buttonStyle('btn2')} onClick={() => setActiveButton('btn2')}>
-                    <User />
-                    <p>Clientes</p>
-                </button>
-            </div>
-        </nav>
-    );
+  return (
+    <nav className="barraLateralNav">
+      <div className="divImagem">
+        <img src={logo} alt="Logo" />
+      </div>
+      <div className="groupButtonNav">
+        <button
+          className={buttonStyle('agenda')}
+          onClick={() => setActiveButton('agenda')}
+        >
+          <Calendar size={35} />
+          <p>Agenda</p>
+        </button>
+        <button
+          className={buttonStyle('clientes')}
+          onClick={() => setActiveButton('clientes')}
+        >
+          <User size={35} />
+          <p>Clientes</p>
+        </button>
+      </div>
+    </nav>
+  );
 }
 
 export default BarraLateral;

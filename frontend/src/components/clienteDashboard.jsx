@@ -11,7 +11,7 @@ function ClienteDashboard() {
         </div>
         <div className="searchEfiltro">
           <div className="campoSearch">
-            <input type="search" placeholder="Buscar cliente..."/>
+            <input type="text" placeholder="Buscar cliente..."/>
             <Search size={25} className="iconeSearch"/>
           </div>
           <div className="campoFiltro">
@@ -22,7 +22,7 @@ function ClienteDashboard() {
               <option value="Email">Email</option>
               <option value="Endereço">Endereço</option>
             </select>
-            <Funnel size={25} />
+            <Funnel size={30} className="iconFiltro"/>
           </div>
         </div>
       </div>

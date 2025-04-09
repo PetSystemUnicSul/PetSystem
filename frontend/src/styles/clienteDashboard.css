@@ -7,11 +7,14 @@
     margin: 0px 0px 15px;
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: center;
 }
 
 .tituloEbuttonAdicCliente > h2 {
     font-size: 2.2rem;
+    font-family: var(--font-family-balootwo);
+    font-size: 3rem;
+    font-weight: 500;
 }
 
 .buttonAdicionar {
@@ -25,11 +28,14 @@
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .searchEfiltro {
     display:  flex;
     gap: 30px;
+    align-items: start;
 }
 
 .campoSearch {
@@ -42,21 +48,26 @@
     position: absolute;
     top: 5px;
     right: 10px;
+    cursor: pointer;
 }
 
 .campoFiltro {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
 .filtroClientes {
     width: 100%;
-    height: 30px;
-    padding: 16px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+    padding: 10px 16px;
+    border-radius: var(--border-radius-sm);
     border: 1px solid var(--gray-medium);
-    background: var(--input-bg);
+    background-color: var(--input-bg);
     outline: none;
+    margin: 0px 0px 15px;
+    cursor: pointer;
+}
+
+.iconFiltro {
+    margin-top: 5px;
 }
 

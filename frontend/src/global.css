@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap");
 /* Variáveis globais */
 :root {
     /* Cores */
@@ -13,7 +13,9 @@
     --input-bg: #f9f9f9; /* Fundo de inputs */
 
     /* Fonte */
-    --font-family: "Nunito", sans-serif;
+    --font-family-nunito: "Nunito", sans-serif;
+    --font-family-balootwo: "Baloo 2", sans-serif;
+
 
     /* Box-shadow */
     --box-shadow-light: 0px 10px 20px rgba(0, 0, 0, 0.1);
@@ -34,7 +36,7 @@
 /* Estilos gerais */
 body {
     background-color: var(--background-light);
-    font-family: var(--font-family);
+    font-family: var(--font-family-nunito);
     color: var(--text-dark);
 }
 
@@ -46,12 +48,11 @@ label {
 
 input {
     width: 100%;
-    height: 30px;
-    padding: 16px;
+    padding:  10px 15px;
     margin-bottom: 20px;
-    border-radius: 8px;
+    border-radius: var(--border-radius-sm);
     border: 1px solid var(--gray-medium);
-    background: var(--input-bg);
+    background-color: var(--input-bg);
     outline: none;
 }
 

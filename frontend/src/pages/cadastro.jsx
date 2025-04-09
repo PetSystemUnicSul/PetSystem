@@ -13,8 +13,8 @@ function Cadastro() {
                 <label>Email:</label>
                 <input type="email" />
 
-                <label>CPF:</label>
-                <input type="text" name="cpf" id="cpf" />
+                <label>CPF/CNPJ:</label>
+                <input type="text" name="cpfCnpj" id="cpfCnpj" />
 
                 <label>Senha:</label>
                 <input type="password" name="senha" id="senha" />

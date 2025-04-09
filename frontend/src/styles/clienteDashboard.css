@@ -1,0 +1,20 @@
+.mainDashboard{
+    padding: 50px;
+    height: 100vh;
+}
+
+.tituloEbuttonAdicCliente{
+    margin: 0px 0px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchEfiltro {
+    display:  flex;
+    gap: 30px;
+}
+
+.campoSearch{
+    display: flex;
+}
+

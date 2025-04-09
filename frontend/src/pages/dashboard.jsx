@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/dashboard.css"
 import BarraLateral from "../components/barraLateral";
-import AgendaDashboard from "../components/AgendaDashboard";
+import AgendaDashboard from "../components/agendaDashboard";
 import ClienteDashboard from "../components/clienteDashboard";
 
 function Dashboard() {

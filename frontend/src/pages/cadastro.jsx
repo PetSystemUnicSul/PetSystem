@@ -22,7 +22,7 @@ function Cadastro() {
                 <label>Confirmar senha:</label>
                 <input type="password" />
 
-                <button className="buttonLoginCadastro" type="submit">Cadastrar</button>
+                <Link to="/dashboard"><button className="buttonLoginCadastro">Cadastrar</button></Link>
 
                 <p>Já tem uma conta? <Link to="/login" className='links'>Entrar</Link></p>
 

@@ -32,7 +32,7 @@ form {
 }
 
 .buttonLoginCadastro {
-    width: 100%;
+    width: 315px;
     padding: 10px;
     margin: 16px auto;
    
@@ -44,7 +44,6 @@ form {
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-
 }
 
 p {

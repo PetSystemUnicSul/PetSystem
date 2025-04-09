@@ -1,12 +1,30 @@
-.mainDashboard{
+.mainDashboard {
     padding: 50px;
     height: 100vh;
 }
 
-.tituloEbuttonAdicCliente{
+.tituloEbuttonAdicCliente {
     margin: 0px 0px 15px;
     display: flex;
     justify-content: space-between;
+    align-items: end;
+}
+
+.tituloEbuttonAdicCliente > h2 {
+    font-size: 2.2rem;
+}
+
+.buttonAdicionar {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: 5px 15px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
 }
 
 .searchEfiltro {
@@ -14,7 +32,11 @@
     gap: 30px;
 }
 
-.campoSearch{
+.campoSearch {
+    display: flex;
+}
+
+.campoFiltro {
     display: flex;
 }
 

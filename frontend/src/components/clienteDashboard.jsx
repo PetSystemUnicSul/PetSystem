@@ -1,4 +1,4 @@
-import { Search, Funnel } from "lucide-react";
+import { Search, Funnel, CirclePlus } from "lucide-react";
 import "../styles/clienteDashboard.css";
 
 function ClienteDashboard() {
@@ -7,14 +7,14 @@ function ClienteDashboard() {
       <div className="groupButtonsCliente">
         <div className="tituloEbuttonAdicCliente">
           <h2>Clientes</h2>
-          <button className="buttonAdicionar">adicionar cliente</button>
+          <button className="buttonAdicionar"><CirclePlus size={18} /><span>Novo cliente</span></button>
         </div>
         <div className="searchEfiltro">
           <div className="campoSearch">
             <input type="search" />
             <Search size={32} />
           </div>
-          <div>
+          <div className="campoFiltro">
             <select name="filtroCliente" id="filtroClientes">
               <option value="Nome">Nome</option>
               <option value="Telefone">Telefone</option>

@@ -14,10 +14,10 @@ function Login() {
 
                 <button className="buttonLoginCadastro" type="submit">Entrar</button>
 
-                <p><a href="">Esqueci minha senha.</a></p>
-                <p><Link to="/dashboard" className='link-create-account'>Ir para o dashboard</Link></p>
+                <p><a href="" className="links">Esqueci minha senha.</a></p>
+                <p><Link to="/dashboard" className='links'>Ir para o dashboard</Link></p>
 
-                <p>Não tem conta? <Link to="/cadastro" className='link-create-account'>Criar nova conta.</Link></p>
+                <p>Não tem conta? <Link to="/cadastro" className='links'>Criar nova conta.</Link></p>
             </form>
         </div>
     )

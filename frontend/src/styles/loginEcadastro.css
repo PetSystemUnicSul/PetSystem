@@ -1,12 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Nunito", sans-serif;
-}
-
 .divLoginCadastro {
-    background: linear-gradient(-45deg, #00ACEF, #fff);
+    background: linear-gradient(-45deg, var(--primary-color), var(--white));
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -19,7 +12,7 @@ form {
     max-width: 360px;
     width: 100%;
     padding: 24px;
-    background: #fff;
+    background: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +20,7 @@ form {
 
 
     margin: 5px auto 0px;
-    border-radius: 12px;
+    border-radius: var(--border-radius-lg);
 }
 
 .form-title {
@@ -50,9 +43,9 @@ input {
     padding: 16px;
     margin-bottom: 20px;
     border-radius: 8px;
-    border: 1px solid #ccc;
-    background: #f9f9f9;
-    
+    border: 1px solid var(--gray-medium);
+    background: var(--input-bg);
+    outline: none;
 }
 
 .buttonLoginCadastro {
@@ -60,11 +53,11 @@ input {
     padding: 10px;
     margin: 16px auto;
    
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     border: none;
 
-    background-color: #00ACEF;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white);
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
@@ -78,11 +71,6 @@ p {
     margin-top: 4px;
 }
 
-a {
-    text-decoration: none;
-    color: #000;
-}
-
-.link-create-account {
+.links {
     color: #00ACEF;
 }

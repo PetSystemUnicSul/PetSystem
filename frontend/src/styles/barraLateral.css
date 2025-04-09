@@ -1,5 +1,5 @@
 .barraLateralNav{
-    background-color: #EFEFF0;
+    background-color: var(--gray-light);
     min-height: 100vh;
     width: 250px;
     padding: 10px;
@@ -26,14 +26,14 @@
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     font-weight: bold;
     font-size: 1.5rem;
 }
 
 .buttonAtivo{
-    background-color: white;
-    color: #00ACEF;
+    background-color: var(--white);
+    color: var(--primary-color);
 }
 
 

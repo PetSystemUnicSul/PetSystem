@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+/* Variáveis globais */
+:root {
+    /* Cores */
+    --primary-color: #00acef; /* Azul principal */
+    --background-light: #fafafa; /* Fundo claro */
+    --white: #ffffff; /* Branco */
+    --gray-light: #efeff0; /* Cinza claro */
+    --blue-light: #d9e4ee; /* Azul claro */
+    --text-dark: #0f0f0f; /* Quase preto */
+    --gray-medium: #ccc; /* Cinza médio para bordas */
+    --input-bg: #f9f9f9; /* Fundo de inputs */
+
+    /* Fonte */
+    --font-family: "Nunito", sans-serif;
+
+    /* Box-shadow */
+    --box-shadow-light: 0px 10px 20px rgba(0, 0, 0, 0.1);
+
+    /* Tamanhos e espaçamentos comuns */
+    --border-radius-sm: 8px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 12px;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+    background-color: var(--background-light);
+    font-family: var(--font-family);
+    color: var(--text-dark);
+}

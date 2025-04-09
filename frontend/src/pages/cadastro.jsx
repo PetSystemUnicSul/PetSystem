@@ -24,7 +24,7 @@ function Cadastro() {
 
                 <button className="buttonLoginCadastro" type="submit">Cadastrar</button>
 
-                <p>Já tem uma conta? <Link to="/login" className='link-create-account'>Entrar</Link></p>
+                <p>Já tem uma conta? <Link to="/login" className='links'>Entrar</Link></p>
 
             </form>
         </div>

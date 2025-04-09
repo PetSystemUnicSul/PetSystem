@@ -3,7 +3,6 @@ import "../styles/barraLateral.css";
 import logo from "../assets/images/logo.png";
 
 function BarraLateral({ activeButton, setActiveButton }) {
-  // Função para aplicar a classe com base no botão ativo
   const buttonStyle = (btn) =>
     activeButton === btn ? 'buttonAtivo' : 'buttonInativo';
 

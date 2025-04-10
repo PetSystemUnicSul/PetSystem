@@ -4,14 +4,14 @@
     
 }
 
-.tituloEbuttonAdicCliente {
+.tituloEadic {
     margin: 0px 0px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.tituloEbuttonAdicCliente > h1 {
+.tituloCliente, .tituloPet, .tituloAgenda {
     font-family: var(--font-family-balootwo);
     font-size: 2rem;
     font-weight: 600;
@@ -70,3 +70,7 @@
     cursor: pointer;
 }
 
+.inputData {
+    max-width: 150px;
+    cursor: pointer;
+}

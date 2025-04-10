@@ -31,11 +31,7 @@ form {
    
 }
 
-.linkDeNavegação {
-    width: 100%;
-}
-
-.buttonLoginCadastro {
+.buttonCadastro, .buttonLogin {
     width: 100%;
     padding: 10px;
     margin: 16px auto;

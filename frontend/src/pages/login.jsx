@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../styles/loginEcadastro.css';
 
 function Login() {
+    const naviguete = useNavigate();
+
+     async function logar() {
+        naviguete('/dashboard');
+     }
+
     return(
         <div className='divLoginCadastro'>
             <form>
@@ -12,7 +18,7 @@ function Login() {
                 <label>Senha:</label>
                 <input type="password" name="senha" id="senha" />
 
-                <Link to="/dashboard" className="linkDeNavegação"><button className="buttonLoginCadastro">Entrar</button></Link>
+                <button className="buttonLogin" onClick={logar}>Entrar</button>
 
                 <p><a href="" className="links">Esqueci minha senha.</a></p>
 

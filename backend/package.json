@@ -1,6 +1,20 @@
 {
+  "name": "petsystem",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "express": "^5.1.0",
+    "bcrypt": "^5.1.1",
+    "fastify": "^5.2.2",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.9"
   }
 }

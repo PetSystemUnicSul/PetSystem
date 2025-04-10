@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/home.css";
 import cachorro from "../assets/images/cachorro.jpg";
 import Header from "../components/header";
-import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react"
+import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react";
 
 function Home() {
   return (
@@ -11,9 +11,24 @@ function Home() {
       <div className="main">
         {/* ------ Seção Intro ------ */}
         <section className="intro">
-          <div className="intro-banner">
+
+          <div className="image-container">
             <img src={cachorro} className="intro-img" />
+            <div className="intro-overlay"></div>
+            <div className="text-container">
+              <h1 className="">PetSystem</h1>
+              <p>
+              A solução ideal para otimizar seu tempo e 
+              cuidar ainda melhor dos seus clientes peludos.
+              </p>
+              <div>
+                <a href="" className="btn-assinar">
+                  Assinar
+                </a>
+              </div>
+            </div>
           </div>
+
           <div className="intro-container">
             <h1 className="title">Boas-vindas a PetSystem</h1>
             <p>
@@ -35,7 +50,7 @@ function Home() {
             {/* funcionalidade 1 */}
             <div className="func">
               <div className="icon">
-              <Dog size={50} className="func-icon"/>
+                <Dog size={50} className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Cadastro de Pets</h2>
@@ -48,7 +63,7 @@ function Home() {
             {/* funcionalidade 2 */}
             <div className="func">
               <div className="icon">
-                <CalendarCheck size={50} className="func-icon"/>
+                <CalendarCheck size={50} className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Agendamento de Consultas</h2>
@@ -61,7 +76,7 @@ function Home() {
             {/* ------ Funcionalidade 3 ------*/}
             <div className="func">
               <div className="icon">
-              <UserRoundCheck size={50} className="func-icon"/>
+                <UserRoundCheck size={50} className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Cadastro de clientes</h2>
@@ -71,7 +86,7 @@ function Home() {
             {/* ------ Funcionalidade 4 ------ */}
             <div className="func">
               <div className="icon">
-                <ChartColumn size={50} className="func-icon"/>
+                <ChartColumn size={50} className="func-icon" />
               </div>
               <div className="text">
                 <h2 className="func-title">Dashboard</h2>
@@ -96,13 +111,13 @@ function Home() {
                 <li>Agendamento de consultas</li>
               </ul>
               <div className="preco">
-              <span className="valor">R$ 80,00</span>
-              <div className="btn-plano">Assinar</div>
+                <span className="valor">R$ 80,00</span>
+                <div className="btn-plano">Assinar</div>
               </div>
             </div>
             {/* ------- Plano 2 ------- */}
             <div className="plano-premium">
-            <span className="span">Recomendado</span>
+              <span className="span">Recomendado</span>
               <h2 className="plano-title">Premium Mensal</h2>
               <ul>
                 <li>Cadastro de pets</li>
@@ -111,8 +126,8 @@ function Home() {
                 <li>Dashboard detalhado</li>
               </ul>
               <div className="preco">
-              <span className="valor">R$ 120,00</span>
-              <div className="btn-plano">Assinar</div>
+                <span className="valor">R$ 120,00</span>
+                <div className="btn-plano">Assinar</div>
               </div>
             </div>
             {/* ------- Plano 3 ------- */}
@@ -120,8 +135,8 @@ function Home() {
               <h2 className="plano-title">Anual</h2>
               <p>Todas as funcionalidades do plano Premium Mensal inclusas.</p>
               <div className="preco">
-              <span className="valor">R$ 1200,00</span>
-              <div className="btn-plano">Assinar</div>
+                <span className="valor">R$ 1200,00</span>
+                <div className="btn-plano">Assinar</div>
               </div>
             </div>
           </div>

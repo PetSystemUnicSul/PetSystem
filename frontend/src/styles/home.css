@@ -84,8 +84,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin: 20px auto 100px;
+  overflow: hidden;
+  margin: 0 auto;
   padding: 120px;
   border-radius: var(--border-radius-lg);
   background-color: var(--white);
@@ -141,15 +141,15 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
+  padding: 120px;
+  margin: 0 auto;
   font-size: 0.94rem;
 }
 
 .plano {
   display: grid;
-  grid-template-rows: auto;
   width: 360px;
   height: 440px;
   background-color: var(--white);
@@ -242,6 +242,65 @@
   margin-top: auto;
 }
 
+/* ----- Seção Vantagens ------ */
+
+.vantagens {
+  background-color: var(--white);
+  padding: 120px;
+}
+
+.vantagens h1 {
+  text-align: start;
+}
+
+.vantagens-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.vantagens-container p {
+  font-weight: 600;
+  padding: 20px 0;
+}
+
+.vantagens-info {
+  padding: 40px 20px;
+  border-radius: 12px;
+}
+
+.vantagens-info li {
+  line-height: 2.5rem;
+  list-style: none;
+}
+
+.vantagens-img {
+  width: 100%;
+  grid-column: 2;
+  align-content: center;
+}
+
+.vantagens-img img {
+  width: 100%;
+}
+
+.btn-vantagens {
+  width: fit-content;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+
+/* ------ Media Query ------ */
+
 @media (max-width: 1200px) {
   .intro-img {
     height: 360px;
@@ -268,5 +327,18 @@
   }
   .planos-container {
     grid-template-columns: 1fr;
+  }
+  .vantagens, .planos, .funcionalidades {
+    padding: 60px 40px;
+  }
+  .vantagens-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .vantagens-img {
+    display: none;
+  }
+  .vantagens-info {
+    width: 100%;
   }
 }

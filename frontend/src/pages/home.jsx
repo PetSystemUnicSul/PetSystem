@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/home.css";
 import cachorro from "../assets/images/cachorro.jpg";
+import cachorroBanho from "../assets/images/cachorrobanho.jpeg";
+import tela from "../assets/images/tela-petsystem.jpg";
 import Header from "../components/header";
 import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react";
 
@@ -106,7 +108,7 @@ function Home() {
                 <h2 className="plano-title">Free</h2>
                 <div className="preco">
                   <p className="valor">
-                  <span>R$</span>
+                    <span>R$</span>
                     00,00
                   </p>
                 </div>
@@ -137,18 +139,47 @@ function Home() {
               </div>
               <div className="plano-info">
                 <p>
-                Ideal para: Petshops em crescimento que buscam otimizar todas as áreas do negócio.
+                  Ideal para: Petshops em crescimento que buscam otimizar todas
+                  as áreas do negócio.
                 </p>
                 <ul>
                   <li>Cadastro ilimitado de clientes.</li>
                   <li>Cadastro ilimitado de animais.</li>
                   <li>Agendamentos ilimitados.</li>
                   <li>Histórico completo de clientes e animais.</li>
-                  <li>Lembretes automáticos por e-mail para clientes (em breve via SMS).</li>
+                  <li>
+                    Lembretes automáticos por e-mail para clientes (em breve via
+                    SMS).
+                  </li>
                 </ul>
               </div>
               <div className="btn-plano">Assinar</div>
             </div>
+          </div>
+        </section>
+
+        {/* Seção Vantagens */}
+        <section className="vantagens">
+          <div className="vantagens-container">
+            <div className="vantagens-info">
+          <h1 className="title">Completo para sua clínica veterinária</h1>
+              <p>
+                Muito mais organização para sua clínica, integrada com a agenda,
+                banho e tosa, clientes e pets.
+              </p>
+              <ul>
+                <li>Mais tempo livre para atividades mais produtivas</li>
+                <li>Agendas por cliente e pet</li>
+                <li>Histórico completo do pet</li>
+                <li>Mais agilidade no agendamento</li>
+                <li>Organização de cadastro de pets e tutores</li>
+                <li>Histórico de agendamentos detalhado</li>
+              </ul>
+              <div className="btn-vantagens">Conhecer a PetSystem</div>
+            </div>
+              <div className="vantagens-img">
+                <img src={tela} alt="" />
+              </div>
           </div>
         </section>
       </div>

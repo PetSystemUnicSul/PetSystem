@@ -10,7 +10,7 @@ function Cadastro() {
 
     return(
         <div className='divLoginCadastro'>
-            <form>
+            <form className="formularioCadastro">
                 <h1 className='form-title'>Cadastro</h1>
 
                 <label>Nome:</label>

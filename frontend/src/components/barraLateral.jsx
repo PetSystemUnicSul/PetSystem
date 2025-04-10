@@ -17,21 +17,21 @@ function BarraLateral({ activeButton, setActiveButton }) {
           onClick={() => setActiveButton('agenda')}
         >
           <Calendar size={35} />
-          <p>Agenda</p>
+          <p className="nomeAba">Agenda</p>
         </button>
         <button
           className={buttonStyle('clientes')}
           onClick={() => setActiveButton('clientes')}
         >
           <User size={35} />
-          <p>Clientes</p>
+          <p className="nomeAba">Clientes</p>
         </button>
         <button
           className={buttonStyle('pets')}
           onClick={() => setActiveButton('pets')}
         >
           <PawPrint size={35} />
-          <p>Pets</p>
+          <p className="nomeAba">Pets</p>
         </button>
       </div>
     </nav>

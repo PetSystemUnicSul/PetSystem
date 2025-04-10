@@ -10,7 +10,7 @@ function Login() {
 
     return(
         <div className='divLoginCadastro'>
-            <form>
+            <form className="formularioLogin">
                 <h1 className='form-title'>Login</h1>
                 <label>Email:</label>
                 <input type="email" />

@@ -1,5 +1,5 @@
 .mainDashboard {
-    padding: 50px;
+    padding: 4%;
     height: 100vh;
     
 }
@@ -60,6 +60,7 @@
 
 .filtroClientes {
     width: 100%;
+    min-width: 100px;
     padding: 10px 16px;
     border-radius: var(--border-radius-sm);
     border: 1px solid var(--gray-medium);

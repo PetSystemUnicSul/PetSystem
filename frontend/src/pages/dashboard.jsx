@@ -3,6 +3,7 @@ import "../styles/dashboard.css"
 import BarraLateral from "../components/barraLateral";
 import AgendaDashboard from "../components/agendaDashboard";
 import ClienteDashboard from "../components/clienteDashboard";
+import Pets from "../components/petsDashboard"
 
 function Dashboard() {
   const [activeButton, setActiveButton] = useState('agenda');
@@ -12,6 +13,8 @@ function Dashboard() {
     content = <AgendaDashboard />;
   } else if (activeButton === 'clientes') {
     content = <ClienteDashboard />;
+  } else if (activeButton === 'pets') {
+    content = <Pets />;
   }
 
   return (

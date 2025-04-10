@@ -14,7 +14,6 @@ function Home() {
 
           <div className="image-container">
             <img src={cachorro} className="intro-img" />
-            <div className="intro-overlay"></div>
             <div className="text-container">
               <h1 className="">PetSystem</h1>
               <p>
@@ -104,40 +103,31 @@ function Home() {
           <div className="planos-container">
             {/* ------- Plano 1 ------- */}
             <div className="plano">
-              <h2 className="plano-title">Básico Mensal</h2>
+              <h2 className="plano-title">FREE</h2>
+              <div className="preco">
+                <span className="valor">R$ 00,00</span>
+              </div>
+              <p>Ideal para: Petshops iniciantes ou com baixo volume de agendamentos.</p>
               <ul>
                 <li>Cadastro de pets</li>
                 <li>Cadastro de clientes</li>
                 <li>Agendamento de consultas</li>
               </ul>
-              <div className="preco">
-                <span className="valor">R$ 80,00</span>
                 <div className="btn-plano">Assinar</div>
-              </div>
             </div>
             {/* ------- Plano 2 ------- */}
-            <div className="plano-premium">
-              <span className="span">Recomendado</span>
-              <h2 className="plano-title">Premium Mensal</h2>
+            <div className="plano">
+              <h2 className="plano-title">PRO</h2>
+              <div className="preco">
+                <span className="valor">R$ 120,00</span>
+              </div>
               <ul>
                 <li>Cadastro de pets</li>
                 <li>Cadastro de clientes</li>
                 <li>Agendamento de consultas</li>
                 <li>Dashboard detalhado</li>
               </ul>
-              <div className="preco">
-                <span className="valor">R$ 120,00</span>
                 <div className="btn-plano">Assinar</div>
-              </div>
-            </div>
-            {/* ------- Plano 3 ------- */}
-            <div className="plano-anual">
-              <h2 className="plano-title">Anual</h2>
-              <p>Todas as funcionalidades do plano Premium Mensal inclusas.</p>
-              <div className="preco">
-                <span className="valor">R$ 1200,00</span>
-                <div className="btn-plano">Assinar</div>
-              </div>
             </div>
           </div>
         </section>

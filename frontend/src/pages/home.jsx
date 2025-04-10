@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/home.css";
 import cachorro from "../assets/images/cachorro.jpg";
+import cachorroBanho from "../assets/images/cachorrobanho.jpeg";
+import tela from "../assets/images/tela-petsystem.jpg";
 import Header from "../components/header";
 import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react";
 
@@ -11,14 +13,13 @@ function Home() {
       <div className="main">
         {/* ------ Seção Intro ------ */}
         <section className="intro">
-
           <div className="image-container">
             <img src={cachorro} className="intro-img" />
             <div className="text-container">
               <h1 className="">PetSystem</h1>
               <p>
-              A solução ideal para otimizar seu tempo e 
-              cuidar ainda melhor dos seus clientes peludos.
+                A solução ideal para otimizar seu tempo e cuidar ainda melhor
+                dos seus clientes peludos.
               </p>
               <div>
                 <a href="" className="btn-assinar">
@@ -103,32 +104,82 @@ function Home() {
           <div className="planos-container">
             {/* ------- Plano 1 ------- */}
             <div className="plano">
-              <h2 className="plano-title">FREE</h2>
-              <div className="preco">
-                <span className="valor">R$ 00,00</span>
+              <div className="plano-header">
+                <h2 className="plano-title">Free</h2>
+                <div className="preco">
+                  <p className="valor">
+                    <span>R$</span>
+                    00,00
+                  </p>
+                </div>
               </div>
-              <p>Ideal para: Petshops iniciantes ou com baixo volume de agendamentos.</p>
-              <ul>
-                <li>Cadastro de pets</li>
-                <li>Cadastro de clientes</li>
-                <li>Agendamento de consultas</li>
-              </ul>
-                <div className="btn-plano">Assinar</div>
+              <div className="plano-info">
+                <p>
+                  Ideal para: Petshops iniciantes ou com baixo volume de
+                  agendamentos.
+                </p>
+                <ul>
+                  <li>Cadastro de até 50 clientes.</li>
+                  <li>Cadastro de até 50 animais.</li>
+                  <li>Até 20 agendamentos mensais</li>
+                  <li>Suporte básico via e-mail.</li>
+                </ul>
+              </div>
+              <div className="btn-plano">Assinar</div>
             </div>
             {/* ------- Plano 2 ------- */}
             <div className="plano">
-              <h2 className="plano-title">PRO</h2>
-              <div className="preco">
-                <span className="valor">R$ 120,00</span>
+              <div className="plano-header">
+                <h2 className="plano-title">Pro</h2>
+                <div className="preco">
+                  <p className="valor">
+                    <span>R$</span>00,00
+                  </p>
+                </div>
               </div>
-              <ul>
-                <li>Cadastro de pets</li>
-                <li>Cadastro de clientes</li>
-                <li>Agendamento de consultas</li>
-                <li>Dashboard detalhado</li>
-              </ul>
-                <div className="btn-plano">Assinar</div>
+              <div className="plano-info">
+                <p>
+                  Ideal para: Petshops em crescimento que buscam otimizar todas
+                  as áreas do negócio.
+                </p>
+                <ul>
+                  <li>Cadastro ilimitado de clientes.</li>
+                  <li>Cadastro ilimitado de animais.</li>
+                  <li>Agendamentos ilimitados.</li>
+                  <li>Histórico completo de clientes e animais.</li>
+                  <li>
+                    Lembretes automáticos por e-mail para clientes (em breve via
+                    SMS).
+                  </li>
+                </ul>
+              </div>
+              <div className="btn-plano">Assinar</div>
             </div>
+          </div>
+        </section>
+
+        {/* Seção Vantagens */}
+        <section className="vantagens">
+          <div className="vantagens-container">
+            <div className="vantagens-info">
+          <h1 className="title">Completo para sua clínica veterinária</h1>
+              <p>
+                Muito mais organização para sua clínica, integrada com a agenda,
+                banho e tosa, clientes e pets.
+              </p>
+              <ul>
+                <li>Mais tempo livre para atividades mais produtivas</li>
+                <li>Agendas por cliente e pet</li>
+                <li>Histórico completo do pet</li>
+                <li>Mais agilidade no agendamento</li>
+                <li>Organização de cadastro de pets e tutores</li>
+                <li>Histórico de agendamentos detalhado</li>
+              </ul>
+              <div className="btn-vantagens">Conhecer a PetSystem</div>
+            </div>
+              <div className="vantagens-img">
+                <img src={tela} alt="" />
+              </div>
           </div>
         </section>
       </div>

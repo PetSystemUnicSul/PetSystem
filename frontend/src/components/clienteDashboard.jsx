@@ -5,8 +5,8 @@ function ClienteDashboard() {
   return (
     <main className="mainDashboard">
       <div className="groupButtonsCliente">
-        <div className="tituloEbuttonAdicCliente">
-          <h1>Clientes</h1>
+        <div className="tituloEadic">
+          <h1 className="tituloCliente">Clientes</h1>
           <button className="buttonAdicionar"><CirclePlus size={18} /><span>Novo cliente</span></button>
         </div>
         <div className="searchEfiltro">

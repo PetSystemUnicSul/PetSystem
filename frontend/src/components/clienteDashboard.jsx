@@ -13,7 +13,7 @@ function ClienteDashboard() {
     <main className="mainDashboard">
       <div className="groupButtonsCliente">
 
-        <div className="tituloEAdic">
+        <div className="tituloEadic">
           <h1 className="tituloCliente">Clientes</h1>
           <button className="buttonAdicionar" onClick={abrirPopup}>
             <CirclePlus size={18} />

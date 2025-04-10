@@ -1,0 +1,51 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-container {
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-light);
+
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+.popup-header h2 {
+    font-size: 22px;
+    font-family: var(--font-family-balootwo);
+    font-weight: 600;
+}
+
+.btn-fechar {
+    color: var(--primary-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-add-pet, .btn-editar-pet {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 8px;
+}

@@ -1,13 +1,20 @@
+import { useState } from "react";
+import AdicionarCliente from "../components/adicionarCliente";
 import { Search, Funnel, CirclePlus } from "lucide-react";
 import "../styles/clienteDashboard.css";
 
 function ClienteDashboard() {
+  const[mostrarPopup, setMostrarPopup] = useState(false);
+  
+  const abrirPopup = () => setMostrarPopup(true);
+  const fecharPopup = () => setMostrarPopup(false);
+
   return (
     <main className="mainDashboard">
       <div className="groupButtonsCliente">
         <div className="tituloEbuttonAdicCliente">
           <h1>Clientes</h1>
-          <button className="buttonAdicionar"><CirclePlus size={18} /><span>Novo cliente</span></button>
+          <button className="buttonAdicionar" onClick={abrirPopup}><CirclePlus size={18} /><span>Novo cliente</span></button>
         </div>
         <div className="searchEfiltro">
           <div className="campoSearch">
@@ -27,6 +34,8 @@ function ClienteDashboard() {
         </div>
       </div>
       <div className="listClientes">clientes...</div>
+
+      {mostrarPopup && <AdicionarCliente onClose={fecharPopup} />}
     </main>
   );
 }

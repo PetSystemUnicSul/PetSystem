@@ -1,21 +1,23 @@
 import { useState } from "react";
 import AdicionarCliente from "../components/adicionarCliente";
+import DetalhesCliente from "../components/detalhesCliente";
 import { Search, Funnel, CirclePlus } from "lucide-react";
 import CardClienteDashboard from "./cardClienteDashboard";
 import "../styles/clienteDashboard.css";
 
 function ClienteDashboard() {
-  const [mostrarPopup, setMostrarPopup] = useState(false);
+  const [popupAberto, setPopupAberto] = useState(null);
 
-  const abrirPopup = () => setMostrarPopup(true);
-  const fecharPopup = () => setMostrarPopup(false);
+  const abrirPopupAdicionar = () => setPopupAberto("adicionar");
+  const abrirPopupDetalhes = () => setPopupAberto("detalhes");
+  const fecharPopup = () => setPopupAberto(null); 
 
   return (
     <main className="mainDashboard">
       <div className="groupButtonsCliente">
         <div className="tituloEadic">
           <h1 className="tituloCliente">Clientes</h1>
-          <button className="buttonAdicionar" onClick={abrirPopup}>
+          <button className="buttonAdicionar" onClick={abrirPopupAdicionar}>
             <CirclePlus size={18} />
             <span>Novo cliente</span>
           </button>
@@ -46,20 +48,21 @@ function ClienteDashboard() {
       </div>
 
       <div className="listCliente">
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
-        <CardClienteDashboard />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
+        <CardClienteDashboard onClick={abrirPopupDetalhes} />
       </div>
 
-      {mostrarPopup && <AdicionarCliente onClose={fecharPopup} />}
+      {popupAberto === "adicionar" && <AdicionarCliente onClose={fecharPopup} />}
+      {popupAberto === "detalhes" && <DetalhesCliente onClose={fecharPopup} />}
     </main>
   );
 }

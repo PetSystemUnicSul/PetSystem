@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/PetSystemUnicSul/PetSystem/refs/heads/main/frontend/src/assets/images/Logo.png" alt="Logo PetSystem" />
+    <img src="https://raw.githubusercontent.com/PetSystemUnicSul/PetSystem/refs/heads/main/frontend/src/assets/images/logo.png" alt="Logo PetSystem" />
 </p>
 
 

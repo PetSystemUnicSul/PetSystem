@@ -3,6 +3,7 @@
     min-height: 100vh;
     width: 250px;
     padding: 10px;
+    display: none;
 }
 
 .divImagem{

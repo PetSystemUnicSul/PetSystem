@@ -2,20 +2,20 @@
 
 .card {
     display: flex;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--box-shadow-light);
     margin-bottom: 10px;
     width: 100%;
-    max-width: 100%;
-    padding: 18px 30px ;
+    padding: 10px ;
     box-sizing: border-box;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+
 }
 
 .btnEditar {
-    padding: 10px;
+    padding: 5px;
     color: var(--white);
     border-radius: var(--border-radius-sm);
     border: none;

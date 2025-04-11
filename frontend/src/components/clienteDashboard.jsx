@@ -44,24 +44,11 @@ function ClienteDashboard() {
       </div>
 
       <div className="bar">
-        <div>
-          <p>Nome</p>
-        </div>
-
-        <div>
-          <p>Pets</p>
-        </div>
-
-        <div>
-          <p>Telefone</p>
-        </div>
-
-        <div>
-          <p>Endereço</p>
-        </div>
-        <div>
-          <button></button>
-        </div>
+        <p>Nome</p>
+        <p>Pets</p>
+        <p>Telefone</p>
+        <p>Endereço</p>
+        <p>Editar</p>
       </div>
 
       <div className="listCliente">

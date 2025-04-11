@@ -1,4 +1,5 @@
 import "../styles/cardClienteDashboard.css";
+import { Pen } from "lucide-react"
 
 function CardClienteDashboard() {
   return (
@@ -11,7 +12,7 @@ function CardClienteDashboard() {
 
       <div className="endereço"><p>Lucas Fernandes</p></div>
 
-      <button className="btnEditar"><p>Lucas Fernandes</p></button>
+      <button className="btnEditar"><Pen size={15}/></button>
     </div>
   );
 }

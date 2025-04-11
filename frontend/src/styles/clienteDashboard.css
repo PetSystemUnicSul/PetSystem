@@ -87,19 +87,41 @@
     border-radius: var(--border-radius-sm);
     padding: 5px;
     min-height: 0;
+
+    scrollbar-width: thin; /* Para Firefox */
+    scrollbar-color: var(--primary-color) var(--gray-light); /* Para Firefox */
+
+    /* Para navegadores WebKit (Chrome, Edge, Safari) */
+    &::-webkit-scrollbar {
+        width: 8px; /* Largura da scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--gray-light); /* Cor do fundo da track */
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--primary-color); /* Cor do "botão" da scrollbar */
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark); /* Cor ao passar o mouse */
+    }
 }
+
+
 
 .bar {
     display: flex;
-    background-color: rgb(177, 177, 177);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--gray-medium);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-light);
     color: var(--white);
     margin-bottom: 10px;
     width: 100%;
-    max-width: 100%;
-    padding: 15px 30px ;
-    box-sizing: border-box;
-    justify-content: space-around;
-    align-items: center;
+    padding: 15px;
+    justify-content: space-between;
 }
+

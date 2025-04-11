@@ -56,14 +56,14 @@ function AdicionarCliente({ onClose }) {
 
                     <div className="lista-pets-relacionados">
                         <div className="pet-card">
-                            <p>Pet</p>
+                            <p>Pipow</p>
                             <button className="btn-remover-pet">
                                 <Trash2 size={16} className="icon-remover-pet"/>
                             </button>
                         </div>
 
                         <div className="pet-card">
-                            <p>Pet</p>
+                            <p>Pelucia</p>
                             <button className="btn-remover-pet">
                                 <Trash2 size={16} className="icon-remover-pet"/>
                             </button>

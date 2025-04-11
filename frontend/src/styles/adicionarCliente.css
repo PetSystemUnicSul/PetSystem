@@ -1,25 +1,27 @@
 .popup-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
 } 
 
 .popup-container {
     background: var(--white);
-    padding: 30px;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--box-shadow-light);
-
+    
+    padding: 26px;
     width: 100%;
     max-width: 500px;
-    margin: 0 auto;
+    margin: auto;
     position: relative;
 }
 
@@ -27,11 +29,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 26px;
+    margin-bottom: 20px;
 }
 
 .popup-header h2 {
-    font-size: 22px;
+    font-size: 1.38em;
     font-family: var(--font-family-balootwo);
     font-weight: 600;
 }
@@ -44,9 +46,14 @@
 }
 
 .pets-relacionados {
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
+.pets-relacionados-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .pets-relacionados label {
     margin-bottom: 0px;
@@ -56,22 +63,18 @@
     margin-bottom: 5px;
 }
 
-.pets-relacionados-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .pets-relacionados-buttons {
     display: flex;
     gap: 10px;
+    
 }
 
 .pets-relacionados-buttons button {
     background: var(--primary-color);
     color: var(--white);
     border: none;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-md);
     font-size: 0.9em;
     padding: 6px 15px;
     
@@ -127,23 +130,27 @@
 .icon-remover-pet {
     width: 16px;
     height: 16px;
+    margin-bottom: -5px;
     cursor: pointer;
     color: var(--primary-color);
     transition: color 0.2s ease;
+  }
+
+.icon-remover-pet:hover {
+    color: rgba(255, 0, 0, 0.658);
   }
 
   .btn-salvar-cliente {
     background: var(--primary-color);
     color: var(--white);
     border: none;
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-md);
 
     font-size: 1em;
-    font-weight: 500;
     justify-content: center;
 
     padding: 6px 15px;
-    margin: 20px auto;
+    margin: 24px auto 0;
     width: 30%;
     
     display: flex;

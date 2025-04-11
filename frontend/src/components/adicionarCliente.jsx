@@ -40,25 +40,32 @@ function AdicionarCliente({ onClose }) {
                 </div>
 
                 <div className="pets-relacionados">
-                    <label>Pets relacionados:</label>
-
-                    <div className="pets-relacionados-buttons">
-                        <button className="btn-add-pet">
-                            <Pencil size={16}/>
-                            Editar
-                        </button>
-
-                        <button className="btn-editar-pet">
-                            <CirclePlus size={16}/>
-                            Adicionar Pet
-                        </button>
+                    <div className="pets-relacionados-top">
+                        <label>Pets relacionados:</label>
+                        <div className="pets-relacionados-buttons">
+                            <button className="btn-add-pet">
+                                <Pencil size={16}/>
+                                Editar
+                            </button>
+                            <button className="btn-editar-pet">
+                                <CirclePlus size={16}/>
+                                Adicionar Pet
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="lista-pets-cliente">
-                        <div className="pet-item">
+                    <div className="lista-pets-relacionados">
+                        <div className="pet-card">
                             <p>Pet</p>
                             <button className="btn-remover-pet">
-                                <Trash2 size={16}/>
+                                <Trash2 size={16} className="icon-remover-pet"/>
+                            </button>
+                        </div>
+
+                        <div className="pet-card">
+                            <p>Pet</p>
+                            <button className="btn-remover-pet">
+                                <Trash2 size={16} className="icon-remover-pet"/>
                             </button>
                         </div>
                     </div>

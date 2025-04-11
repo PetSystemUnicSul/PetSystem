@@ -1,28 +1,19 @@
 import "../styles/cardClienteDashboard.css";
 
-function CardClienteDashboard(){
-    return(
-      <div className="card">
-        
-        <div className="name">Lucas Fernandes</div>
-        
-        
-        <div 
-            className="pets">Pipow, Palucia
-        </div>
+function CardClienteDashboard() {
+  return (
+    <div className="card">
+      <div className="name"><p>Lucas Fernandes</p></div>
 
-        <div
-             className="telefone">(11) 96837-7710
-        </div>
-        
-        <div 
-            className="endereço">Rua Fulano da Silva, 852
-        </div>   
+      <div className="pets"><p>Lucas Fernandes</p></div>
 
-            <button className="btnEditar">Editar</button>
+      <div className="telefone"><p>Lucas Fernandes</p></div>
 
+      <div className="endereço"><p>Lucas Fernandes</p></div>
+
+      <button className="btnEditar"><p>Lucas Fernandes</p></button>
     </div>
-    );
+  );
 }
 
 export default CardClienteDashboard;

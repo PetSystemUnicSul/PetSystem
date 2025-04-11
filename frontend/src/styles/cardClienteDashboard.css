@@ -1,0 +1,25 @@
+
+
+.card {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 100%;
+    padding: 18px 30px ;
+    box-sizing: border-box;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btnEditar {
+    padding: 10px;
+    color: var(--white);
+    border-radius: var(--border-radius-sm);
+    border: none;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+

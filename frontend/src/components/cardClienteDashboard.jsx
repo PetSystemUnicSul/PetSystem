@@ -1,15 +1,21 @@
 import "../styles/cardClienteDashboard.css";
 import { Pen } from "lucide-react";
 
-function CardClienteDashboard( {onClick} ) {
+function CardClienteDashboard( {onClick,  dadoCliente } ) {
   return (
-    <div className="card">
-      <div className="name"><p>Lucas Fernandes</p></div>
-      <div className="pets"><p>Pipow, Pelucia</p></div>
-      <div className="telefone"><p>(11) 988377-710</p></div>
-      <div className="endereço"><p>Rua exemplo de Deus, 453</p></div>
-      <button className="btnEditar" onClick={onClick}><Pen size={15}/></button>
-    </div>
+    <>
+      <div className="card">
+          <div className="dadosClienteGroup">
+          <div>
+          <p>nome: </p><p>{dadoCliente.tutor}</p>
+          </div>
+          <p>{dadoCliente.pets.join(", ")}</p>
+          <p>{dadoCliente.telefone}</p>
+          <p>{dadoCliente.endereco}</p>
+          </div>
+          <button className="btnEditar" onClick={onClick}><Pen size={15} /></button>
+      </div>
+    </>
   );
 }
 

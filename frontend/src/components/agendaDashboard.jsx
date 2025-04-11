@@ -1,5 +1,5 @@
 import { Search, CirclePlus } from "lucide-react";
-import "../styles/dashboard.css";
+import "../styles/clienteDashboard.css";
 
 function AgendaDashboard() {
   return (

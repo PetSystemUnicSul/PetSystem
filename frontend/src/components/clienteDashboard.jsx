@@ -43,6 +43,27 @@ function ClienteDashboard() {
         </div>
       </div>
 
+      <div className="bar">
+        <div>
+          <p>Nome</p>
+        </div>
+
+        <div>
+          <p>Pets</p>
+        </div>
+
+        <div>
+          <p>Telefone</p>
+        </div>
+
+        <div>
+          <p>Endereço</p>
+        </div>
+        <div>
+          <button></button>
+        </div>
+      </div>
+
       <div className="listCliente">
         <CardClienteDashboard />
         <CardClienteDashboard />

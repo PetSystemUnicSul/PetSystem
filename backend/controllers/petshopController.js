@@ -1,4 +1,4 @@
-const Petshop = require('../models/PetshopModel')
+const Petshop = require('../models/petshopModel')
 const bcrypt = require('bcrypt')
 
 module.exports = {

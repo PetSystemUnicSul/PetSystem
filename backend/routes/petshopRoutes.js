@@ -1,11 +1,11 @@
-const PetshopController = require('../controllers/PetshopController')
+const controller = require('../controllers/petshopController');
 
-async function petshopRoutes(fastify, options) {
-  fastify.post('/petshops', PetshopController.criar)
-  fastify.get('/petshops', PetshopController.listarTodos)
-  fastify.get('/petshops/:id', PetshopController.buscarPorId)
-  fastify.put('/petshops/:id', PetshopController.atualizar)
-  fastify.delete('/petshops/:id', PetshopController.deletar)
+async function routes(fastify, options) {
+  fastify.get('/', controller.listarTodos);
+  fastify.post('/', controller.criar);
+  fastify.get('/:id', controller.buscarPorId);
+  fastify.put('/:id', controller.atualizar);
+  fastify.delete('/:id', controller.deletar);
 }
 
-module.exports = petshopRoutes
+module.exports = routes;

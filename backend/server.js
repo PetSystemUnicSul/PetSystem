@@ -1,16 +1,31 @@
+require('dotenv').config();
 const fastify = require('fastify')({ logger: true })
 const mongoose = require('mongoose')
 
 
 // Conexão com MongoDB Atlas
-mongoose.connect('mongodb+srv://petsystemuser:root@clusterpetsystem.q12wkvs.mongodb.net/dbpetsystem?retryWrites=true&w=majority&appName=ClusterPetSystem')
-  .then(() => console.log("✅ Conectado ao MongoDB Atlas"))
-  .catch(err => console.error("❌ Erro ao conectar:", err))
-
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  fastify.log.info('Conectado ao MongoDB Atlas');
+}).catch(err => {
+  fastify.log.error("Erro ao conectar:", err);
+});
+  
 // Registrar rotas
-fastify.register(require('./routes/petshopRoutes'))
+const petshopRoutes = require('./routes/petshopRoutes');
+fastify.register(petshopRoutes, { prefix: '/api/petshop' });
 
-// Iniciar servidor
-fastify.listen({ port: 3000 }, () => {
-  console.log('🚀 Servidor rodando na porta 3000')
-})
+const start = async () => {
+  try {
+    await fastify.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' });
+    fastify.log.info(`Servidor rodando na porta ${process.env.PORT || 3000}`);
+    console.log('🚀 Servidor rodando na porta 3000')
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+};
+
+start();

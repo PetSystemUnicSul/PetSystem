@@ -1,12 +1,18 @@
 import { useState } from "react";
-import "../styles/dashboard.css"
+import "../styles/dashboard.css";
 import BarraLateral from "../components/barraLateral";
 import AgendaDashboard from "../components/agendaDashboard";
 import ClienteDashboard from "../components/clienteDashboard";
-import Pets from "../components/petsDashboard"
+import Pets from "../components/petsDashboard";
+import { AlignJustify } from "lucide-react";
 
 function Dashboard() {
   const [activeButton, setActiveButton] = useState('agenda');
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   let content;
   if (activeButton === 'agenda') {
@@ -19,7 +25,18 @@ function Dashboard() {
 
   return (
     <div className="dashboardContainer">
-      <BarraLateral activeButton={activeButton} setActiveButton={setActiveButton} />
+      <AlignJustify 
+        strokeWidth={3} 
+        size={40} 
+        className="iconMenu" 
+        onClick={toggleMenu}
+      />
+      <div className={`sidebarWrapper ${showMenu ? 'visible' : 'hidden'}`}>
+        <BarraLateral 
+          activeButton={activeButton} 
+          setActiveButton={setActiveButton}
+        />
+      </div>
       <div className="contentDashboard">
         {content}
       </div>

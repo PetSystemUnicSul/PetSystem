@@ -27,15 +27,9 @@ function ClienteDashboard() {
             <Search size={25} className="iconeSearch" />
           </div>
           <div className="campoFiltro">
-            <select
-              name="filtroCliente"
-              id="filtroClientes"
-              className="filtroClientes"
-            >
+            <select name="filtroCliente" id="filtroClientes" className="filtroClientes">
               <option value="Nome">Nome</option>
               <option value="Telefone">Telefone</option>
-              <option value="CPF">CPF</option>
-              <option value="Email">Email</option>
               <option value="Endereço">Endereço</option>
             </select>
             <Funnel size={40} className="iconFiltro" />

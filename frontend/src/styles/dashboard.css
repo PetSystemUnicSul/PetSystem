@@ -1,7 +1,57 @@
-.dashboardContainer{
+.dashboardContainer {
     display: flex;
+    position: relative;
+    min-height: 100vh;
 }
 
 .contentDashboard {
-    width: 100%;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.iconMenu {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 1000;
+}
+
+.sidebarWrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 900;
+    transition: transform 0.3s ease;
+}
+
+.sidebarWrapper.visible {
+    transform: translateX(0);
+}
+
+.sidebarWrapper.hidden {
+    transform: translateX(-100%);
+}
+
+@media (max-width: 800px) {
+    .iconMenu {
+        display: block;
+    }
+    
+    .contentDashboard {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 801px) {
+    .sidebarWrapper {
+        transform: translateX(0) !important;
+    }
+    
+    .contentDashboard {
+        margin-left: 250px;
+    }
 }

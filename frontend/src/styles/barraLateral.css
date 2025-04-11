@@ -1,8 +1,9 @@
-.barraLateralNav{
+.barraLateralNav {
     background-color: var(--gray-light);
-    min-height: 100vh;
+    height: 100vh;
     width: 250px;
     padding: 10px;
+    position: relative;
 }
 
 .divImagem{

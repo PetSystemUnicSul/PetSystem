@@ -118,6 +118,7 @@ a {
 
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px; 
     cursor: pointer;
     
@@ -133,21 +134,9 @@ a {
 .button-sm {
     font-size: 0.9em;
     padding: 6px 15px;;
-    
-    display: flex;
-    align-items: center;
-    gap: 6px; 
-    cursor: pointer;
-    
-    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .button-md {
-    background: var(--primary-color);
-    color: var(--white);
-    border: var(--primary-color) 1px solid;
-    border-radius: var(--border-radius-lg);
-
     font-size: 1em;
     justify-content: center;
 
@@ -155,12 +144,9 @@ a {
     margin: 24px auto 0;
     width: 32%;
     
-    display: flex;
-    align-items: center;
-    cursor: pointer;
 }
 
 .danger-button:hover {
-    color: #ff0000a8;
-    border: 1px solid #ff0000a8;
+    color: var(--danger-red);
+    border: 1px solid var(--danger-red);
 }

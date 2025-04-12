@@ -20,9 +20,9 @@ function Login() {
 
                 <button className="buttonLogin" onClick={logar}>Entrar</button>
 
-                <p><a href="" className="links">Esqueci minha senha.</a></p>
+                <p><a href="" className="links">Esqueci minha senha</a></p>
 
-                <p>Não tem conta? <Link to="/cadastro" className='links'>Criar nova conta.</Link></p>
+                <p>Não tem conta? <Link to="/cadastro" className='links'>Criar nova conta</Link></p>
             </form>
         </div>
     )

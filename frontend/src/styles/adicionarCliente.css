@@ -4,8 +4,10 @@
 
 .pets-relacionados-top {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 
 .pets-relacionados label {
@@ -23,46 +25,75 @@
 }
 
 .lista-pets-relacionados {
-    background: var(--input-bg);
-    border: var(--gray-medium) 1px solid;
-    border-radius: var(--border-radius-lg);
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
     padding: 8px;
     gap: 8px;
+
+    background: var(--input-bg);
+    border: var(--gray-medium) 1px solid;
+    border-radius: var(--border-radius-lg);
 }
 
 
 .pet-card {
-    background: var(--white);
-    border-radius: var(--border-radius-lg);
+    display: flex;
     padding: 6px 15px;
     width: 25%;
-
-    display: flex;
+    
     justify-content: center;
     align-items: center;
     gap: 10px;
+
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--box-shadow-light);
+
+    flex: 1 1 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+}
+
+/* 3 colunas */
+@media (min-width: 600px) and (max-width: 899px) {
+    .pet-card {
+        flex: 1 1 calc(33.33% - 8px);
+        max-width: calc(33.33% - 8px);
+    }
+}
+
+/* 4 colunas */
+@media (min-width: 900px) {
+    .pet-card {
+        flex: 1 1 calc(25% - 8px);
+        max-width: calc(25% - 8px);
+    }
+}
+
+/* 1 por linha */
+@media (max-width: 480px) {
+    .pet-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
 }
 
 
 .btn-remover-pet {
-    background: transparent;
-    border: none;
     padding: 0;
+    border: none;
+    background: transparent;
     cursor: pointer;
   }
   
 .icon-remover-pet {
     width: 16px;
     height: 16px;
-    margin-bottom: -5px;
-    cursor: pointer;
+    margin-bottom: -4px;
+
     color: var(--primary-color);
+    cursor: pointer;
     transition: color 0.2s ease;
   }
 

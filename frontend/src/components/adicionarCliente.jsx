@@ -70,6 +70,20 @@ function AdicionarCliente({ onClose }) {
                                 <Trash2 size={16} className="icon-remover-pet danger-button"/>
                             </button>
                         </div>
+
+                        <div className="pet-card">
+                            <p>Pingo</p>
+                            <button className="btn-remover-pet">
+                                <Trash2 size={16} className="icon-remover-pet danger-button"/>
+                            </button>
+                        </div>
+
+                        <div className="pet-card">
+                            <p>Pipoca</p>
+                                <button className="btn-remover-pet">
+                                    <Trash2 size={16} className="icon-remover-pet danger-button"/>
+                                </button>
+                        </div>
                     </div>
                 </div>
 

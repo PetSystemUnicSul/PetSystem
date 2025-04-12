@@ -38,8 +38,8 @@
 /* Estilos gerais */
 body {
     background-color: var(--background-light);
-    font-family: var(--font-family-nunito);
     color: var(--text-dark);
+    font-family: var(--font-family-nunito);
 }
 
 label {
@@ -51,9 +51,10 @@ input {
     width: 100%;
     padding:  10px 15px;
     margin-bottom: 20px;
-    border-radius: var(--border-radius-sm);
-    border: 1px solid var(--gray-medium);
+
     background-color: var(--input-bg);
+    border: 1px solid var(--gray-medium);
+    border-radius: var(--border-radius-sm);
     outline: none;
 }
 
@@ -65,28 +66,29 @@ a {
 .popup-overlay {
     background-color: var(--overlay-bg);
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1000;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 } 
 
 .popup-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 26px;
+    margin: 6px;
+    position: relative;
+
     background: var(--white);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--box-shadow-light);
     
-    padding: 26px;
-    width: 100%;
-    max-width: 500px;
-    margin: 6px;
-    position: relative;
 }
 
 .popup-header {
@@ -103,25 +105,26 @@ a {
 }
 
 .btn-fechar {
-    color: var(--primary-color);
     background: transparent;
+    color: var(--primary-color);
     border: none;
     cursor: pointer;
 }
 
 /* Botões */
 .button {
-    background: var(--primary-color);
-    color: var(--white);
-    border: var(--primary-color) 1px solid;
-    border-radius: var(--border-radius-lg);
-
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px; 
-    cursor: pointer;
     white-space: nowrap;
+    
+    background: var(--primary-color);
+    color: var(--white);
+    border: var(--primary-color) 1px solid;
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+
     
     
     transition: background 0.2s ease, color 0.2s ease;
@@ -135,20 +138,26 @@ a {
 
 .button-sm {
     font-size: 0.9em;
-    padding: 6px 15px;;
+    padding: 6px 15px;
+
+    width: 100%;
+    max-width: 140px;
 }
 
 .button-md {
-    font-size: 1em;
-    justify-content: center;
-
+    width: 100%;
+    max-width: 160px;
+    min-width: 120px;
+    
     padding: 8px 10px;
     margin: 24px auto 0;
-    width: 32%;
-    
+
+    font-size: 1em;
+    justify-content: center;
 }
 
 .danger-button:hover {
+    background: var(--white);
     color: var(--danger-red);
     border: 1px solid var(--danger-red);
 }

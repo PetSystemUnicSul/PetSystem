@@ -48,12 +48,12 @@ function DetalhesCliente({ onClose }) {
                     <div className="detalhes-buttons">
                         <button className="button button-md">
                             <Pencil size={16}/>
-                            Editar cliente
+                            <span>Editar cliente</span>
                         </button>
 
                         <button className="button button-md danger-button">
                             <Trash2 size={16}/>
-                            Excluir cliente
+                            <span>Excluir cliente</span>
                         </button>
                     </div>
                 </div>

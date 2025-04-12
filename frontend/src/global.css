@@ -7,10 +7,12 @@
     --background-light: #fafafa; /* Fundo claro */
     --white: #ffffff; /* Branco */
     --gray-light: #efeff0; /* Cinza claro */
-    --blue-light: #d9e4ee; /* Azul claro */
+    --blue-light: #f1faff; /* Azul claro */
     --text-dark: #0f0f0f; /* Quase preto */
     --gray-medium: #ccc; /* Cinza médio para bordas */
     --input-bg: #f9f9f9; /* Fundo de inputs */
+    --overlay-bg: #00000080; /* Fundo de sobreposição */
+    --danger-red: #ff0000; /* Vermelho para botões de exclusão */
 
     /* Fonte */
     --font-family-nunito: "Nunito", sans-serif;
@@ -57,4 +59,108 @@ input {
 
 a {
     text-decoration: none;
+}
+
+/* Popups*/
+.popup-overlay {
+    background-color: var(--overlay-bg);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.popup-container {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-light);
+    
+    padding: 26px;
+    width: 100%;
+    max-width: 500px;
+    margin: 6px;
+    position: relative;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.popup-header h2 {
+    font-size: 1.38em;
+    font-family: var(--font-family-balootwo);
+    font-weight: 600;
+}
+
+.btn-fechar {
+    color: var(--primary-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Botões */
+.button {
+    background: var(--primary-color);
+    color: var(--white);
+    border: var(--primary-color) 1px solid;
+    border-radius: var(--border-radius-lg);
+
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+    cursor: pointer;
+    
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+    background: var(--blue-light);
+    color: var(--primary-color);
+    border: var(--primary-color) 1px solid;
+}
+
+.button-sm {
+    font-size: 0.9em;
+    padding: 6px 15px;;
+    
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+    cursor: pointer;
+    
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button-md {
+    background: var(--primary-color);
+    color: var(--white);
+    border: var(--primary-color) 1px solid;
+    border-radius: var(--border-radius-lg);
+
+    font-size: 1em;
+    justify-content: center;
+
+    padding: 8px 10px;
+    margin: 24px auto 0;
+    width: 32%;
+    
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.danger-button:hover {
+    color: #ff0000a8;
+    border: 1px solid #ff0000a8;
 }

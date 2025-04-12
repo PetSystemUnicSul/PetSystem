@@ -42,36 +42,38 @@ function AdicionarCliente({ onClose }) {
                 <div className="pets-relacionados">
                     <div className="pets-relacionados-top">
                         <label>Pets relacionados:</label>
+        
                         <div className="pets-relacionados-buttons">
-                            <button className="btn-add-pet">
+                            <button className="button-sm button">
                                 <Pencil size={16}/>
-                                Editar
+                                Editar pet
                             </button>
-                            <button className="btn-editar-pet">
+                            <button className="button-sm button">
                                 <CirclePlus size={16}/>
-                                Adicionar Pet
+                                Adicionar pet
                             </button>
                         </div>
+                        
                     </div>
 
                     <div className="lista-pets-relacionados">
                         <div className="pet-card">
                             <p>Pipow</p>
                             <button className="btn-remover-pet">
-                                <Trash2 size={16} className="icon-remover-pet"/>
+                                <Trash2 size={16} className="icon-remover-pet danger-button"/>
                             </button>
                         </div>
 
                         <div className="pet-card">
                             <p>Pelucia</p>
                             <button className="btn-remover-pet">
-                                <Trash2 size={16} className="icon-remover-pet"/>
+                                <Trash2 size={16} className="icon-remover-pet danger-button"/>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" className="btn-salvar-cliente">Salvar</button>
+                <button type="submit" className="button-md button">Salvar</button>
             </form>
         </div>
     </div>

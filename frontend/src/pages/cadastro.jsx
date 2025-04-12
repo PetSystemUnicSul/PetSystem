@@ -76,7 +76,7 @@ function Cadastro() {
                     onChange={e => setConfirmarSenha(e.target.value)}
                 />
 
-                <button className="buttonCadastro" type="submit">Cadastrar</button>
+                <button className="button buttonCadastro" type="submit">Cadastrar</button>
 
                 <p>Já tem uma conta? <Link to="/login" className='links'>Entrar</Link></p>
             </form>

@@ -37,13 +37,9 @@
     margin: 16px auto;
    
     border-radius: var(--border-radius-md);
-    border: none;
 
-    background-color: var(--primary-color);
-    color: var(--white);
     font-size: 1em;
     font-weight: bold;
-    cursor: pointer;
 }
 
 .formularioLogin > p, .formularioCadastro > p {

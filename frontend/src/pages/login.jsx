@@ -18,7 +18,7 @@ function Login() {
                 <label>Senha:</label>
                 <input type="password" name="senha" id="senha" />
 
-                <button className="buttonLogin" onClick={logar}>Entrar</button>
+                <button className="button buttonLogin" onClick={logar}>Entrar</button>
 
                 <p><a href="" className="links">Esqueci minha senha</a></p>
 

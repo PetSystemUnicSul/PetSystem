@@ -27,7 +27,7 @@ function Dashboard() {
     <div className="dashboardContainer">
       <AlignJustify 
         strokeWidth={3} 
-        size={40} 
+        size={30} 
         className="iconMenu" 
         onClick={toggleMenu}
       />

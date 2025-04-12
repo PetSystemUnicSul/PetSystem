@@ -24,11 +24,11 @@
     color: var(--white);
     border: none;
     border-radius: var(--border-radius-md);
-    padding: 6px 15px;
+    padding: 6px 10px;
     height: fit-content;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
@@ -115,18 +115,32 @@
 
 .bar {
     display: flex;
-    background-color: var(--gray-medium);
+    background-color: var(--gray-light);
     border-radius: var(--border-radius-md);
     box-shadow: var(--box-shadow-light);
-    color: var(--white);
     margin-bottom: 10px;
     width: 100%;
-    padding: 15px;
+    padding: 15px 20% 15px 15px;
     justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
+
+.bar > p{
+    display: block;
+}
+
 
 @media (max-width: 800px) {
     .mainDashboard {
-        padding: 45px 20px 20px;
+        padding: 45px 15px 15px;
+    }
+
+    .tituloCliente, .tituloPet, .tituloAgenda {
+        font-size: 1.3rem;
+    }
+
+    .bar {
+        display: none;
     }
 }

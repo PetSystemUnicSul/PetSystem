@@ -9,29 +9,72 @@
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
+    gap: 3%;
 
 }
 
-.btnEditar {
-    padding: 5px;
+
+.dadosGroup {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.labelDados {
+    flex: 1;
+}
+
+.labelDados > p:nth-of-type(1) {
+    margin-right: 10px;
+    font-weight: bold;
+    display: none;
+}
+
+.btns-info-edit {
+    display: flex;
+}
+
+.btnEditar, .btnInfo {
+    padding: 8px;
     color: var(--white);
     border-radius: var(--border-radius-sm);
     border: none;
     background-color: var(--primary-color);
     cursor: pointer;
+    margin: 2px;
 }
-
-.dadosClienteGroup {
-    display: flex;
-}
-
 
 @media (max-width: 800px)  {
     .card {
         display: flex;
     }
 
-    .dadosClienteGroup {
+    .dadosGroup {
         display: block;
     }
+
+    .labelDados {
+        display: flex;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .labelDados > p:nth-of-type(1) {
+        display: block;
+    }
+
+    .labelDados > p:nth-of-type(2) {
+        max-width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .btns-info-edit {
+        display: block;
+        flex: 0;
+    }
+
 }

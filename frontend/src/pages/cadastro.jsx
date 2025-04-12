@@ -29,7 +29,7 @@ function Cadastro() {
             });
 
             alert('Cadastro realizado com sucesso!');
-            navigate('/dashboard');
+            navigate('/login');
         } catch (error) {
             console.error('Erro ao cadastrar:', error.response?.data || error.message);
             alert('Erro ao cadastrar. Verifique os dados.');

@@ -4,7 +4,7 @@ import api from '../services/api';
 import '../styles/loginEcadastro.css';
 
 function Cadastro() {
-    const naviguete = useNavigate();
+    const navigate = useNavigate();
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
@@ -38,7 +38,7 @@ function Cadastro() {
 
     return(
         <div className='divLoginCadastro'>
-            <form onSubmit={cadastrar}>
+            <form className="formularioCadastro" onSubmit={cadastrar}>
                 <h1 className='form-title'>Cadastro</h1>
 
                 <label>Nome:</label>

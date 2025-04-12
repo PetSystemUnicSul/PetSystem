@@ -79,6 +79,9 @@
     }
 }
 
+.pet-card p {
+    flex: 1;
+}
 
 .btn-remover-pet {
     padding: 0;

@@ -6,7 +6,10 @@ const cors = require('@fastify/cors'); // ← Adicionado aqui
 // Registrar CORS
 // CORS: permitir localhost e Vercel
 fastify.register(cors, {
-  origin: ['https://labfront-five.vercel.app', 'http://localhost:5173'],
+  origin: [
+    'https://pet-system-delta.vercel.app', 
+    'http://localhost:5173'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 });

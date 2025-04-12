@@ -4,7 +4,7 @@ import BarraLateral from "../components/barraLateral";
 import AgendaDashboard from "../components/agendaDashboard";
 import ClienteDashboard from "../components/clienteDashboard";
 import Pets from "../components/petsDashboard";
-import { AlignJustify } from "lucide-react";
+import { AlignJustify, AlignLeft} from "lucide-react";
 
 function Dashboard() {
   const [activeButton, setActiveButton] = useState('agenda');
@@ -25,7 +25,7 @@ function Dashboard() {
 
   return (
     <div className="dashboardContainer">
-      <AlignJustify 
+      <AlignLeft 
         strokeWidth={3} 
         size={30} 
         className="iconMenu" 

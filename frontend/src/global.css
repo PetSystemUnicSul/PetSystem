@@ -121,6 +121,8 @@ a {
     justify-content: center;
     gap: 6px; 
     cursor: pointer;
+    white-space: nowrap;
+    
     
     transition: background 0.2s ease, color 0.2s ease;
 }

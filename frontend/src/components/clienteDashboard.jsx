@@ -11,9 +11,14 @@ function ClienteDashboard() {
   const [clientesFiltrados, setClientesFiltrados] = useState([]);
   const [termoPesquisa, setTermoPesquisa] = useState("");
   const [campoFiltro, setCampoFiltro] = useState("Nome");
+  const [clienteSelecionado, setClienteSelecionado] = useState(null);
+
+  const abrirPopupDetalhes = (cliente) => {
+    setClienteSelecionado(cliente);
+    setPopupAberto("detalhes");
+  };
 
   const abrirPopupAdicionar = () => setPopupAberto("adicionar");
-  const abrirPopupDetalhes = () => setPopupAberto("detalhes");
   const fecharPopup = () => setPopupAberto(null); 
 
   useEffect(() => {
@@ -25,7 +30,6 @@ function ClienteDashboard() {
     buscarDados();
   }, []);
 
-  // Função para filtrar os clientes baseado no termo de pesquisa e campo selecionado
   useEffect(() => {
     if (termoPesquisa === "") {
       setClientesFiltrados(dadosClientes);
@@ -58,12 +62,10 @@ function ClienteDashboard() {
     setClientesFiltrados(resultado);
   }, [termoPesquisa, campoFiltro, dadosClientes]);
 
-  // Handler para atualizar o termo de pesquisa
   const handlePesquisaChange = (e) => {
     setTermoPesquisa(e.target.value);
   };
 
-  // Handler para atualizar o campo de filtro
   const handleFiltroChange = (e) => {
     setCampoFiltro(e.target.value);
   };
@@ -103,9 +105,7 @@ function ClienteDashboard() {
       </div>
 
       <div className="listCliente">
-        {clientesFiltrados.map((cliente, index) => (
-          <CardClienteDashboard onClick={abrirPopupDetalhes} key={index} dadoCliente={cliente} />
-        ))}
+      {clientesFiltrados.map((cliente, index) => (<CardClienteDashboard onClick={() => abrirPopupDetalhes(cliente)} key={index} dadoCliente={cliente} /> ))}
 
         {clientesFiltrados.length === 0 && (
           <div className="mensagem-sem-resultados">
@@ -115,7 +115,7 @@ function ClienteDashboard() {
       </div>
 
       {popupAberto === "adicionar" && <AdicionarCliente onClose={fecharPopup} />}
-      {popupAberto === "detalhes" && <DetalhesCliente onClose={fecharPopup} />}
+      {popupAberto === "detalhes" && ( <DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} />)}
     </main>
   );
 }

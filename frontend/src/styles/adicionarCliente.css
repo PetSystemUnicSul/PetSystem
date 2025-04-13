@@ -54,37 +54,14 @@
     flex: 1 1 calc(50% - 8px);
     max-width: calc(50% - 8px);
 }
-
-/* 3 colunas */
-@media (min-width: 600px) and (max-width: 899px) {
-    .pet-card {
-        flex: 1 1 calc(33.33% - 8px);
-        max-width: calc(33.33% - 8px);
-    }
-}
-
-/* 4 colunas */
-@media (min-width: 900px) {
-    .pet-card {
-        flex: 1 1 calc(25% - 8px);
-        max-width: calc(25% - 8px);
-    }
-}
-
-/* 1 por linha */
-@media (max-width: 480px) {
-    .pet-card {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-}
-
 .pet-card p {
     flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .btn-remover-pet {
-    padding: 0;
     border: none;
     background: transparent;
     cursor: pointer;

@@ -11,6 +11,7 @@ const connectDB = async (fastify) => {
     fastify.log.error('Erro ao conectar ao MongoDB:', err);
     process.exit(1);
   }
+
 };
 
 module.exports = connectDB;

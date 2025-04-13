@@ -1,54 +1,39 @@
-const Petshop = require('../models/petshopModel')
-const bcrypt = require('bcrypt')
+const Petshop = require('../models/petshopModel');
+const bcrypt = require('bcrypt');
 
 module.exports = {
-    // CRUD
-    //CREATE
+  // Cadastro de Petshop
   async criar(request, reply) {
     try {
-      const novo = new Petshop(request.body)
-      await novo.save()
-      reply.send(novo)
+      const novo = new Petshop(request.body);
+      await novo.save();
+      reply.code(201).send({ mensagem: 'Cadastro realizado com sucesso!', petshop: novo });
     } catch (err) {
-      reply.code(400).send({ erro: "Erro ao cadastrar", detalhes: err.message })
+      if (err.code === 11000) {
+        const campo = Object.keys(err.keyPattern)[0];
+        reply.code(400).send({ erro: `${campo.charAt(0).toUpperCase() + campo.slice(1)} já cadastrado.` });
+      } else if (err.errors) {
+        const mensagens = Object.values(err.errors).map(e => e.message);
+        reply.code(400).send({ erro: 'Erro de validação', detalhes: mensagens });
+      } else {
+        reply.code(500).send({ erro: 'Erro ao cadastrar', detalhes: err.message });
+      }
     }
   },
 
-  async listarTodos(request, reply) {
-    const petshops = await Petshop.find({}, '-password')
-    reply.send(petshops)
-  },
-
-    //READ
-  async buscarPorId(request, reply) {
-    try {
-      const petshop = await Petshop.findById(request.params.id).select('-password')
-      if (!petshop) throw new Error()
-      reply.send(petshop)
-    } catch {
-      reply.code(404).send({ erro: "Petshop não encontrado" })
-    }
-  },
-  //UPDATE
+  // Atualização de Petshop
   async atualizar(request, reply) {
     try {
-      const dados = request.body
+      const dados = request.body;
       if (dados.password) {
-        dados.password = await bcrypt.hash(dados.password, 10)
+        dados.password = await bcrypt.hash(dados.password, 10);
       }
-      const atualizado = await Petshop.findByIdAndUpdate(request.params.id, dados, { new: true })
-      reply.send(atualizado)
+
+      const atualizado = await Petshop.findByIdAndUpdate(request.params.id, dados, { new: true });
+      if (!atualizado) throw new Error();
+      reply.send(atualizado);
     } catch {
-      reply.code(404).send({ erro: "Erro ao atualizar" })
-    }
-  },
-  //DELETE
-  async deletar(request, reply) {
-    try {
-      await Petshop.findByIdAndDelete(request.params.id)
-      reply.send({ status: "Petshop deletado com sucesso" })
-    } catch {
-      reply.code(404).send({ erro: "Erro ao deletar" })
+      reply.code(404).send({ erro: "Erro ao atualizar" });
     }
   }
-}
+};

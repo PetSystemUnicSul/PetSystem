@@ -2,10 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import '../styles/loginEcadastro.css';
 
 function Cadastro() {
-    const naviguete = useNavigate();
+    const navigate = useNavigate();
 
      async function cadastrar() {
-        naviguete('/dashboard');
+        navigate('/dashboard');
      }
 
     return(
@@ -28,7 +28,7 @@ function Cadastro() {
                 <label>Confirmar senha:</label>
                 <input type="password" />
 
-                <button className="button buttonCadastro" onClick={cadastrar}>Cadastrar</button>
+                <button type="submit" className="button buttonCadastro" onClick={cadastrar}>Cadastrar</button>
 
                 <p>Já tem uma conta? <Link to="/login" className='links'>Entrar</Link></p>
 

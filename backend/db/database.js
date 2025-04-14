@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const connectDB = async (fastify) => {
+export const connectDB = async (fastify) => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
@@ -11,7 +11,4 @@ const connectDB = async (fastify) => {
     fastify.log.error('Erro ao conectar ao MongoDB:', err);
     process.exit(1);
   }
-
 };
-
-module.exports = connectDB;

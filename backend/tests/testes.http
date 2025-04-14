@@ -1,0 +1,10 @@
+POST http://127.0.0.1:3000/cadastro
+Content-Type: application/json
+
+{
+  "nome": "PetLove",
+  "email": "contato@petlove.com.br",
+  "nome_fantasia": "PetLove Centro",
+  "cnpj": "12.345.678/0001-95",
+  "senha": "SenhaSegura123"
+}

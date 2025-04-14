@@ -5,7 +5,7 @@ function Cadastro() {
     const navigate = useNavigate();
 
      async function cadastrar() {
-        navigate('/dashboard');
+        navigate('/login');
      }
 
     return(
@@ -13,24 +13,27 @@ function Cadastro() {
             <form className="formularioCadastro">
                 <h1 className='form-title'>Cadastro</h1>
 
-                <label>Nome:</label>
-                <input type="text" name="nome" id="nome" />
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite seu nome..."/>
 
-                <label>Email:</label>
-                <input type="email" />
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu Email..." required/>
 
-                <label>CPF/CNPJ:</label>
-                <input type="text" name="cpfCnpj" id="cpfCnpj" />
+                <label for="Nomefantasia">Nome fantasia:</label>
+                <input type="text" name="Nomefantasia" id="Nomefantasia" placeholder="Digite o nome do seu Petshop..." required/>
 
-                <label>Senha:</label>
-                <input type="password" name="senha" id="senha" />
+                <label for="cnpj" >CNPJ:</label>
+                <input type="text" name="cnpj" id="cnpj" placeholder="00.000.000/0000-00" required/>
+
+                <label for="senha" >Senha:</label>
+                <input type="password" name="senha" id="senha" placeholder="Crie uma senha..." required/>
 
                 <label>Confirmar senha:</label>
-                <input type="password" />
+                <input type="password" placeholder="Confirme sua senha... " required/>
 
                 <button type="submit" className="button buttonCadastro" onClick={cadastrar}>Cadastrar</button>
 
-                <p>Já tem uma conta? <Link to="/login" className='links'>Entrar</Link></p>
+                <p>Já tem uma conta? <a className='links' onClick={cadastrar()}>Entrar</a></p>
 
             </form>
         </div>

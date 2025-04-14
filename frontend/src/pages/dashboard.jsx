@@ -4,7 +4,7 @@ import BarraLateral from "../components/barraLateral";
 import AgendaDashboard from "../components/agendaDashboard";
 import ClienteDashboard from "../components/clienteDashboard";
 import Pets from "../components/petsDashboard";
-import { AlignJustify, AlignLeft} from "lucide-react";
+import { AlignLeft} from "lucide-react";
 
 function Dashboard() {
   const [activeButton, setActiveButton] = useState('agenda');
@@ -22,6 +22,7 @@ function Dashboard() {
   } else if (activeButton === 'pets') {
     content = <Pets />;
   }
+
 
   return (
     <div className="dashboardContainer">

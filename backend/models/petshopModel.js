@@ -6,8 +6,7 @@ const petshopSchema = new mongoose.Schema({
   email: { 
     type: String, 
     required: true, 
-    unique: true, 
-    match: [/.+@.+\..+/, 'Email inválido'] 
+    unique: true,
   },
   nome_fantasia: { 
     type: String, 
@@ -18,11 +17,6 @@ const petshopSchema = new mongoose.Schema({
     type: String,  
     required: true,  
     unique: true,  
-    set: v => v.replace(/\D/g, ''),  
-    validate: {  
-      validator: v => /^\d{14}$/.test(v),  
-      message: props => `${props.value} não é um CNPJ válido. Deve conter 14 dígitos.` 
-    }
   },
   password: { 
     type: String, 

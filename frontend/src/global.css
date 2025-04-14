@@ -161,3 +161,8 @@ a {
     color: var(--danger-red);
     border: 1px solid var(--danger-red);
 }
+
+.error-message {
+    color: var(--danger-red);
+    margin: auto;
+}

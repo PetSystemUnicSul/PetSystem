@@ -81,7 +81,7 @@ function Cadastro() {
                 senha: formData.senha
             };
 
-            const res = await axios.post('http://localhost:3000/cadastro', payload);
+            const res = await axios.post('https://petsystem-backend.onrender.com/cadastro', payload);
             
             if (res.status === 201) {
                 alert('Cadastro realizado com sucesso!');

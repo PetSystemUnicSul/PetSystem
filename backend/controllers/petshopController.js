@@ -1,4 +1,4 @@
-import Petshop from '../models/petshopModel.js';
+import { Petshop } from '../models/petshopModel.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -86,3 +86,4 @@ export async function Login(request, reply) {
     return reply.code(500).send({ error: 'Erro interno do servidor' });
   }
 }
+

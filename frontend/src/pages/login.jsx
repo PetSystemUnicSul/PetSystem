@@ -30,7 +30,7 @@ function Login() {
           } catch (error) {
             setError(error.response?.data?.error || 'Erro ao fazer login');
           } finally {
-            setLoading(false);
+            setLoading(false);     
           }
     }
 

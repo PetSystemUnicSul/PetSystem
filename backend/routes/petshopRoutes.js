@@ -19,7 +19,8 @@ export default async function petshopRoutes(fastify, options) {
         user: request.user
       });
     });
+
+    fastify.get('/clientes', BuscarClientes);
     
-    // Adicione outras rotas protegidas conforme necessário
   });
 }

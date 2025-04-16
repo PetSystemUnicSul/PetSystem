@@ -60,18 +60,6 @@
     gap: 10px;
 }
 
-.filtroClientes {
-    width: 100%;
-    min-width: 100px;
-    padding: 10px 16px;
-    border-radius: var(--border-radius-sm);
-    border: 1px solid var(--gray-medium);
-    background-color: var(--input-bg);
-    outline: none;
-    margin: 0px 0px 15px;
-    cursor: pointer;
-}
-
 .inputData {
     max-width: 150px;
     cursor: pointer;

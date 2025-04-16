@@ -1,4 +1,4 @@
-POST http://127.0.0.1:3000/cadastro
+POST https://petsystem-backend.onrender.com/cadastro
 Content-Type: application/json
 
 {

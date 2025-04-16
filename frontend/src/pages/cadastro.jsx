@@ -13,6 +13,7 @@ function Cadastro() {
         confirmarSenha: ''
     });
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false); 
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -24,10 +25,7 @@ function Cadastro() {
     };
 
     const formatCNPJ = (value) => {
-        // Remove tudo que não é dígito
         const nums = value.replace(/\D/g, '');
-        
-        // Formatação do CNPJ: 00.000.000/0000-00
         if (nums.length <= 2) return nums;
         if (nums.length <= 5) return `${nums.slice(0, 2)}.${nums.slice(2)}`;
         if (nums.length <= 8) return `${nums.slice(0, 2)}.${nums.slice(2, 5)}.${nums.slice(5)}`;
@@ -69,27 +67,30 @@ function Cadastro() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         if (!validateForm()) return;
+
+        setLoading(true);
 
         try {
             const payload = {
                 nome: formData.nome,
                 email: formData.email,
                 nome_fantasia: formData.nome_fantasia,
-                cnpj: formData.cnpj.replace(/\D/g, ''), // Remove formatação
+                cnpj: formData.cnpj.replace(/\D/g, ''),
                 senha: formData.senha
             };
 
             const res = await axios.post('https://petsystem-backend.onrender.com/cadastro', payload);
             
             if (res.status === 201) {
-                alert('Cadastro realizado com sucesso!');
                 navigate('/login');
             }
         } catch (error) {
             console.error('Erro no cadastro:', error);
             alert(error.response?.data?.error || 'Erro ao cadastrar. Tente novamente.');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -170,7 +171,13 @@ function Cadastro() {
                 />
                 {errors.confirmarSenha && <span className="error-message">{errors.confirmarSenha}</span>}
 
-                <button type="submit" className="button buttonCadastro">Cadastrar</button>
+                <button 
+                    type="submit" 
+                    className="button buttonCadastro"
+                    disabled={loading}
+                >
+                    {loading ? <span className="loader"></span> : "Cadastrar"}
+                </button>
 
                 <p>Já tem uma conta? <Link to="/login" className='links'>Entrar</Link></p>
             </form>

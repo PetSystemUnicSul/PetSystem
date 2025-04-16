@@ -1,4 +1,5 @@
 import { CadastrarPetShop, Login} from '../controllers/petshopController.js';
+import { BuscarClientes } from '../controllers/dashboardController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 export default async function petshopRoutes(fastify, options) {

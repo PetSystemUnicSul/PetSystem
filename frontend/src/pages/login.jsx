@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/loginEcadastro.css';
 
@@ -15,29 +16,22 @@ function Login() {
         setLoading(true);
 
         try {
-            const response = await fetch('https://petsystem-backend.onrender.com/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, senha }),
+            const response = await axios.post('https://petsystem-backend.onrender.com/login', {
+              email,
+              senha
             });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Erro ao fazer login');
-            }
-
+          
+            const data = response.data;
+          
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
-
+          
             navigate('/dashboard');
-        } catch (error) {
-            setError(error.message);
-        } finally {
+          } catch (error) {
+            setError(error.response?.data?.error || 'Erro ao fazer login');
+          } finally {
             setLoading(false);
-        }
+          }
     }
 
     return (

@@ -8,3 +8,26 @@ Content-Type: application/json
   "cnpj": "12.345.678/0001-95",
   "senha": "SenhaSegura123"
 }
+
+###
+POST http://127.0.0.1:3000/clientes
+Content-Type: application/json
+
+{
+  "dadosClientes": {
+    "nome": "Lucas Fernandes Ribeiro de Oliveira",
+    "telefone": "11988377710",
+    "email": "lucas.f.r.o2015@gmail.com",
+    "CPF": "55555555555",
+    "endereco": "Rua José Rufino da Silva, 436",
+    "pets": [
+      {
+        "pet_nome": "pipo",
+        "especie": "cachorro",
+        "raca": "akita",
+        "sexo": "M",
+        "observacao": "deus"
+      }
+    ]
+  }
+}

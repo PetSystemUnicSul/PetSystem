@@ -22,10 +22,11 @@ petshopSchema.pre("save", async function () {
 
 // Schema do Pet
 const petSchema = new mongoose.Schema({
-  nome: { type: String, required: true },
+  pet_nome: { type: String, required: true },
   especie: { type: String, required: true },
   raca: { type: String },
-  idade: { type: Number },
+  sexo: {type: String, required: true},
+  observacao: {type: String, required: true},
   clienteId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cliente', required: true },
   petshopId: { type: mongoose.Schema.Types.ObjectId, ref: 'Petshop', required: true }
 });

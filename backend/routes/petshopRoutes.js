@@ -1,5 +1,5 @@
 import { CadastrarPetShop, Login} from '../controllers/petshopController.js';
-import { BuscarClientes, CriarClienteEPet } from '../controllers/dashboardController.js';
+import { CriarClienteEPet } from '../controllers/dashboardController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 export default async function petshopRoutes(fastify, options) {
@@ -7,7 +7,7 @@ export default async function petshopRoutes(fastify, options) {
   fastify.post('/cadastro', CadastrarPetShop);
   fastify.post('/login', Login);
 
-  fastify.post('/clientes', CriarClienteEPet );
+  
   
   // Rotas protegidas
   // Adicione o middleware de autenticação para as rotas que precisam de autenticação
@@ -23,7 +23,9 @@ export default async function petshopRoutes(fastify, options) {
       });
     });
 
-    fastify.get('/clientes', BuscarClientes);
+    fastify.post('/clientes', CriarClienteEPet );
+
+   // fastify.get('/clientes', BuscarClientes);
 
     
 })};

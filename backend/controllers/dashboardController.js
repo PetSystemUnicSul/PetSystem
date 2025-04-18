@@ -1,34 +1,34 @@
 import mongoose from 'mongoose';
 import { Cliente, Pet } from "../models/petshopModel.js";
 
-export async function BuscarClientes(request, reply) {
-  try {
-    const petshopId = request.user.petshopId;
+// export async function BuscarClientes(request, reply) {
+//   try {
+//     const petshopId = request.user.id;
 
-    const clientes = await Cliente.find({ petshopId }).populate({
-      path: "pets",
-      select: "nome -_id",
-    });
+//     const clientes = await Cliente.find({ petshopId }).populate({
+//       path: "pets",
+//       select: "nome -_id",
+//     });
 
-    const clientesFormatados = clientes.map((cliente) => ({
-      tutor: cliente.cliente_nome,
-      pets: cliente.pets.map((pet) => pet.nome),
-      telefone: cliente.cliente_telefone.toString(),
-      cpf: cliente.cliente_cpf,
-      email: cliente.cliente_email,
-      endereco: cliente.cliente_endereco,
-    }));
+//     const clientesFormatados = clientes.map((cliente) => ({
+//       tutor: cliente.cliente_nome,
+//       pets: cliente.pets.map((pet) => pet.nome),
+//       telefone: cliente.cliente_telefone.toString(),
+//       cpf: cliente.cliente_cpf,
+//       email: cliente.cliente_email,
+//       endereco: cliente.cliente_endereco,
+//     }));
 
-    return reply.code(200).send(clientesFormatados);
-  } catch (error) {
-    console.error("Erro ao buscar clientes:", error);
-    return reply.code(500).send({ message: "Erro ao buscar clientes" });
-  }
-}
+//     return reply.code(200).send(clientesFormatados);
+//   } catch (error) {
+//     console.error("Erro ao buscar clientes:", error);
+//     return reply.code(500).send({ message: "Erro ao buscar clientes" });
+//   }
+// }
 
 export async function CriarClienteEPet(request, reply) {
-  const { nome, telefone, email, CPF, endereco, pets } = request.body.dadosClientes;
-  const petshopId = "67ffb96fd589b5d251740722";
+  const petshopId = request.user.id;
+  const { nome, telefone, email, CPF, endereco, pets } = request.body;
 
   // 1) inicia sessão/transaction
   const session = await mongoose.startSession();
@@ -59,10 +59,11 @@ export async function CriarClienteEPet(request, reply) {
       const [novoPet] = await Pet.create(
         [
           {
-            nome: p.pet_nome,
+            pet_nome: p.pet_nome,
             especie: p.especie,
             raca: p.raca,
-            idade: p.idade || null,
+            sexo: p.sexo,
+            observacao: p.observacao,
             clienteId: novoCliente._id,
             petshopId,
           },
@@ -85,14 +86,14 @@ export async function CriarClienteEPet(request, reply) {
       .populate("pets")
       .exec();
 
-    res.status(201).json(clientePopulado);
+    return reply.status(201).send(clientePopulado);
   } catch (err) {
     // desfaz tudo em caso de erro
-    await session.abortTransaction();
+    if (session.inTransaction()) {
+      await session.abortTransaction();
+    }
     session.endSession();
     console.error(err);
-    res
-      .status(500)
-      .json({ error: "Erro ao criar cliente e pets", details: err.message });
+    return reply.status(500).send({ error: "Erro ao criar cliente e pets", details: err.message });
   }
 }

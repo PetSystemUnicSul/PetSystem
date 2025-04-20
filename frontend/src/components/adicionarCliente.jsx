@@ -61,7 +61,7 @@ function AdicionarCliente({ onClose, onAtualizarCliete }) {
       };
 
       const response = await axios.post(
-        "http://127.0.0.1:3000/clientes", 
+        "https://petsystem-backend.onrender.com/clientes", 
         dadosCliente,
         {
           headers: {

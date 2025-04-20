@@ -6,17 +6,17 @@ import { Cliente, Pet } from "../models/petshopModel.js";
       const petshopId = request.user.id;
 
       const clientes = await Cliente.find({ petshopId })
-        .populate({ path: "pets", select: "pet_nome" });
-
+        .populate({ path: "pets" });
 
       const clientesFormatados = clientes.map((cliente) => ({
+        id: cliente._id,
         tutor: cliente.cliente_nome,
         telefone: cliente.cliente_telefone.toString(),
         cpf: cliente.cliente_cpf,
         email: cliente.cliente_email,
         endereco: cliente.cliente_endereco,
-        pets: cliente.pets.map((pet) => pet.pet_nome),
-      }));
+        pets: cliente.pets,
+}));
 
       return reply.code(200).send(clientesFormatados);
     } catch (error) {
@@ -94,5 +94,25 @@ export async function CriarClienteEPet(request, reply) {
     session.endSession();
     console.error(err);
     return reply.status(500).send({ error: "Erro ao criar cliente e pets", details: err.message });
+  }
+}
+
+export async function DeletarCliente(request, reply) {
+  const { id } = request.params;
+  const petshopId = request.user.id;
+
+  try {
+    const cliente = await Cliente.findOneAndDelete({ _id: id, petshopId });
+
+    if (!cliente) {
+      return reply.status(404).send({ error: "Cliente não encontrado" });
+    }
+
+    await Pet.deleteMany({ clienteId: id });
+
+    return reply.status(200).send({ message: "Cliente deletado com sucesso" });
+  } catch (error) {
+    console.error("Erro ao deletar cliente:", error);
+    return reply.status(500).send({ error: "Erro ao deletar cliente" });
   }
 }

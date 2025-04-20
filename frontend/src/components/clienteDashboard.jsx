@@ -24,7 +24,7 @@ function ClienteDashboard() {
   
   async function buscarDados() {
     try {
-      const response = await axios.get('https://petsystem-backend.onrender.com/clientes', {
+      const response = await axios.get('http://127.0.0.1:3000/clientes', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -82,6 +82,19 @@ function ClienteDashboard() {
     setCampoFiltro(e.target.value);
   };
 
+  async function deletarCliente(clienteId) {
+    try {
+      await axios.delete(`http://127.0.0.1:3000/clientes/${clienteId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      buscarDados();
+    } catch (err) {
+      console.error("Erro ao deletar cliente:", err);
+    }
+  }
+
   return (
     <main className="mainDashboard">
       <div className="groupButtonsCliente">
@@ -127,7 +140,7 @@ function ClienteDashboard() {
       </div>
 
       {popupAberto === "adicionar" && <AdicionarCliente onClose={fecharPopup} onAtualizarCliete={buscarDados}/>}
-      {popupAberto === "detalhes" && ( <DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} /> )}
+      {popupAberto === "detalhes" && ( <DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} deleteCliente={deletarCliente} /> )}
     </main>
   );
 }

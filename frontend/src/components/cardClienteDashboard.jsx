@@ -12,7 +12,7 @@ function CardClienteDashboard({ onClick, dadoCliente }) {
 
           <div className="labelDados">
             <p>Pets:</p>
-            <p>{dadoCliente.pets.join(", ")}</p>
+            <p>{dadoCliente.pets.map(p => p.pet_nome).join(", ")}</p>
           </div>
 
           <div className="labelDados">

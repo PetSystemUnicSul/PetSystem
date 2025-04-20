@@ -1,7 +1,14 @@
 import { SquareX, Pencil, Trash2 } from "lucide-react";
 import "../styles/detalhesCliente.css";
 
-function DetalhesCliente({ onClose, cliente }) {
+function DetalhesCliente({ onClose, cliente, deleteCliente }) {
+
+      function handleDelete() {
+      deleteCliente(cliente.id)
+      onClose()
+    }
+
+
     return (
       <div className="popup-overlay">
         <div className="popup-container">
@@ -49,7 +56,7 @@ function DetalhesCliente({ onClose, cliente }) {
                 <span>Editar cliente</span>
               </button>
   
-              <button className="button button-md danger-button">
+              <button className="button button-md danger-button" onClick={() => handleDelete()}>
                 <Trash2 size={16} />
                 <span>Excluir cliente</span>
               </button>

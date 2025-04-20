@@ -1,5 +1,5 @@
 import { CadastrarPetShop, Login} from '../controllers/petshopController.js';
-import { BuscarClientes, CriarClienteEPet } from '../controllers/dashboardController.js';
+import { BuscarClientes, CriarClienteEPet, DeletarCliente } from '../controllers/dashboardController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 export default async function petshopRoutes(fastify, options) {
@@ -25,7 +25,8 @@ export default async function petshopRoutes(fastify, options) {
 
     fastify.post('/clientes', CriarClienteEPet );
 
-   fastify.get('/clientes', BuscarClientes);
+    fastify.get('/clientes', BuscarClientes);
 
-    
+    fastify.delete('/clientes/:id', DeletarCliente)
+ 
 })};

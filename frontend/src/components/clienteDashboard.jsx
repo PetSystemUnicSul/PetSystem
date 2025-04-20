@@ -24,7 +24,7 @@ function ClienteDashboard() {
   
   async function buscarDados() {
     try {
-      const response = await axios.get('http://127.0.0.1:3000/clientes', {
+      const response = await axios.get('https://petsystem-backend.onrender.com/clientes', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -84,7 +84,7 @@ function ClienteDashboard() {
 
   async function deletarCliente(clienteId) {
     try {
-      await axios.delete(`http://127.0.0.1:3000/clientes/${clienteId}`, {
+      await axios.delete(`https://petsystem-backend.onrender.com/clientes/${clienteId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

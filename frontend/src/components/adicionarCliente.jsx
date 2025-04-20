@@ -5,7 +5,7 @@ import CardPet from "../components/cardPet";
 import AdicionarPet from "./adicionarPet";
 import axios from "axios"
 
-function AdicionarCliente({ onClose }) {
+function AdicionarCliente({ onClose, onAtualizarCliete }) {
   const [popupAberto, setPopupAberto] = useState(null);
   const [formData, setFormData] = useState({
     nome: "",
@@ -65,12 +65,12 @@ function AdicionarCliente({ onClose }) {
         dadosCliente,
         {
           headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         }
       );
 
+      onAtualizarCliete();
       onClose();
     } catch (error) {
         console.error('Erro ao adicionar cliente:', error);

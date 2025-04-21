@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Cliente, Pet } from "../models/petshopModel.js";
+import { Cliente, Pet, Agendamento } from "../models/petshopModel.js";
 
  export async function BuscarClientes(request, reply) {
    try {
@@ -129,5 +129,27 @@ export async function BuscarPets (request, reply) {
   } catch (error) {
     console.error("Erro ao buscar pets:", error);
     return reply.status(500).send({ error: "Erro ao buscar pets" });
+  }
+}
+
+// agendamento
+export async function CriarAgendamento(request, reply) {
+  const petshopId = request.user.id;
+  const { clienteId, petId, data, horario, servico } = request.body;
+
+  try {
+    const novoAgendamento = await Agendamento.create({
+      clienteId,
+      petId,
+      petshopId,
+      data,
+      horario,
+      servico
+    });
+
+    return reply.code(201).send(novoAgendamento);
+  } catch (error) {
+    console.error("Erro ao criar agendamento:", error);
+    return reply.code(500).send({ message: "Erro ao criar agendamento" });
   }
 }

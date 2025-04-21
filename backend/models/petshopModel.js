@@ -42,10 +42,21 @@ const clienteSchema = new mongoose.Schema({
   pets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pet' }]
 });
 
+// Schema do Agendamento
+const agendamentoSchema = new mongoose.Schema({
+  clienteId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cliente', required: true },
+  petId: { type: mongoose.Schema.Types.ObjectId, ref: 'Pet', required: true },
+  petshopId: { type: mongoose.Schema.Types.ObjectId, ref: 'Petshop', required: true },
+  data: { type: String, required: true },
+  horario: { type: String, required: true },
+  servico: { tipo: { type: String, required: true }, preco: { type: Number, required: true }}
+});
+
 // Criando os models
 const Petshop = mongoose.model("Petshop", petshopSchema);
 const Cliente = mongoose.model("Cliente", clienteSchema);
 const Pet = mongoose.model("Pet", petSchema);
+const Agendamento = mongoose.model('Agendamento', agendamentoSchema);
 
 // Exportando tudo
-export { Petshop, Cliente, Pet };
+export { Petshop, Cliente, Pet, Agendamento};

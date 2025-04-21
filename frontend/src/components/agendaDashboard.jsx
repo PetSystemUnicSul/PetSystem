@@ -6,9 +6,15 @@ import "../styles/clienteDashboard.css";
 function AgendaDashboard() {
   const [showModal, setShowModal] = useState(false);
 
+  // Função para atualizar os agendamentos após adicionar um novo
+  const handleAtualizarAgendamentos = () => {
+    console.log("Atualizando agendamentos...");
+    // Aqui você pode adicionar a lógica de atualização dos agendamentos, por exemplo, fazendo uma nova requisição para o backend.
+  };
+
   const handleSubmitAgendamento = (data) => {
     console.log("Agendamento enviado:", data);
-    // Aqui você pode fazer a requisição para o backend
+    // Aqui você pode fazer a requisição para o backend para salvar o agendamento.
   };
 
   return (
@@ -32,7 +38,7 @@ function AgendaDashboard() {
       {showModal && (
         <AdicionarAgendamento
           onClose={() => setShowModal(false)}
-          onSubmit={handleSubmitAgendamento}
+          onAtualizarAgendamentos={handleAtualizarAgendamentos}
         />
       )}
     </main>

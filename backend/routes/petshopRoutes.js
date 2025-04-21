@@ -6,30 +6,25 @@ export default async function petshopRoutes(fastify, options) {
   // Rotas públicas
   fastify.post('/cadastro', CadastrarPetShop);
   fastify.post('/login', Login);
-  
+
   // Rotas protegidas
-  // Adicione o middleware de autenticação para as rotas que precisam de autenticação
-  fastify.register(async function(fastify) {
-    // Aplica o middleware de autenticação para todas as rotas deste escopo
+  fastify.register(async function (fastify) {
     fastify.addHook('preHandler', authMiddleware);
-    
-    // Rotas protegidas aqui
+
     fastify.get('/dashboard', async (request, reply) => {
-      return reply.send({ 
+      return reply.send({
         message: 'Rota protegida acessada com sucesso',
-        user: request.user
+        user: request.user,
       });
     });
 
-    // Clientes (C, R, D)
-    fastify.post('/clientes', CriarClienteEPet );
+    fastify.post('/clientes', CriarClienteEPet);
     fastify.get('/clientes', BuscarClientes);
     fastify.delete('/clientes/:id', DeletarCliente);
 
-    // pets
-    fastify.get('/pets', BuscarPets)
+    fastify.get('/pets', BuscarPets);
 
-    //agendamentos
-    fastify.get('/agendamentos', CriarAgendamento)
- 
-})};
+    fastify.post('/agendamentos', CriarAgendamento);
+    // fastify.get('/agendamentos', CriarAgendamento); // <- substitua isso por uma rota correta depois
+  }, { prefix: '/' }); // ✅ ADICIONE ESTE PREFIXO AQUI
+}

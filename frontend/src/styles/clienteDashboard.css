@@ -65,7 +65,7 @@
     cursor: pointer;
 }
 
-.listCliente {
+.listCliente, .listPets {
     width: 100%;
     flex-grow: 1;
     overflow: scroll;

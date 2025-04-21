@@ -4,7 +4,7 @@ import DetalhesCliente from "../components/detalhesCliente";
 import { Search, Funnel, CirclePlus } from "lucide-react";
 import CardClienteDashboard from "./cardClienteDashboard";
 import "../styles/clienteDashboard.css";
-import axios from "axios"
+import axios from "axios";
 
 function ClienteDashboard() {
   const [popupAberto, setPopupAberto] = useState(null);
@@ -20,17 +20,16 @@ function ClienteDashboard() {
   };
 
   const abrirPopupAdicionar = () => setPopupAberto("adicionar");
-  const fecharPopup = () => setPopupAberto(null); 
-  
-  async function buscarDados() {
+  const fecharPopup = () => setPopupAberto(null);
+
+  async function buscarDadosClientes() {
     try {
-      const response = await axios.get('https://petsystem-backend.onrender.com/clientes', {
+      const response = await axios.get("https://petsystem-backend.onrender.com/clientes", {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
 
-      console.log(response.data);
       setDadosClientes(response.data);
       setClientesFiltrados(response.data);
     } catch (err) {
@@ -39,7 +38,7 @@ function ClienteDashboard() {
   }
 
   useEffect(() => {
-    buscarDados();
+    buscarDadosClientes();
   }, []);
 
   useEffect(() => {
@@ -53,24 +52,24 @@ function ClienteDashboard() {
 
     switch (campoFiltro) {
       case "Nome":
-        resultado = dadosClientes.filter(cliente =>
+        resultado = dadosClientes.filter((cliente) =>
           cliente.tutor.toLowerCase().includes(termoMinusculo)
         );
         break;
       case "Telefone":
-        resultado = dadosClientes.filter(cliente =>
+        resultado = dadosClientes.filter((cliente) =>
           cliente.telefone.toLowerCase().includes(termoMinusculo)
         );
         break;
       case "Endereço":
-        resultado = dadosClientes.filter(cliente =>
+        resultado = dadosClientes.filter((cliente) =>
           cliente.endereco.toLowerCase().includes(termoMinusculo)
         );
         break;
       default:
         resultado = dadosClientes;
     }
-    
+
     setClientesFiltrados(resultado);
   }, [termoPesquisa, campoFiltro, dadosClientes]);
 
@@ -84,12 +83,12 @@ function ClienteDashboard() {
 
   async function deletarCliente(clienteId) {
     try {
-      await axios.delete(`https://petsystem-backend.onrender.com/clientes/${clienteId}`, {
+      await axios.delete(`https://petsystem-backend.onrender.com/${clienteId}`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
-      buscarDados();
+      buscarDadosClientes();
     } catch (err) {
       console.error("Erro ao deletar cliente:", err);
     }
@@ -108,11 +107,22 @@ function ClienteDashboard() {
 
         <div className="searchEfiltro">
           <div className="campoSearch">
-            <input type="text" placeholder="Buscar cliente..." value={termoPesquisa} onChange={handlePesquisaChange}/>
+            <input
+              type="text"
+              placeholder="Buscar cliente..."
+              value={termoPesquisa}
+              onChange={handlePesquisaChange}
+            />
             <Search size={25} className="iconeSearch" />
           </div>
           <div className="campoFiltro">
-            <select name="filtroCliente" id="filtroClientes" className="filtroClientes" value={campoFiltro} onChange={handleFiltroChange}>
+            <select
+              name="filtroCliente"
+              id="filtroClientes"
+              className="filtroClientes"
+              value={campoFiltro}
+              onChange={handleFiltroChange}
+            >
               <option value="Nome">Nome</option>
               <option value="Telefone">Telefone</option>
               <option value="Endereço">Endereço</option>
@@ -130,17 +140,23 @@ function ClienteDashboard() {
       </div>
 
       <div className="listCliente">
-      {clientesFiltrados.map((cliente, index) => (<CardClienteDashboard onClick={() => abrirPopupDetalhes(cliente)} key={index} dadoCliente={cliente} /> ))}
+        {clientesFiltrados.map((cliente, index) => (
+          <CardClienteDashboard
+            onClick={() => abrirPopupDetalhes(cliente)}
+            key={index}
+            dadoCliente={cliente}
+          />
+        ))}
 
         {clientesFiltrados.length === 0 && (
           <div className="mensagem-sem-resultados">
-            Nenhum cliente encontrado com os critérios de pesquisa.
+            Nenhum cliente encontrado.
           </div>
         )}
       </div>
 
-      {popupAberto === "adicionar" && <AdicionarCliente onClose={fecharPopup} onAtualizarCliete={buscarDados}/>}
-      {popupAberto === "detalhes" && ( <DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} deleteCliente={deletarCliente} /> )}
+      {popupAberto === "adicionar" && (<AdicionarCliente onClose={fecharPopup} onAtualizarCliete={buscarDadosClientes} />)}
+      {popupAberto === "detalhes" && (<DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} deleteCliente={deletarCliente} />)}
     </main>
   );
 }

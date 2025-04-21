@@ -116,3 +116,18 @@ export async function DeletarCliente(request, reply) {
     return reply.status(500).send({ error: "Erro ao deletar cliente" });
   }
 }
+
+
+// pets
+
+export async function BuscarPets (request, reply) {
+  try {
+    const petshopId = request.user.id;
+
+    const pets = await Pet.find({ petshopId }).populate("clienteId").populate("petshopId");
+    return reply.status(200).send(pets);
+  } catch (error) {
+    console.error("Erro ao buscar pets:", error);
+    return reply.status(500).send({ error: "Erro ao buscar pets" });
+  }
+}

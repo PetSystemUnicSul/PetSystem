@@ -5,6 +5,7 @@ import AgendaDashboard from "../components/agendaDashboard";
 import ClienteDashboard from "../components/clienteDashboard";
 import Pets from "../components/petsDashboard";
 import { AlignLeft} from "lucide-react";
+import Perfil from "../components/perfil";
 
 function Dashboard() {
   const [activeButton, setActiveButton] = useState('agenda');
@@ -21,8 +22,9 @@ function Dashboard() {
     content = <ClienteDashboard />;
   } else if (activeButton === 'pets') {
     content = <Pets />;
+  }else if (activeButton === 'perfil') {
+    content = <Perfil/>
   }
-
 
   return (
     <div className="dashboardContainer">

@@ -3,7 +3,7 @@ import { SquareX } from "lucide-react";
 import axios from "axios";
 import "../styles/adicionarCliente.css";
 
-function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
+function AdicionarAgendamento({ onClose, onSubmit }) {
   const [clientes, setClientes] = useState([]);
   const [formData, setFormData] = useState({
     clienteId: "",
@@ -79,7 +79,7 @@ function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
       alert("Agendamento salvo com sucesso!");
 
       // Chama a função para atualizar os agendamentos no componente pai
-      onAtualizarAgendamentos();
+      onSubmit();
 
       onClose(); // Fecha o popup após salvar
     } catch (error) {

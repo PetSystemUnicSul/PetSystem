@@ -1,4 +1,4 @@
-import { Calendar, User, PawPrint } from "lucide-react";
+import { Calendar, User, PawPrint, SquareUser } from "lucide-react";
 import "../styles/barraLateral.css";
 import logo from "../assets/images/logo.png";
 
@@ -32,6 +32,13 @@ function BarraLateral({ activeButton, setActiveButton }) {
         >
           <PawPrint size={35} />
           <p className="nomeAba">Pets</p>
+        </button>
+        <button
+          className={buttonStyle('perfil')}
+          onClick={() => setActiveButton('perfil')}
+        >
+          <SquareUser size={35} />
+          <p className="nomeAba">Perfil</p>
         </button>
       </div>
     </nav>

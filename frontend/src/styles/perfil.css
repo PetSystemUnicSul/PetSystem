@@ -1,0 +1,12 @@
+.divPerfil {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    border-radius: var(--border-radius-md);
+}

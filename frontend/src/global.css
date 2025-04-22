@@ -180,6 +180,24 @@ a {
     justify-content: center;
 }
 
+.danger-btn {
+    width: 100%;
+    max-width: 160px;
+    min-width: 120px;
+    
+    padding: 8px 10px;
+    margin: 24px auto 0;
+
+    font-size: 1em;
+    justify-content: center;
+    cursor: pointer;
+
+    border-radius: var(--border-radius-lg);
+    background: var(--danger-red);
+    color: var(--white);
+    border: 1px solid var(--danger-red);
+}
+
 .danger-button:hover {
     background: var(--white);
     color: var(--danger-red);

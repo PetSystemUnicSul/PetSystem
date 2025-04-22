@@ -4,7 +4,7 @@
 
 
 
-# 🐶PetSystem - Sistema para Petshops😺
+# 🐶 PetSystem - Sistema para Petshops 😺
 **PetSystem** é um sistema fullstack completo para gerenciamento de pet shops. Oferece funcionalidades essenciais como cadastro de usuários com liberação de login mediante pagamento, dashboard intuitivo para visualização e gestão de agendamentos (criar, editar, excluir), e um robusto gerenciamento de clientes com a capacidade de cadastrar, editar e excluir clientes, além de adicionar múltiplos pets a cada cliente.
 
 
@@ -19,7 +19,7 @@ Este projeto e a documentação (README) que você está vendo **ainda estão em
 * 🧪 **Estamos trabalhando ativamente para melhorar e finalizar este projeto.** Agradecemos a sua paciência e compreensão durante esta fase.
 
 Por favor, tenha isso em mente ao explorar o código e a documentação. Novas atualizações e informações serão adicionadas conforme o desenvolvimento avança. 😊
-## 📸Demostração/Telas
+## 📸 Demostração/Telas
 🚧 em construção... 🚧
 ## ⚙️Funcionalidades
 
@@ -44,7 +44,7 @@ Por favor, tenha isso em mente ao explorar o código e a documentação. Novas a
     - Exclusão de pets.
 
 
-## 🛠️Stack utilizada
+## 🛠️ Stack utilizada
 
 1. **Front-end:** 
 - React
@@ -65,7 +65,7 @@ Por favor, tenha isso em mente ao explorar o código e a documentação. Novas a
 4. **Outras ferramentas**
 - sistema de pagamento ( decidindo: mercado pago, stripe, pagar.me)
 - autenticação com JWT
-## ⬇️Instalação
+## ⬇️ Instalação
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
@@ -115,7 +115,7 @@ Para rodar este projeto na sua máquina, siga as seguintes instruções:
         npm run dev
         ```
         *(Este comando geralmente inicia um servidor de desenvolvimento na porta especificada na configuração do seu projeto frontend)*
-## 📚Documentação das API
+## 📚 Documentação das API
 🚧 em construção... 🚧
 
 Explicando a API do backend
@@ -126,9 +126,9 @@ Explicando as outras duas APIs externas usadas
 
 
 
-## 📖Instruções de uso
+## 📖 Instruções de uso
 🚧 em construção... 🚧
-## 📂Arquitetura do projeto
+## 📂 Arquitetura do projeto
 🚧 em construção... 🚧
 ```
 Petsystem/
@@ -160,10 +160,10 @@ Petsystem/
 ```
 🚧 em construção... 🚧
 
-## 📜Licença
+## 📜 Licença
 
-Este projeto esta sobe a licença [MIT](https://choosealicense.com/licenses/mit/)
+Este projeto está sob a licença [MIT](https://choosealicense.com/licenses/mit/)
 
 
-## ℹ️Mais informações
+## ℹ️ Mais informações
 Trabalho Acadêmico para menção parcial do primeiro Semestre de 2025, da disciplina de Tópicos Avançados em Sistemas de Informação 1 (TASI1) do Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) da Universidade Cruzeiro do Sul, orientado pelo professor Luis Fernando Dos Santos Pires.

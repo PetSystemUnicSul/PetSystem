@@ -86,6 +86,12 @@ a {
     text-decoration: none;
 }
 
+
+hr {
+    border: 1px solid var(--gray-medium);
+    margin: 20px;
+}
+
 /* Popups*/
 .popup-overlay {
     background-color: var(--overlay-bg);

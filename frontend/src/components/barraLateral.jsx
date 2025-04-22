@@ -33,6 +33,9 @@ function BarraLateral({ activeButton, setActiveButton }) {
           <PawPrint size={35} />
           <p className="nomeAba">Pets</p>
         </button>
+
+        <hr />
+
         <button
           className={buttonStyle('perfil')}
           onClick={() => setActiveButton('perfil')}

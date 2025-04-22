@@ -35,7 +35,7 @@ function Perfil() {
 
   async function excluirConta() {
     try {
-      const response = await axios.delete(`http://192.168.68.138:3000/perfil`, {
+      const response = await axios.delete(`https://petsystem-backend.onrender.com/perfil`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

@@ -21,7 +21,7 @@ Este projeto e a documentação (README) que você está vendo **ainda estão em
 Por favor, tenha isso em mente ao explorar o código e a documentação. Novas atualizações e informações serão adicionadas conforme o desenvolvimento avança. 😊
 ## 📸 Demostração/Telas
 🚧 em construção... 🚧
-## ⚙️Funcionalidades
+## ⚙️ Funcionalidades
 
 - Sistema de Cadastro e Login:
     - Cadastro de novos Petshops (usuários).

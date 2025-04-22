@@ -1,5 +1,5 @@
 import { CadastrarPetShop, Login} from '../controllers/petshopController.js';
-import { BuscarClientes, BuscarPets, CriarClienteEPet, DeletarCliente, CriarAgendamento } from '../controllers/dashboardController.js';
+import { BuscarClientes, BuscarPets, CriarClienteEPet, DeletarCliente, CriarAgendamento, BuscarAgendamentos } from '../controllers/dashboardController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 export default async function petshopRoutes(fastify, options) {
@@ -25,6 +25,6 @@ export default async function petshopRoutes(fastify, options) {
     fastify.get('/pets', BuscarPets);
 
     fastify.post('/agendamentos', CriarAgendamento);
-    // fastify.get('/agendamentos', CriarAgendamento); // <- substitua isso por uma rota correta depois
-  }, { prefix: '/' }); // ✅ ADICIONE ESTE PREFIXO AQUI
+    fastify.get('/agendamentos', BuscarAgendamentos);
+  }, { prefix: '/' });
 }

@@ -119,7 +119,6 @@ export async function DeletarCliente(request, reply) {
 
 
 // pets
-
 export async function BuscarPets (request, reply) {
   try {
     const petshopId = request.user.id;
@@ -151,5 +150,20 @@ export async function CriarAgendamento(request, reply) {
   } catch (error) {
     console.error("Erro ao criar agendamento:", error);
     return reply.code(500).send({ message: "Erro ao criar agendamento" });
+  }
+}
+
+export async function BuscarAgendamentos(request, reply) {
+  try {
+    const petshopId = request.user.id;
+
+    const agendamentos = await Agendamento.find({ petshopId })
+      .populate("clienteId", "cliente_nome cliente_telefone")
+      .populate("petId", "pet_nome especie raca");
+
+    return reply.code(200).send(agendamentos);
+  } catch (error) {
+    console.error("Erro ao buscar agendamentos:", error);
+    return reply.code(500).send({ message: "Erro ao buscar agendamentos" });
   }
 }

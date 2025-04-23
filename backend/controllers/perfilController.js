@@ -15,3 +15,21 @@ export async function DeletePetshop (request, reply) {
         return reply.status(500).send({ message: 'Erro ao deletar o petshop e dados relacionados' });
     }
 };
+
+export async function UpdatePetshop (request, reply) {
+    try {
+        const petshopId = request.user.id;
+        const { nome, email, nome_fantasia, cnpj, endereco, cep, telefone } = request.body;
+
+        const updatedPetshop = await Petshop.findByIdAndUpdate(
+            petshopId,
+            { nome, email, nome_fantasia, cnpj, endereco, cep, telefone },
+            { new: true, runValidators: true }
+        );
+
+        return reply.status(200).send(updatedPetshop);
+    } catch (error) {
+        console.error(error);
+        return reply.status(500).send({ message: 'Erro ao atualizar o petshop' });
+    }
+};

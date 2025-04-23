@@ -1,5 +1,5 @@
 import { CadastrarPetShop, Login} from '../controllers/petshopController.js';
-import { DeletePetshop } from '../controllers/perfilController.js';
+import { DeletePetshop, UpdatePetshop } from '../controllers/perfilController.js';
 import { BuscarClientes, BuscarPets, CriarClienteEPet, DeletarCliente, CriarAgendamento, BuscarAgendamentos } from '../controllers/dashboardController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
@@ -31,5 +31,7 @@ export default async function petshopRoutes(fastify, options) {
 
     // perfil
     fastify.delete('/perfil', DeletePetshop)
+    fastify.put('/perfil', UpdatePetshop)
+      
  
 })};

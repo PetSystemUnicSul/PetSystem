@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react";
 import { CirclePlus } from "lucide-react";
 import AdicionarAgendamento from "../components/adicionarAgendamento";
+import DetalhesAgendamento from "../components/detalhesAgendamento";
 import CardAgendamentoDashboard from "./cardAgendamentoDashboard";
 import axios from "axios";
 import "../styles/clienteDashboard.css";
 
 function AgendaDashboard() {
-  const [showModal, setShowModal] = useState(false);
+  const [popupAberto, setPopupAberto] = useState(null);
+  const [agendamentoSelecionado, setAgendamentoSelecionado] = useState(null);
+
   const [dadosAgendamentos, setDadosAgendamentos] = useState([]);
   const [agendamentosFiltrados, setAgendamentosFiltrados] = useState([]);
+
+  const abrirPopupDetalhes = (agendamento) => {
+    console.log(agendamento);
+    setAgendamentoSelecionado(agendamento);
+    setPopupAberto("detalhes");
+  };
+
+  const abrirPopupAdicionar = () => setPopupAberto("adicionar");
+  const fecharPopup = () => setPopupAberto(null);
 
   const handleAtualizarAgendamentos = () => {
     buscarDadosAgendamentos(); // Atualiza após novo agendamento
@@ -37,7 +49,7 @@ function AgendaDashboard() {
       <div className="groupButtonsCliente">
         <div className="tituloEadic">
           <h1 className="tituloAgenda">Agendamento</h1>
-          <button className="buttonAdicionar" onClick={() => setShowModal(true)}>
+          <button className="buttonAdicionar" onClick={abrirPopupAdicionar}>
             <CirclePlus size={18} />
             <span>Novo Agendamento</span>
           </button>
@@ -53,9 +65,9 @@ function AgendaDashboard() {
       <div className="listAgendamentos">
         {agendamentosFiltrados.map((agendamento, index) => (
           <CardAgendamentoDashboard
-            onClick={() => abrirPopupDetalhes(agendamento)}
             key={index}
             dadosAgendamento={agendamento}
+            onClick={() => abrirPopupDetalhes(agendamento)}
           />
         ))}
 
@@ -64,12 +76,17 @@ function AgendaDashboard() {
         )}
       </div>
 
-      {showModal && (
-        <AdicionarAgendamento
-          onClose={() => setShowModal(false)}
+        {popupAberto === "adicionar" && (
+          <AdicionarAgendamento
+          onClose={fecharPopup}
           onAtualizarAgendamentos={handleAtualizarAgendamentos}
-        />
-      )}
+        />)}
+
+        {popupAberto === "detalhes" && agendamentoSelecionado && (
+          <DetalhesAgendamento
+          dados={agendamentoSelecionado}
+          onClose={fecharPopup}
+        />)}
     </main>
   );
 }

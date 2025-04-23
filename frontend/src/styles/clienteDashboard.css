@@ -122,6 +122,7 @@
 @media (max-width: 800px) {
     .mainDashboard {
         padding: 45px 15px 15px;
+        width: 100vw;
     }
 
     .tituloCliente, .tituloPet, .tituloAgenda {

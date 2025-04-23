@@ -83,7 +83,7 @@ function ClienteDashboard() {
 
   async function deletarCliente(clienteId) {
     try {
-      await axios.delete(`https://petsystem-backend.onrender.com/${clienteId}`, {
+      await axios.delete(`https://petsystem-backend.onrender.com/clientes/${clienteId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

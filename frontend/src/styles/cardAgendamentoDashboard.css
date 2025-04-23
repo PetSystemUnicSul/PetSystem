@@ -45,11 +45,20 @@
 .iconsCards {
     margin-right: 10px;
     margin-top: 3px;
+    width: 100%;
+    max-width: 15px;
 }
 
 .infosCards > P > span {
     font-weight: 700;
     margin-right: 5px;
+}
+
+.infosCards > P {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
 }
 
 

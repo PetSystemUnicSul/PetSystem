@@ -84,7 +84,7 @@ function Perfil() {
     }
     
     try {
-      const response = await axios.put("http://127.0.0.1:3000/perfil", perfil, {
+      const response = await axios.put("https://petsystem-backend.onrender.com/perfil", perfil, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -112,37 +112,6 @@ function Perfil() {
     }
   }
 
-  async function verificarCep(cep) {
-    // Limpar mensagem de erro do CEP
-    setCepErro("");
-    
-    if (!cep || cep.trim() === "") {
-      return;
-    }
-    
-    const cepLimpo = cep.replace(/\D/g, "");
-    if (cepLimpo.length !== 8) {
-      setCepErro("CEP inválido. Deve conter 8 dígitos.");
-      return;
-    }
-  
-    try {
-      const response = await axios.get(`https://viacep.com.br/ws/${cepLimpo}/json/`);
-      if (response.data.erro) {
-        setCepErro("CEP não encontrado.");
-        return;
-      }
-  
-      const { logradouro, bairro, localidade, uf } = response.data;
-      const enderecoCompleto = `${logradouro}, ${bairro}, ${localidade} - ${uf}`;
-  
-      setPerfil(prev => ({ ...prev, endereco: enderecoCompleto }));
-    } catch (error) {
-      console.error("Erro ao buscar CEP:", error);
-      setCepErro("Erro ao buscar informações do CEP.");
-    }
-  }
-  
   return (
     <main className="mainDashboard mainPerfil">
       <div className="divPerfil">
@@ -204,10 +173,9 @@ function Perfil() {
                 id="cep"
                 value={perfil.cep || ""}
                 onChange={(e) => setPerfil({ ...perfil, cep: e.target.value })}
-                onBlur={(e) => verificarCep(e.target.value)}
                 className={cepErro ? "input-erro" : ""}
               />
-              {cepErro && <span className="mensagem-erro">{cepErro}</span>}
+              {cepErro && <span className="error-message">{cepErro}</span>}
             </div>
             <div className="inputsPerfil">
               <label htmlFor="endereco">Seu endereço:</label>

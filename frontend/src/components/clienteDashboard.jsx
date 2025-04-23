@@ -132,13 +132,6 @@ function ClienteDashboard() {
         </div>
       </div>
 
-      <div className="bar">
-        <p>Nome</p>
-        <p>Pets</p>
-        <p>Telefone</p>
-        <p>Endereço</p>
-      </div>
-
       <div className="listCliente">
         {clientesFiltrados.map((cliente, index) => (
           <CardClienteDashboard

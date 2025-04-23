@@ -77,13 +77,6 @@ function PetsDashboard() {
         </div>
       </div>
 
-      <div className="bar">
-        <p>Pet</p>
-        <p>Especie</p>
-        <p>Raça</p>
-        <p>Sexo</p>
-      </div>
-
       <div className="listPets">
         {petsFiltrados.map((pet, index) => (
           <CardPetDashboard

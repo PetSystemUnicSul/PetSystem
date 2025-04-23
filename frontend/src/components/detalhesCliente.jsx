@@ -47,7 +47,7 @@ function DetalhesCliente({ onClose, cliente, deleteCliente }) {
   
             <div className="detalhe">
               <label>Pets:</label>
-              <p>{cliente?.pets?.join(", ") || "N/A"}</p>
+              <p>{cliente.pets.map((p) => p.pet_nome).join(", ")}</p>
             </div>
   
             <div className="detalhes-buttons">

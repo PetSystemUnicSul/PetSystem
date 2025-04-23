@@ -9,14 +9,9 @@ function AgendaDashboard() {
   const [showModal, setShowModal] = useState(false);
   const [dadosAgendamentos, setDadosAgendamentos] = useState([]);
   const [agendamentosFiltrados, setAgendamentosFiltrados] = useState([]);
-  const [termoPesquisa, setTermoPesquisa] = useState("");
 
   const handleAtualizarAgendamentos = () => {
     buscarDadosAgendamentos(); // Atualiza após novo agendamento
-  };
-
-  const handleSubmitAgendamento = (data) => {
-    console.log("Agendamento enviado:", data);
   };
 
   async function buscarDadosAgendamentos() {
@@ -37,28 +32,6 @@ function AgendaDashboard() {
     buscarDadosAgendamentos();
   }, []);
 
-  useEffect(() => {
-    if (termoPesquisa === "") {
-      setAgendamentosFiltrados(dadosAgendamentos);
-      return;
-    }
-
-    const termo = termoPesquisa.toLowerCase();
-    const filtrados = dadosAgendamentos.filter((agenda) =>
-      agenda.cliente_nome?.toLowerCase().includes(termo)
-    );
-
-    setAgendamentosFiltrados(filtrados);
-  }, [termoPesquisa, dadosAgendamentos]);
-
-  const handlePesquisaChange = (e) => {
-    setTermoPesquisa(e.target.value);
-  };
-
-  const abrirPopupDetalhes = (agendamento) => {
-    alert(`Detalhes do agendamento:\nCliente: ${agendamento.cliente_nome}\nPet: ${agendamento.pet_nome}\nServiço: ${agendamento.servico}\nData: ${agendamento.data}`);
-  };
-
   return (
     <main className="mainDashboard">
       <div className="groupButtonsCliente">
@@ -72,13 +45,9 @@ function AgendaDashboard() {
       </div>
 
       <div className="groupFiltroCalen">
-        <input
-          type="text"
-          className="inputData"
-          placeholder="Buscar por nome do cliente"
-          value={termoPesquisa}
-          onChange={handlePesquisaChange}
-        />
+        <label htmlFor="inputdate">
+          <input type="date" id="inputdate" className="filtroData"/>
+        </label>
       </div>
 
       <div className="listAgendamentos">

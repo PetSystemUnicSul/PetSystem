@@ -71,31 +71,31 @@
     overflow: scroll;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: var(--white);
+    
     border-radius: var(--border-radius-sm);
     padding: 5px;
     min-height: 0;
 
-    scrollbar-width: thin; /* Para Firefox */
-    scrollbar-color: var(--primary-color) var(--gray-light); /* Para Firefox */
+    scrollbar-width: thin; 
+    scrollbar-color: var(--primary-color) var(--gray-light); 
 
-    /* Para navegadores WebKit (Chrome, Edge, Safari) */
+    
     &::-webkit-scrollbar {
-        width: 8px; /* Largura da scrollbar */
+        width: 8px; 
     }
 
     &::-webkit-scrollbar-track {
-        background: var(--gray-light); /* Cor do fundo da track */
+        background: var(--gray-light); 
         border-radius: 4px;
     }
 
     &::-webkit-scrollbar-thumb {
-        background: var(--primary-color); /* Cor do "botão" da scrollbar */
+        background: var(--primary-color);
         border-radius: 4px;
     }
 
     &::-webkit-scrollbar-thumb:hover {
-        background: var(--primary-dark); /* Cor ao passar o mouse */
+        background: var(--primary-dark); 
     }
 }
 

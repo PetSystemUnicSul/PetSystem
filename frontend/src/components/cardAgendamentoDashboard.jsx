@@ -1,5 +1,5 @@
-import "../styles/cardClienteDashboard.css";
-import { Info } from "lucide-react";
+import "../styles/cardAgendamentoDashboard.css";
+import { Info, User, Calendar, Clock, PawPrint } from "lucide-react";
 
 function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
   const {
@@ -14,38 +14,42 @@ function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
   const clienteNome = clienteId?.cliente_nome || "Desconhecido";
 
   return (
-    <div className="card" onClick={onClick}>
-      <div className="dadosGroup">
-        <div className="labelDados">
-          <p>Serviço:</p>
-          <p>{servico}</p>
-        </div>
-
-        <div className="labelDados">
-          <p>Data:</p>
-          <p>{data}</p>
-        </div>
-
-        <div className="labelDados">
-          <p>Horário:</p>
-          <p>{horario}</p>
-        </div>
-
-        <div className="labelDados">
-          <p>Pet:</p>
-          <p>{petNome}</p>
-        </div>
-
-        <div className="labelDados">
-          <p>Tutor:</p>
-          <p>{clienteNome}</p>
-        </div>
+    <div className="cardAgendamento" onClick={onClick}>
+      <div className="servicoEStatus">
+        <h4>{servico}</h4>
+        <span className="statusSpan">
+          agendado
+        </span>
       </div>
-
-      <div className="btns-info-edit">
-        <button className="btnInfo">
-          <Info strokeWidth={3} size={20} />
-        </button>
+      <div className="dadosAgendamento">
+        <div className="infosAgendametos">
+          <User strokeWidth={3} size={15} className="iconAgendamento"/>
+          <p>
+            <span>Nome:</span>
+            {clienteNome}
+          </p>
+        </div>
+        <div className="infosAgendametos">
+          <Calendar strokeWidth={3} size={15} className="iconAgendamento"/>
+          <p>
+            <span>Data:</span>
+            {data}
+          </p>
+        </div>
+        <div className="infosAgendametos">
+          <Clock strokeWidth={3}size={15} className="iconAgendamento"/>
+          <p>
+            <span>Hora:</span>
+            {horario}
+          </p>
+        </div>
+        <div className="infosAgendametos">
+          <PawPrint strokeWidth={3} size={15} className="iconAgendamento"/>
+          <p>
+            <span>Pet:</span>
+            {petNome}
+          </p>
+        </div>
       </div>
     </div>
   );

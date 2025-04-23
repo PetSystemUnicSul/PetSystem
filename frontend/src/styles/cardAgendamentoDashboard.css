@@ -1,0 +1,48 @@
+.cardAgendamento {
+    margin-bottom: 10px;
+    background-color: var(--white);
+    border-radius: var(--border-radius-md);
+    padding: 10px;
+    border-left: 6px solid var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cardAgendamento:hover {
+    transform: scale(1.01);
+}
+
+.filtroData{
+    max-width: 200px;
+    cursor: pointer;
+}
+
+.servicoEStatus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statusSpan {
+    background-color:#fff570;
+    padding: 3px 5px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #c2b00e;
+}
+
+
+.infosAgendametos {
+    display: flex;
+}
+
+.iconAgendamento {
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.infosAgendametos > P > span {
+    font-weight: 800;
+    margin-right: 5px;
+}

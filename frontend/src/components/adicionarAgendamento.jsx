@@ -13,7 +13,6 @@ function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
     servico: "",
   });
 
-  // Buscar clientes ao carregar o componente
   useEffect(() => {
     async function buscarClientes() {
       try {
@@ -37,7 +36,7 @@ function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
     setFormData((prev) => ({
       ...prev,
       clienteId,
-      petId: "", // Zera o pet se cliente for alterado
+      petId: "", 
       data: "",
       horario: "",
       servico: "",
@@ -76,12 +75,9 @@ function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
         }
       );
 
-      alert("Agendamento salvo com sucesso!");
-
-      // Chama a função para atualizar os agendamentos no componente pai
       onAtualizarAgendamentos();
 
-      onClose(); // Fecha o popup após salvar
+      onClose(); 
     } catch (error) {
       console.log("ERRO AQUI");
       console.error("Erro ao salvar agendamento:", error.response?.data || error.message);

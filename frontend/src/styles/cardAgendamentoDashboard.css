@@ -1,4 +1,4 @@
-.cardAgendamento {
+.cardDashboard{
     margin-bottom: 10px;
     background-color: var(--white);
     border-radius: var(--border-radius-md);
@@ -8,9 +8,10 @@
     transition: all 0.2s ease;
 }
 
-.cardAgendamento:hover {
+.cardDashboard:hover {
     transform: scale(1.01);
 }
+
 
 .filtroData{
     max-width: 200px;
@@ -23,6 +24,10 @@
     align-items: center;
 }
 
+.dadosCards {
+    flex: 1;
+}
+
 .statusSpan {
     background-color:#fff570;
     padding: 3px 5px;
@@ -33,16 +38,49 @@
 }
 
 
-.infosAgendametos {
+.infosCards {
     display: flex;
 }
 
-.iconAgendamento {
+.iconsCards {
     margin-right: 10px;
     margin-top: 3px;
+    width: 100%;
+    max-width: 15px;
 }
 
-.infosAgendametos > P > span {
-    font-weight: 800;
+.infosCards > P > span {
+    font-weight: 700;
     margin-right: 5px;
+}
+
+.infosCards > P {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+
+
+/*cards cliente*/
+
+.groupInfosBtn {
+    display: flex;
+}
+
+.btns-info-edit{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btn-info, .btn-edit {
+    background-color: var(--primary-color);
+    border: none;
+    outline: none;
+    color: var(--white);
+    padding: 5px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
 }

@@ -88,7 +88,7 @@ function ClienteDashboard() {
 
   async function deletarCliente(clienteId) {
     try {
-      await axios.delete(`https://petsystem-backend.onrender.com/${clienteId}`, {
+      await axios.delete(`https://petsystem-backend.onrender.com/clientes/${clienteId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -135,13 +135,6 @@ function ClienteDashboard() {
             <Funnel size={40} className="iconFiltro" />
           </div>
         </div>
-      </div>
-
-      <div className="bar">
-        <p>Nome</p>
-        <p>Pets</p>
-        <p>Telefone</p>
-        <p>Endereço</p>
       </div>
 
       <div className="listCliente">

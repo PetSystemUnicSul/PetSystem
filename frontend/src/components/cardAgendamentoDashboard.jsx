@@ -14,37 +14,37 @@ function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
   const clienteNome = clienteId?.cliente_nome || "Desconhecido";
 
   return (
-    <div className="cardAgendamento" onClick={onClick}>
+    <div className="cardDashboard" onClick={onClick}>
       <div className="servicoEStatus">
         <h4>{servico}</h4>
         <span className="statusSpan">
           agendado
         </span>
       </div>
-      <div className="dadosAgendamento">
-        <div className="infosAgendametos">
-          <User strokeWidth={3} size={15} className="iconAgendamento"/>
+      <div className="dadosCards">
+        <div className="infosCards">
+          <User strokeWidth={3} size={15} className="iconsCards"/>
           <p>
             <span>Nome:</span>
             {clienteNome}
           </p>
         </div>
-        <div className="infosAgendametos">
-          <Calendar strokeWidth={3} size={15} className="iconAgendamento"/>
+        <div className="infosCards">
+          <Calendar strokeWidth={3} size={15} className="iconsCards"/>
           <p>
             <span>Data:</span>
             {data}
           </p>
         </div>
-        <div className="infosAgendametos">
-          <Clock strokeWidth={3}size={15} className="iconAgendamento"/>
+        <div className="infosCards">
+          <Clock strokeWidth={3}size={15} className="iconsCards"/>
           <p>
             <span>Hora:</span>
             {horario}
           </p>
         </div>
-        <div className="infosAgendametos">
-          <PawPrint strokeWidth={3} size={15} className="iconAgendamento"/>
+        <div className="infosCards">
+          <PawPrint strokeWidth={3} size={15} className="iconsCards"/>
           <p>
             <span>Pet:</span>
             {petNome}

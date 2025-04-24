@@ -1,40 +1,38 @@
 import mongoose from 'mongoose';
 import { Cliente, Pet, Agendamento } from "../models/petshopModel.js";
 
- export async function BuscarClientes(request, reply) {
-   try {
-      const petshopId = request.user.id;
+export async function BuscarClientes(request, reply) {
+  try {
+    const petshopId = request.user.id;
 
-      const clientes = await Cliente.find({ petshopId })
-        .populate({ path: "pets" });
+    const clientes = await Cliente.find({ petshopId })
+      .populate({ path: "pets" });
 
-      const clientesFormatados = clientes.map((cliente) => ({
-        id: cliente._id,
-        tutor: cliente.cliente_nome,
-        telefone: cliente.cliente_telefone.toString(),
-        cpf: cliente.cliente_cpf,
-        email: cliente.cliente_email,
-        endereco: cliente.cliente_endereco,
-        pets: cliente.pets,
-}));
+    const clientesFormatados = clientes.map((cliente) => ({
+      id: cliente._id,
+      tutor: cliente.cliente_nome,
+      telefone: cliente.cliente_telefone.toString(),
+      cpf: cliente.cliente_cpf,
+      email: cliente.cliente_email,
+      endereco: cliente.cliente_endereco,
+      pets: cliente.pets,
+    }));
 
-      return reply.code(200).send(clientesFormatados);
-    } catch (error) {
-      console.error("Erro ao buscar clientes:", error);
-      return reply.code(500).send({ message: "Erro ao buscar clientes" });
-    }
+    return reply.code(200).send(clientesFormatados);
+  } catch (error) {
+    console.error("Erro ao buscar clientes:", error);
+    return reply.code(500).send({ message: "Erro ao buscar clientes" });
+  }
 }
 
 export async function CriarClienteEPet(request, reply) {
   const petshopId = request.user.id;
   const { nome, telefone, email, CPF, endereco, pets } = request.body;
 
-  // 1) inicia sessão/transaction
   const session = await mongoose.startSession();
   session.startTransaction();
 
   try {
-    // 2) cria cliente
     const cliente = await Cliente.create(
       [
         {
@@ -50,10 +48,8 @@ export async function CriarClienteEPet(request, reply) {
       { session }
     );
 
-    // create() com array retorna um array
     const novoCliente = cliente[0];
 
-    // 3) cria todos os pets, empilhando os IDs no cliente.pets
     for (const p of pets) {
       const [novoPet] = await Pet.create(
         [
@@ -73,27 +69,97 @@ export async function CriarClienteEPet(request, reply) {
       novoCliente.pets.push(novoPet._id);
     }
 
-    // 4) salva cliente com os pets vinculados
     await novoCliente.save({ session });
 
-    // 5) confirma a transação e encerra sessão
     await session.commitTransaction();
     session.endSession();
 
-    // 6) retorna o cliente já populado (opcionalmente, popula pets)
     const clientePopulado = await Cliente.findById(novoCliente._id)
       .populate("pets")
       .exec();
 
     return reply.status(201).send(clientePopulado);
   } catch (err) {
-    // desfaz tudo em caso de erro
     if (session.inTransaction()) {
       await session.abortTransaction();
     }
     session.endSession();
     console.error(err);
     return reply.status(500).send({ error: "Erro ao criar cliente e pets", details: err.message });
+  }
+}
+
+export async function AtualizarClienteEPets(request, reply) {
+  const { id } = request.params;
+  const petshopId = request.user.id;
+  const { nome, telefone, email, CPF, endereco, pets } = request.body;
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  try {
+    const clienteAtualizado = await Cliente.findOneAndUpdate(
+      { _id: id, petshopId },
+      {
+        cliente_nome: nome,
+        cliente_telefone: Number(telefone),
+        cliente_email: email,
+        cliente_cpf: CPF,
+        cliente_endereco: endereco
+      },
+      { new: true, session }
+    );
+
+    if (!clienteAtualizado) {
+      await session.abortTransaction();
+      session.endSession();
+      return reply.status(404).send({ error: "Cliente não encontrado" });
+    }
+
+    for (const p of pets) {
+      if (p._id) {
+        await Pet.findByIdAndUpdate(
+          p._id,
+          {
+            pet_nome: p.pet_nome,
+            especie: p.especie,
+            raca: p.raca,
+            sexo: p.sexo,
+            observacao: p.observacao
+          },
+          { session }
+        );
+      } else {
+        const novoPet = await Pet.create(
+          [
+            {
+              pet_nome: p.pet_nome,
+              especie: p.especie,
+              raca: p.raca,
+              sexo: p.sexo,
+              observacao: p.observacao,
+              clienteId: clienteAtualizado._id,
+              petshopId,
+            },
+          ],
+          { session }
+        );
+        clienteAtualizado.pets.push(novoPet[0]._id);
+      }
+    }
+
+    await clienteAtualizado.save({ session });
+
+    await session.commitTransaction();
+    session.endSession();
+
+    const clientePopulado = await Cliente.findById(id).populate("pets");
+    return reply.status(200).send(clientePopulado);
+  } catch (err) {
+    if (session.inTransaction()) await session.abortTransaction();
+    session.endSession();
+    console.error("Erro ao atualizar cliente e pets:", err);
+    return reply.status(500).send({ error: "Erro ao atualizar cliente e pets", details: err.message });
   }
 }
 
@@ -117,13 +183,14 @@ export async function DeletarCliente(request, reply) {
   }
 }
 
-
-// pets
-export async function BuscarPets (request, reply) {
+export async function BuscarPets(request, reply) {
   try {
     const petshopId = request.user.id;
 
-    const pets = await Pet.find({ petshopId }).populate("clienteId").populate("petshopId");
+    const pets = await Pet.find({ petshopId })
+      .populate("clienteId")
+      .populate("petshopId");
+
     return reply.status(200).send(pets);
   } catch (error) {
     console.error("Erro ao buscar pets:", error);
@@ -131,7 +198,6 @@ export async function BuscarPets (request, reply) {
   }
 }
 
-// agendamento
 export async function CriarAgendamento(request, reply) {
   const petshopId = request.user.id;
   const { clienteId, petId, data, horario, servico } = request.body;

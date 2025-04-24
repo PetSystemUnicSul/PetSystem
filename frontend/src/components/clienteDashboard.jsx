@@ -19,6 +19,11 @@ function ClienteDashboard() {
     setPopupAberto("detalhes");
   };
 
+  const abrirPopupEditar = (cliente) => {
+    setClienteSelecionado(cliente);
+    setPopupAberto("editar");
+  };  
+
   const abrirPopupAdicionar = () => setPopupAberto("adicionar");
   const fecharPopup = () => setPopupAberto(null);
 
@@ -143,6 +148,7 @@ function ClienteDashboard() {
         {clientesFiltrados.map((cliente, index) => (
           <CardClienteDashboard
             onClick={() => abrirPopupDetalhes(cliente)}
+            onEdit={() => abrirPopupEditar(cliente)}
             key={index}
             dadoCliente={cliente}
           />
@@ -155,6 +161,7 @@ function ClienteDashboard() {
         )}
       </div>
 
+      {popupAberto === "editar" && ( <AdicionarCliente onClose={fecharPopup} onAtualizarCliete={buscarDadosClientes} clienteParaEditar={clienteSelecionado} />)}
       {popupAberto === "adicionar" && (<AdicionarCliente onClose={fecharPopup} onAtualizarCliete={buscarDadosClientes} />)}
       {popupAberto === "detalhes" && (<DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} deleteCliente={deletarCliente} />)}
     </main>

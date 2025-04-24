@@ -1,7 +1,7 @@
 import "../styles/cardClienteDashboard.css";
 import { Pen, Info } from "lucide-react";
 
-function CardClienteDashboard({ onClick, dadoCliente }) {
+function CardClienteDashboard({ onClick, dadoCliente, onEdit }) {
   return (
       <div className="card">
         <div className="dadosGroup">
@@ -27,7 +27,7 @@ function CardClienteDashboard({ onClick, dadoCliente }) {
         </div>
         <div className="btns-info-edit">
         <button className="btnInfo" onClick={onClick}><Info strokeWidth={3} size={20}/></button>
-        <button className="btnEditar" ><Pen strokeWidth={3} size={20}/></button>
+        <button className="btnEditar" onClick={onEdit}><Pen strokeWidth={3} size={20}/></button>
         </div>
       </div>
   );

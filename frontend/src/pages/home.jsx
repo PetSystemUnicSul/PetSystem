@@ -4,6 +4,7 @@ import cachorro from "../assets/images/cachorro.jpg";
 import tela from "../assets/images/tela-petsystem.jpg";
 import Header from "../components/header";
 import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react";
+import Footer from "../components/footer";
 
 function Home() {
   return (
@@ -132,7 +133,7 @@ function Home() {
                 <h2 className="plano-title">Pro</h2>
                 <div className="preco">
                   <p className="valor">
-                    <span>R$</span>00,00
+                    <span>R$</span>99,00/mês
                   </p>
                 </div>
               </div>
@@ -174,13 +175,13 @@ function Home() {
                 <li>Organização de cadastro de pets e tutores</li>
                 <li>Histórico de agendamentos detalhado</li>
               </ul>
-              <div className="btn-vantagens">Conhecer a PetSystem</div>
             </div>
               <div className="vantagens-img">
                 <img src={tela} alt="" />
               </div>
           </div>
         </section>
+        <Footer/>
       </div>
     </>
   );

@@ -1,0 +1,22 @@
+footer{
+    background-color: var(--primary-color);
+    padding: 20px;
+}
+
+.div-redes-sociais{
+    width: 100%;
+    text-align: center;
+}
+
+.icon-redes-sociais{
+    margin: 0 10px;
+    color: var(--white);
+    transition: all 0.3s ease-in-out;
+}
+
+.icon-redes-sociais:hover{
+    transform: scale(1.2);
+}
+.div-informacoes {
+    text-align: center;
+}

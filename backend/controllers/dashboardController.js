@@ -256,3 +256,25 @@ export async function StatusAgendamento(request, reply) {
     return reply.code(500).send({ message: "Erro ao atualizar status do agendamento" });
   }
 }
+
+export async function EditarAgendamento(request, reply) {
+  const { id } = request.params;
+  const { clienteId, petId, data, horario, servico } = request.body;
+
+  try {
+    const agendamento = await Agendamento.findByIdAndUpdate(
+      id,
+      { clienteId, petId, data, horario, servico, status: "Agendado" },
+      { new: true }
+    );
+
+    if (!agendamento) {
+      return reply.code(404).send({ message: "Agendamento não encontrado" });
+    }
+
+    return reply.code(200).send(agendamento);
+  } catch (error) {
+    console.error("Erro ao editar agendamento:", error);
+    return reply.code(500).send({ message: "Erro ao editar agendamento" });
+  }
+}

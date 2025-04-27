@@ -52,7 +52,8 @@ const agendamentoSchema = new mongoose.Schema({
   petshopId: { type: mongoose.Schema.Types.ObjectId, ref: 'Petshop', required: true },
   data: { type: String, required: true },
   horario: { type: String, required: true },
-  servico: { type: String, required: true }
+  servico: { type: String, required: true },
+  status: {type: String, required: true, default: 'Agendado'},
 });
 
 // Criando os models

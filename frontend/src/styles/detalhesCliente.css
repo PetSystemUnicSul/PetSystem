@@ -16,3 +16,28 @@
     gap: 10px;
     
 }
+
+/*   detalhes agendamento */
+
+.btn-detalhes-agendamento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.btn-detalhes-agendamento > button {
+    margin: 0px;
+}
+
+.btn-concluido {
+    background-color: #29a829;
+    border: none
+}
+
+.btn-concluido:hover {
+    border: 1px solid #29a829;
+    color: #29a829;
+}
+
+

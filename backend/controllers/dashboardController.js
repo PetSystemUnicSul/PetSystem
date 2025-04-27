@@ -209,7 +209,8 @@ export async function CriarAgendamento(request, reply) {
       petshopId,
       data,
       horario,
-      servico
+      servico,
+      status: "Agendado",
     });
 
     return reply.code(201).send(novoAgendamento);
@@ -231,5 +232,27 @@ export async function BuscarAgendamentos(request, reply) {
   } catch (error) {
     console.error("Erro ao buscar agendamentos:", error);
     return reply.code(500).send({ message: "Erro ao buscar agendamentos" });
+  }
+}
+
+export async function StatusAgendamento(request, reply) {
+  const { id } = request.params;
+  const { status } = request.body;
+
+  try {
+    const agendamento = await Agendamento.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
+
+    if (!agendamento) {
+      return reply.code(404).send({ message: "Agendamento não encontrado" });
+    }
+
+    return reply.code(200).send(agendamento);
+  } catch (error) {
+    console.error("Erro ao atualizar status do agendamento:", error);
+    return reply.code(500).send({ message: "Erro ao atualizar status do agendamento" });
   }
 }

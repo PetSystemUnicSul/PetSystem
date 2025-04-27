@@ -12,6 +12,7 @@ function AgendaDashboard() {
 
   const [dadosAgendamentos, setDadosAgendamentos] = useState([]);
   const [agendamentosFiltrados, setAgendamentosFiltrados] = useState([]);
+  const [dataFiltro, setDataFiltro] = useState("");
 
   const abrirPopupDetalhes = (agendamento) => {
     console.log(agendamento);
@@ -23,7 +24,7 @@ function AgendaDashboard() {
   const fecharPopup = () => setPopupAberto(null);
 
   const handleAtualizarAgendamentos = () => {
-    buscarDadosAgendamentos(); // Atualiza após novo agendamento
+    buscarDadosAgendamentos(); // Atualiza após novo agendamento ou alteração de status
   };
 
   async function buscarDadosAgendamentos() {
@@ -34,11 +35,35 @@ function AgendaDashboard() {
         },
       });
       setDadosAgendamentos(response.data);
-      setAgendamentosFiltrados(response.data);
+      
+      // Aplica filtro de data se existir
+      if (dataFiltro) {
+        filtrarPorData(dataFiltro, response.data);
+      } else {
+        setAgendamentosFiltrados(response.data);
+      }
     } catch (err) {
       console.error("Erro ao buscar agendamentos:", err);
     }
   }
+
+  const filtrarPorData = (data, agendamentos = dadosAgendamentos) => {
+    if (!data) {
+      setAgendamentosFiltrados(agendamentos);
+      return;
+    }
+    
+    const filtrados = agendamentos.filter(
+      agendamento => agendamento.data === data
+    );
+    setAgendamentosFiltrados(filtrados);
+  };
+
+  const handleDataChange = (e) => {
+    const data = e.target.value;
+    setDataFiltro(data);
+    filtrarPorData(data);
+  };
 
   useEffect(() => {
     buscarDadosAgendamentos();
@@ -58,7 +83,13 @@ function AgendaDashboard() {
 
       <div className="groupFiltroCalen">
         <label htmlFor="inputdate">
-          <input type="date" id="inputdate" className="filtroData"/>
+          <input 
+            type="date" 
+            id="inputdate" 
+            className="filtroData"
+            value={dataFiltro}
+            onChange={handleDataChange}
+          />
         </label>
       </div>
 
@@ -86,6 +117,7 @@ function AgendaDashboard() {
           <DetalhesAgendamento
           dados={agendamentoSelecionado}
           onClose={fecharPopup}
+          onAtualizarAgendamentos={handleAtualizarAgendamentos}
         />)}
     </main>
   );

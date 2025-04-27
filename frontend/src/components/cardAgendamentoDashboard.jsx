@@ -17,34 +17,36 @@ function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
     <div className="cardDashboard" onClick={onClick}>
       <div className="servicoEStatus">
         <h4>{servico}</h4>
-        <span className="statusSpan">
-          agendado
+        <span
+          className="statusSpan"
+          style={{backgroundColor: dadosAgendamento.status === "Concluído" ? "#4CAF50": dadosAgendamento.status === "Cancelado" ? "#F44336": "#FF9800",}}>
+          {dadosAgendamento.status || "Agendado"}
         </span>
       </div>
       <div className="dadosCards">
         <div className="infosCards">
-          <User strokeWidth={3} size={15} className="iconsCards"/>
+          <User strokeWidth={3} size={15} className="iconsCards" />
           <p>
             <span>Nome:</span>
             {clienteNome}
           </p>
         </div>
         <div className="infosCards">
-          <Calendar strokeWidth={3} size={15} className="iconsCards"/>
+          <Calendar strokeWidth={3} size={15} className="iconsCards" />
           <p>
             <span>Data:</span>
             {data}
           </p>
         </div>
         <div className="infosCards">
-          <Clock strokeWidth={3}size={15} className="iconsCards"/>
+          <Clock strokeWidth={3} size={15} className="iconsCards" />
           <p>
             <span>Hora:</span>
             {horario}
           </p>
         </div>
         <div className="infosCards">
-          <PawPrint strokeWidth={3} size={15} className="iconsCards"/>
+          <PawPrint strokeWidth={3} size={15} className="iconsCards" />
           <p>
             <span>Pet:</span>
             {petNome}

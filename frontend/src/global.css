@@ -186,6 +186,27 @@ hr {
     justify-content: center;
 }
 
+.danger-btn-sm {
+    width: 100%;
+    min-width: 120px;
+    
+    font-size: 0.9em;
+    padding: 6px 15px;
+
+    width: 100%;
+    max-width: 140px;
+
+    margin: 24px auto 0;
+
+    justify-content: center;
+    cursor: pointer;
+
+    border-radius: var(--border-radius-lg);
+    background: var(--danger-red);
+    color: var(--white);
+    border: 1px solid var(--danger-red);
+}
+
 .danger-btn {
     width: 100%;
     max-width: 160px;
@@ -204,7 +225,7 @@ hr {
     border: 1px solid var(--danger-red);
 }
 
-.danger-button:hover {
+.danger-button:hover, .danger-btn-sm:hover {
     background: var(--white);
     color: var(--danger-red);
     border: 1px solid var(--danger-red);

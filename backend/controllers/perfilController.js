@@ -1,4 +1,4 @@
-import { Cliente, Pet, Petshop } from "../models/petshopModel.js";
+import { Agendamento, Cliente, Pet, Petshop } from "../models/petshopModel.js";
 
 export async function DeletePetshop (request, reply) {
     try {
@@ -7,6 +7,7 @@ export async function DeletePetshop (request, reply) {
 
         await Pet.deleteMany({ petshopId });
         await Cliente.deleteMany({ petshopId });
+        await Agendamento.deleteMany({ petshopId });
         const deletedPetshop = await Petshop.findByIdAndDelete({_id: petshopId});
 
         return reply.status(200).send({ message: 'Petshop e dados relacionados deletados com sucesso' });

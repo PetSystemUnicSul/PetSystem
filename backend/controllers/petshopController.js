@@ -4,15 +4,17 @@ import jwt from 'jsonwebtoken';
 
 export async function CadastrarPetShop(request, reply) {
   try {
-    const { nome, email, nome_fantasia, cnpj, senha } = request.body;
+    const { nome, email, nome_fantasia, cnpj, senha, telefone, cep, endereco } = request.body;
     
-    // Corrigido: usando "new" para criar instância do modelo
     const novoPetshop = new Petshop({
       nome, 
       email, 
       nome_fantasia, 
       cnpj,
-      password: senha  // Mantendo a consistência com o modelo
+      password: senha, 
+      telefone: telefone || "",  
+      cep: cep || "",            
+      endereco: endereco || ""   
     });
     
     await novoPetshop.save();
@@ -40,22 +42,18 @@ export async function Login(request, reply) {
   try {
     const { email, senha } = request.body;
     
-    // Buscar petshop pelo email
     const petshop = await Petshop.findOne({ email });
     
-    // Verificar se o petshop existe
     if (!petshop) {
       return reply.code(401).send({ error: 'Email ou senha inválidos' });
     }
     
-    // Verificar se a senha está correta
     const senhaCorreta = await bcrypt.compare(senha, petshop.password);
     
     if (!senhaCorreta) {
       return reply.code(401).send({ error: 'Email ou senha inválidos' });
     }
     
-    // Gerar token JWT
     const token = jwt.sign(
       { 
         id: petshop._id,
@@ -67,16 +65,15 @@ export async function Login(request, reply) {
       { expiresIn: '1d' }
     );
     
-    // Preparar objeto de usuário sem a senha
     const userData = {
       id: petshop._id,
       nome: petshop.nome,
       email: petshop.email,
       nome_fantasia: petshop.nome_fantasia,
       cnpj: petshop.cnpj,
-      endereco: petshop.endereco,
-      cep: petshop.cep,
-      telefone: petshop.telefone,
+      endereco: petshop.endereco || "", 
+      cep: petshop.cep || "",            
+      telefone: petshop.telefone || "",  
     };
     
     return reply.code(200).send({ 
@@ -89,4 +86,3 @@ export async function Login(request, reply) {
     return reply.code(500).send({ error: 'Erro interno do servidor' });
   }
 }
-

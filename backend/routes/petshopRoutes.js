@@ -30,7 +30,7 @@ export default async function petshopRoutes(fastify, options) {
     fastify.post('/agendamentos', CriarAgendamento)
     fastify.get('/agendamentos', BuscarAgendamentos)
     fastify.post('/agendamentos/:id', StatusAgendamento)
-    fastify.update('/agendamentos/:id', EditarAgendamento)
+    fastify.put('/agendamentos/:id', EditarAgendamento)
 
     // perfil
     fastify.delete('/perfil', DeletePetshop)

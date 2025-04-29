@@ -73,7 +73,10 @@ export async function Login(request, reply) {
       nome: petshop.nome,
       email: petshop.email,
       nome_fantasia: petshop.nome_fantasia,
-      cnpj: petshop.cnpj
+      cnpj: petshop.cnpj,
+      endereco: petshop.endereco,
+      cep: petshop.cep,
+      telefone: petshop.telefone,
     };
     
     return reply.code(200).send({ 

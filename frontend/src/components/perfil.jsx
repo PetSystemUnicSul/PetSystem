@@ -11,7 +11,10 @@ function Perfil() {
     nome: "",
     email: "",
     nome_fantasia: "",
-    cnpj: ""
+    cnpj: "",
+    endereco: "",
+    cep: "",
+    telefone: ""
   });
 
   const [mensagem, setMensagem] = useState({

@@ -1,13 +1,12 @@
 import { SquareX, Pencil, Trash2 } from "lucide-react";
 import "../styles/detalhesCliente.css";
 
-function DetalhesCliente({ onClose, cliente, deleteCliente }) {
+function DetalhesCliente({ onClose, cliente, deleteCliente, onEdit}) {
 
-      function handleDelete() {
+    function handleDelete() {
       deleteCliente(cliente.id)
       onClose()
     }
-
 
     return (
       <div className="popup-overlay">
@@ -50,8 +49,8 @@ function DetalhesCliente({ onClose, cliente, deleteCliente }) {
               <p>{cliente.pets.map((p) => p.pet_nome).join(", ")}</p>
             </div>
   
-            <div className="detalhes-buttons">
-              <button className="button button-md">
+            <div className="detalhes-buttons" >
+              <button className="button button-md" onClick={() => onEdit(cliente)}>
                 <Pencil size={16} />
                 <span>Editar cliente</span>
               </button>

@@ -156,7 +156,7 @@ function ClienteDashboard() {
 
       {popupAberto === "editar" && ( <AdicionarCliente onClose={fecharPopup} onAtualizarCliete={buscarDadosClientes} clienteParaEditar={clienteSelecionado} />)}
       {popupAberto === "adicionar" && (<AdicionarCliente onClose={fecharPopup} onAtualizarCliete={buscarDadosClientes} />)}
-      {popupAberto === "detalhes" && (<DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} deleteCliente={deletarCliente} />)}
+      {popupAberto === "detalhes" && (<DetalhesCliente onClose={fecharPopup} cliente={clienteSelecionado} deleteCliente={deletarCliente} onEdit={abrirPopupEditar} clienteParaEditar={clienteSelecionado}/>)}
     </main>
   );
 }

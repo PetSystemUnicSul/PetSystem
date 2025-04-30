@@ -15,7 +15,7 @@ function AgendaDashboard() {
   const [dataFiltro, setDataFiltro] = useState("");
 
   const abrirPopupDetalhes = (agendamento) => {
-    console.log(agendamento);
+    // console.log(agendamento);
     setAgendamentoSelecionado(agendamento);
     setPopupAberto("detalhes");
   };
@@ -111,13 +111,16 @@ function AgendaDashboard() {
           <AdicionarAgendamento
           onClose={fecharPopup}
           onAtualizarAgendamentos={handleAtualizarAgendamentos}
+          agendamentoParaEditar={agendamentoSelecionado}
         />)}
 
         {popupAberto === "detalhes" && agendamentoSelecionado && (
           <DetalhesAgendamento
-          dados={agendamentoSelecionado}
-          onClose={fecharPopup}
-          onAtualizarAgendamentos={handleAtualizarAgendamentos}
+            dados={agendamentoSelecionado}
+            onClose={fecharPopup}
+            onAtualizarAgendamentos={handleAtualizarAgendamentos}
+            setPopupAberto={setPopupAberto}
+            setAgendamentoSelecionado={setAgendamentoSelecionado}
         />)}
     </main>
   );

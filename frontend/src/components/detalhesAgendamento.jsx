@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/detalhesCliente.css";
 
-function DetalhesCliente({ onClose, dados, onAtualizarAgendamentos }) {
+function DetalhesCliente({ onClose, dados, onAtualizarAgendamentos, setPopupAberto, setAgendamentoSelecionado }) {
   const [processando, setProcessando] = useState(false);
 
   const atualizarStatus = async (novoStatus) => {
@@ -42,6 +42,11 @@ function DetalhesCliente({ onClose, dados, onAtualizarAgendamentos }) {
 
   const handleConcluir = () => atualizarStatus("Concluído");
   const handleCancelar = () => atualizarStatus("Cancelado");
+
+  const handleEditar = () => {
+    setAgendamentoSelecionado(dados);
+    setPopupAberto("adicionar");
+  };
 
   return (
     <div className="popup-overlay">
@@ -106,7 +111,7 @@ function DetalhesCliente({ onClose, dados, onAtualizarAgendamentos }) {
           <button className="danger-btn-sm" onClick={handleCancelar}>
             {processando ? "Processando..." : "Cancelar"}
           </button>
-          <button className="button button-sm">Editar</button>
+          <button className="button button-sm" onClick={handleEditar}>Editar</button>
         </div>
       </div>
     </div>

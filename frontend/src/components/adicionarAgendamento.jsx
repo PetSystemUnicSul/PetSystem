@@ -3,7 +3,7 @@ import { SquareX } from "lucide-react";
 import axios from "axios";
 import "../styles/adicionarCliente.css";
 
-function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
+function AdicionarAgendamento({ onClose, onAtualizarAgendamentos, agendamentoParaEditar }) {
   const [clientes, setClientes] = useState([]);
   const [formData, setFormData] = useState({
     clienteId: "",
@@ -29,7 +29,18 @@ function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
     }
 
     buscarClientes();
-  }, []);
+
+    if (agendamentoParaEditar) {
+      // Preencher o form com os dados do agendamento
+      setFormData({
+        clienteId: agendamentoParaEditar.clienteId._id,
+        petId: agendamentoParaEditar.petId._id,
+        data: agendamentoParaEditar.data,
+        horario: agendamentoParaEditar.horario,
+        servico: agendamentoParaEditar.servico,
+      });
+    }
+  }, [agendamentoParaEditar]);
 
   const handleClienteChange = (e) => {
     const clienteId = e.target.value;
@@ -65,21 +76,24 @@ function AdicionarAgendamento({ onClose, onAtualizarAgendamentos }) {
         servico: formData.servico,
       };
 
-      const response = await axios.post(
-        "https://petsystem-backend.onrender.com/agendamentos",
-        dadosAgendamento,
-        {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          },
-        }
-      );
+      const url = agendamentoParaEditar
+        ? `https://petsystem-backend.onrender.com/agendamentos/${agendamentoParaEditar._id}`
+        : "https://petsystem-backend.onrender.com/agendamentos";
+
+      const method = agendamentoParaEditar ? "PUT" : "POST";
+
+      const response = await axios({
+        method,
+        url,
+        data: dadosAgendamento,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+      });
 
       onAtualizarAgendamentos();
-
       onClose(); 
     } catch (error) {
-      console.log("ERRO AQUI");
       console.error("Erro ao salvar agendamento:", error.response?.data || error.message);
       alert("Erro ao salvar agendamento. Verifique os dados e tente novamente.");
     }

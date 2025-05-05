@@ -84,7 +84,7 @@ function Cadastro() {
             const res = await axios.post('https://petsystem-backend.onrender.com/cadastro', payload);
             
             if (res.status === 201) {
-                navigate('/login');
+                handlePayment();
             }
         } catch (error) {
             console.error('Erro no cadastro:', error);
@@ -93,6 +93,17 @@ function Cadastro() {
             setLoading(false);
         }
     };
+
+    const handlePayment = async () => {
+        try {
+          const res = await axios.post('https://petsystem-backend.onrender.com/pagamento');
+          const { init_point } = res.data;
+    
+          window.location.href = init_point;
+        } catch (err) {
+          console.error('Erro ao iniciar pagamento:', err);
+        }
+      };
 
     return (
         <div className='divLoginCadastro'>

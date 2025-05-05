@@ -12,9 +12,11 @@ const petshopSchema = new mongoose.Schema({
     required: true,
     minlength: [6, "A senha deve ter pelo menos 6 caracteres"],
   },
-  endereco: { type: String },
-  cep: { type: String },
-  telefone: { type: Number },
+  endereco: { type: String, },
+  cep: { type: String,},
+  telefone: { type: Number,},
+  id_pagamento: { type: String, default: null },
+  status_pagamento: { type: String, default: "Pendente" },
 });
 
 petshopSchema.pre("save", async function () {

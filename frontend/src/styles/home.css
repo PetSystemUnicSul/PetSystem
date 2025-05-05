@@ -240,6 +240,8 @@
   padding: 10px 20px;
   cursor: pointer;
   margin-top: auto;
+  outline: none;
+  border: none;
 }
 
 /* ----- Seção Vantagens ------ */

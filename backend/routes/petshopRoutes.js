@@ -2,11 +2,16 @@ import { CadastrarPetShop, Login} from '../controllers/petshopController.js';
 import { DeletePetshop, UpdatePetshop } from '../controllers/perfilController.js';
 import { BuscarClientes, BuscarPets, CriarClienteEPet, DeletarCliente, CriarAgendamento, BuscarAgendamentos, AtualizarClienteEPets, StatusAgendamento, EditarAgendamento } from '../controllers/dashboardController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
+import { Pagamento, WebhookPagamento } from '../controllers/pagamentoController.js';
 
 export default async function petshopRoutes(fastify, options) {
   // Rotas públicas
   fastify.post('/cadastro', CadastrarPetShop);
   fastify.post('/login', Login);
+
+  // pagamento
+  fastify.post('/pagamento', Pagamento)
+  fastify.post('/webhook', WebhookPagamento);
 
   // Rotas protegidas
   fastify.register(async function (fastify) {
@@ -35,6 +40,5 @@ export default async function petshopRoutes(fastify, options) {
     // perfil
     fastify.delete('/perfil', DeletePetshop)
     fastify.put('/perfil', UpdatePetshop)
-      
  
 })};

@@ -5,6 +5,7 @@ import tela from "../assets/images/tela-petsystem.jpg";
 import Header from "../components/header";
 import { Dog, CalendarCheck, UserRoundCheck, ChartColumn } from "lucide-react";
 import Footer from "../components/footer";
+import BotaoPagamento from "../components/botaoPagamento";
 
 function Home() {
   return (
@@ -153,7 +154,7 @@ function Home() {
                   </li>
                 </ul>
               </div>
-              <div className="btn-plano">Assinar</div>
+              <BotaoPagamento/>
             </div>
           </div>
         </section>

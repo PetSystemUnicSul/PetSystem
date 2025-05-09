@@ -15,7 +15,6 @@ function AgendaDashboard() {
   const [dataFiltro, setDataFiltro] = useState("");
 
   const abrirPopupDetalhes = (agendamento) => {
-    // console.log(agendamento);
     setAgendamentoSelecionado(agendamento);
     setPopupAberto("detalhes");
   };

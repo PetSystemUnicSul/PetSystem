@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/detalhesCliente.css";
 
-function DetalhesCliente({ onClose, dados, onAtualizarAgendamentos, setPopupAberto, setAgendamentoSelecionado }) {
+function DetalhesAgendamento({ onClose, dados, onAtualizarAgendamentos, setPopupAberto, setAgendamentoSelecionado }) {
   const [processando, setProcessando] = useState(false);
 
   const atualizarStatus = async (novoStatus) => {
@@ -118,4 +118,4 @@ function DetalhesCliente({ onClose, dados, onAtualizarAgendamentos, setPopupAber
   );
 }
 
-export default DetalhesCliente;
+export default DetalhesAgendamento;

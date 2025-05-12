@@ -28,6 +28,11 @@ function DetalhesCliente({ onClose, pet }) {
               <label>Raça:</label>
               <p>{pet?.raca || "N/A"}</p>
             </div>
+
+            <div className="detalhe">
+              <label>Idade:</label>
+              <p>{pet?.idade || "N/A"}</p>
+            </div>
   
             <div className="detalhe">
               <label>Sexo:</label>

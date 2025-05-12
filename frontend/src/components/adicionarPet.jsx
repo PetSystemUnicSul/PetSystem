@@ -7,6 +7,7 @@ function AdicionarPet({ onClose, onSalvar }) {
     nomePet: "",
     especie: "cachorro",
     raca: "akita",
+    idade: "", // 🆕 Campo de idade
     sexo: "M",
     observacoesPet: ""
   });
@@ -171,6 +172,21 @@ function AdicionarPet({ onClose, onSalvar }) {
                 <option value="tucano">Tucano</option>
               </optgroup>
             </select>
+          </div>
+
+          {/* 🆕 Campo de idade */}
+          <div>
+            <label>Idade (em anos):</label>
+            <input
+              type="number"
+              name="idade"
+              id="idade"
+              placeholder="Ex: 3"
+              value={formData.idade}
+              onChange={handleChange}
+              min="0"
+              required
+            />
           </div>
 
           <div>

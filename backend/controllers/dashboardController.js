@@ -57,6 +57,7 @@ export async function CriarClienteEPet(request, reply) {
             pet_nome: p.pet_nome,
             especie: p.especie,
             raca: p.raca,
+            idade: p.idade,
             sexo: p.sexo,
             observacao: p.observacao,
             clienteId: novoCliente._id,
@@ -124,6 +125,7 @@ export async function AtualizarClienteEPets(request, reply) {
             pet_nome: p.pet_nome,
             especie: p.especie,
             raca: p.raca,
+            idade: p.idade,
             sexo: p.sexo,
             observacao: p.observacao
           },
@@ -136,6 +138,7 @@ export async function AtualizarClienteEPets(request, reply) {
               pet_nome: p.pet_nome,
               especie: p.especie,
               raca: p.raca,
+              idade: p.idade,
               sexo: p.sexo,
               observacao: p.observacao,
               clienteId: clienteAtualizado._id,

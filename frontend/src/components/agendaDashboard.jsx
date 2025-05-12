@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CirclePlus } from "lucide-react";
+import { CirclePlus, Funnel } from "lucide-react";
 import AdicionarAgendamento from "../components/adicionarAgendamento";
 import DetalhesAgendamento from "../components/detalhesAgendamento";
 import CardAgendamentoDashboard from "./cardAgendamentoDashboard";
@@ -12,7 +12,8 @@ function AgendaDashboard() {
 
   const [dadosAgendamentos, setDadosAgendamentos] = useState([]);
   const [agendamentosFiltrados, setAgendamentosFiltrados] = useState([]);
-  const [dataFiltro, setDataFiltro] = useState("");
+  const [dataFiltro, setDataFiltro] = useState(new Date().toISOString().split("T")[0]);
+  const [statusFiltro, setStatusFiltro] = useState("todos");
 
   const abrirPopupDetalhes = (agendamento) => {
     setAgendamentoSelecionado(agendamento);
@@ -23,7 +24,7 @@ function AgendaDashboard() {
   const fecharPopup = () => setPopupAberto(null);
 
   const handleAtualizarAgendamentos = () => {
-    buscarDadosAgendamentos(); // Atualiza após novo agendamento ou alteração de status
+    buscarDadosAgendamentos();
   };
 
   async function buscarDadosAgendamentos() {
@@ -34,34 +35,41 @@ function AgendaDashboard() {
         },
       });
       setDadosAgendamentos(response.data);
-      
-      // Aplica filtro de data se existir
-      if (dataFiltro) {
-        filtrarPorData(dataFiltro, response.data);
-      } else {
-        setAgendamentosFiltrados(response.data);
-      }
+      filtrarAgendamentos(dataFiltro, response.data, statusFiltro);
     } catch (err) {
       console.error("Erro ao buscar agendamentos:", err);
     }
   }
 
-  const filtrarPorData = (data, agendamentos = dadosAgendamentos) => {
-    if (!data) {
-      setAgendamentosFiltrados(agendamentos);
-      return;
-    }
-    
-    const filtrados = agendamentos.filter(
-      agendamento => agendamento.data === data
-    );
+  const filtrarAgendamentos = (
+    dataSelecionada,
+    agendamentos = dadosAgendamentos,
+    statusSelecionado = statusFiltro
+  ) => {
+    const dataISO = new Date(dataSelecionada).toISOString().split("T")[0];
+
+    const filtrados = agendamentos.filter((agendamento) => {
+      const dataAgendamento = new Date(agendamento.data).toISOString().split("T")[0];
+      const status = agendamento.status?.toLowerCase();
+      const correspondeData = dataAgendamento === dataISO;
+      const correspondeStatus = statusSelecionado === "todos" || status === statusSelecionado;
+
+      return correspondeData && correspondeStatus;
+    });
+
     setAgendamentosFiltrados(filtrados);
   };
 
   const handleDataChange = (e) => {
     const data = e.target.value;
     setDataFiltro(data);
-    filtrarPorData(data);
+    filtrarAgendamentos(data, dadosAgendamentos, statusFiltro);
+  };
+
+  const handleStatusChange = (e) => {
+    const status = e.target.value;
+    setStatusFiltro(status);
+    filtrarAgendamentos(dataFiltro, dadosAgendamentos, status);
   };
 
   useEffect(() => {
@@ -80,18 +88,35 @@ function AgendaDashboard() {
         </div>
       </div>
 
-      <div className="groupFiltroCalen">
-        <label htmlFor="inputdate">
-          <input 
-            type="date" 
-            id="inputdate" 
-            className="filtroData"
-            value={dataFiltro}
-            onChange={handleDataChange}
-          />
-        </label>
-      </div>
+      <div className="searchEfiltro">
+        <div className="groupFiltroCalen">
+          <label htmlFor="inputdate">
+            <input
+              type="date"
+              id="inputdate"
+              className="filtroData"
+              value={dataFiltro}
+              onChange={handleDataChange}
+            />
+          </label>
+        </div>
 
+        <div className="campoFiltro">
+          <select
+            name="filtroStatus"
+            id="filtroStatus"
+            className="filtroStatus"
+            value={statusFiltro}
+            onChange={handleStatusChange}
+          >
+            <option value="todos">Todos</option>
+            <option value="agendado">Agendados</option>
+            <option value="concluído">Concluídos</option>
+            <option value="cancelado">Cancelados</option>
+          </select>
+          <Funnel size={40} className="iconFiltro" />
+        </div>
+      </div>
       <div className="listAgendamentos">
         {agendamentosFiltrados.map((agendamento, index) => (
           <CardAgendamentoDashboard
@@ -106,21 +131,23 @@ function AgendaDashboard() {
         )}
       </div>
 
-        {popupAberto === "adicionar" && (
-          <AdicionarAgendamento
+      {popupAberto === "adicionar" && (
+        <AdicionarAgendamento
           onClose={fecharPopup}
           onAtualizarAgendamentos={handleAtualizarAgendamentos}
           agendamentoParaEditar={agendamentoSelecionado}
-        />)}
+        />
+      )}
 
-        {popupAberto === "detalhes" && agendamentoSelecionado && (
-          <DetalhesAgendamento
-            dados={agendamentoSelecionado}
-            onClose={fecharPopup}
-            onAtualizarAgendamentos={handleAtualizarAgendamentos}
-            setPopupAberto={setPopupAberto}
-            setAgendamentoSelecionado={setAgendamentoSelecionado}
-        />)}
+      {popupAberto === "detalhes" && agendamentoSelecionado && (
+        <DetalhesAgendamento
+          dados={agendamentoSelecionado}
+          onClose={fecharPopup}
+          onAtualizarAgendamentos={handleAtualizarAgendamentos}
+          setPopupAberto={setPopupAberto}
+          setAgendamentoSelecionado={setAgendamentoSelecionado}
+        />
+      )}
     </main>
   );
 }

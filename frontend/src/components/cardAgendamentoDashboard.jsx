@@ -12,6 +12,7 @@ function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
 
   const petNome = petId?.pet_nome || "Desconhecido";
   const clienteNome = clienteId?.cliente_nome || "Desconhecido";
+  const dataBR = new Date(data).toLocaleDateString("pt-BR");
 
   return (
     <div className="cardDashboard" onClick={onClick}>
@@ -35,7 +36,7 @@ function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
           <Calendar strokeWidth={3} size={15} className="iconsCards" />
           <p>
             <span>Data:</span>
-            {data}
+            {dataBR}
           </p>
         </div>
         <div className="infosCards">

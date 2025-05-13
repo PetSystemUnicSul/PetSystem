@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SquareX } from "lucide-react";
 import "../styles/adicionarCliente.css";
 
 function AdicionarPet({ onClose, onSalvar }) {
+  const [especies, setEspecies] = useState([
+    { nome: "cachorro", racas: ["akita", "basset", "beagle", "border-collie", "boxer", "bul-terrier", "bulldog", "cane-corso", "chihuahua", "cocker", "dachshund", "doberman", "fox-paulistinha", "golden", "husky", "labrador", "lhasa-apso", "maltes", "pastor-alemao", "pastor-belga", "pastor-suiço", "pekingese", "pinscher", "poodle", "pug", "rottweiler", "shihtzu", "spitz", "weimaraner", "yorkshire"] },
+    { nome: "gato", racas: ["abissinio", "americano-pelo-curto", "angora", "azul-russo", "balines", "bengal", "british-shorthair", "burmes", "chartreux", "cornish-rex", "devon-rex", "exotico", "floresta-norueguesa", "himalayan", "javanes", "korat", "laperm", "maine-coon", "manx", "munchkin", "noruegues", "ocicat", "oriental", "persa", "ragdoll", "savannah", "siames", "singapura", "somali", "sphynx", "turkish-angora"] },
+    { nome: "ave", racas: ["agapornis", "anarajuba", "anuri", "arara", "ararinha-azul", "azulão", "cacatua", "cacatua-rosa", "calopsita", "canario", "coleiro", "curica", "curio", "diamante-gould", "jacutinga", "jandaia", "lóris", "maina", "mandarim", "maritaca", "papagaio", "papagaio-do-mangue", "periquitão", "periquito", "periquito-australiano", "pombinha", "rolinha", "sabia", "trinca-ferro", "tucano"] },
+    { nome: "reptil", racas: ["camaleao", "cágado", "cobra-cornsnake", "cobra-rei-california", "dragao-barbudo", "gecko-leopardo", "iguana-verde", "jabuti", "tartaruga-tigre-dagua", "teiu"] }
+  ]);
+
+  const [racasFiltradas, setRacasFiltradas] = useState([]);
   const [formData, setFormData] = useState({
     nomePet: "",
-    especie: "cachorro",
-    raca: "akita",
-    idade: "", // 🆕 Campo de idade
-    sexo: "M",
+    especie: "",
+    raca: "",
+    idade: "",
+    sexo: "",
     observacoesPet: ""
   });
+
+  useEffect(() => {
+    const especieSelecionada = especies.find(especie => especie.nome === formData.especie);
+    if (especieSelecionada) {
+      setRacasFiltradas(especieSelecionada.racas);
+    } else {
+      setRacasFiltradas([]);
+    }
+  }, [formData.especie]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +39,10 @@ function AdicionarPet({ onClose, onSalvar }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.nomePet || !formData.especie || !formData.raca || !formData.idade || !formData.sexo) {
+      alert("Todos os campos são obrigatórios.");
+      return;
+    }
     onSalvar(formData);
   };
 
@@ -30,7 +51,6 @@ function AdicionarPet({ onClose, onSalvar }) {
       <div className="popup-container">
         <div className="popup-header">
           <h2>Adicionar Pet</h2>
-
           <button className="btn-fechar" onClick={onClose}>
             <SquareX size={24} />
           </button>
@@ -57,10 +77,13 @@ function AdicionarPet({ onClose, onSalvar }) {
               id="especie"
               value={formData.especie}
               onChange={handleChange}
+              required
             >
+              <option value="">Selecione a Espécie</option>
               <option value="cachorro">Cachorro</option>
               <option value="gato">Gato</option>
               <option value="ave">Ave</option>
+              <option value="reptil">Reptil</option>
             </select>
           </div>
 
@@ -71,110 +94,22 @@ function AdicionarPet({ onClose, onSalvar }) {
               id="raca"
               value={formData.raca}
               onChange={handleChange}
+              required
+              disabled={!formData.especie}
             >
-              <optgroup label="Cachorro">
-                <option value="akita">Akita</option>
-                <option value="basset">Basset Hound</option>
-                <option value="beagle">Beagle</option>
-                <option value="border-collie">Border Collie</option>
-                <option value="boxer">Boxer</option>
-                <option value="bul-terrier">Bull Terrier</option>
-                <option value="bulldog">Bulldog</option>
-                <option value="cane-corso">Cane Corso</option>
-                <option value="chihuahua">Chihuahua</option>
-                <option value="cocker">Cocker Spaniel</option>
-                <option value="dachshund">Dachshund (Salsicha)</option>
-                <option value="doberman">Doberman</option>
-                <option value="fox-paulistinha">Fox Paulistinha</option>
-                <option value="golden">Golden Retriever</option>
-                <option value="husky">Husky Siberiano</option>
-                <option value="labrador">Labrador</option>
-                <option value="lhasa-apso">Lhasa Apso</option>
-                <option value="maltes">Maltês</option>
-                <option value="pastor-alemao">Pastor Alemão</option>
-                <option value="pastor-belga">Pastor Belga</option>
-                <option value="pastor-suiço">Pastor Suíço</option>
-                <option value="pekingese">Pequinês</option>
-                <option value="pinscher">Pinscher</option>
-                <option value="poodle">Poodle</option>
-                <option value="pug">Pug</option>
-                <option value="rottweiler">Rottweiler</option>
-                <option value="shihtzu">Shih Tzu</option>
-                <option value="spitz">Spitz Alemão</option>
-                <option value="weimaraner">Weimaraner</option>
-                <option value="yorkshire">Yorkshire</option>
-              </optgroup>
-
-              <optgroup label="Gato">
-                <option value="abissinio">Abissínio</option>
-                <option value="americano-pelo-curto">Americano de Pelo Curto</option>
-                <option value="angora">Angorá</option>
-                <option value="azul-russo">Azul Russo</option>
-                <option value="balines">Balinês</option>
-                <option value="bengal">Bengal</option>
-                <option value="british-shorthair">British Shorthair</option>
-                <option value="burmes">Burmês</option>
-                <option value="chartreux">Chartreux</option>
-                <option value="cornish-rex">Cornish Rex</option>
-                <option value="devon-rex">Devon Rex</option>
-                <option value="exotico">Exótico</option>
-                <option value="floresta-norueguesa">Floresta Norueguesa</option>
-                <option value="himalayan">Himalaio</option>
-                <option value="javanes">Javanês</option>
-                <option value="korat">Korat</option>
-                <option value="laperm">LaPerm</option>
-                <option value="maine-coon">Maine Coon</option>
-                <option value="manx">Manx</option>
-                <option value="munchkin">Munchkin</option>
-                <option value="noruegues">Norueguês</option>
-                <option value="ocicat">Ocicat</option>
-                <option value="oriental">Oriental Shorthair</option>
-                <option value="persa">Persa</option>
-                <option value="ragdoll">Ragdoll</option>
-                <option value="savannah">Savannah</option>
-                <option value="siames">Siamês</option>
-                <option value="singapura">Singapura</option>
-                <option value="somali">Somali</option>
-                <option value="sphynx">Sphynx</option>
-                <option value="turkish-angora">Turkish Angora</option>
-              </optgroup>
-
-              <optgroup label="Ave">
-                <option value="agapornis">Agapornis</option>
-                <option value="anarajuba">Ararajuba</option>
-                <option value="anuri">Anuri</option>
-                <option value="arara">Arara</option>
-                <option value="ararinha-azul">Ararinha Azul</option>
-                <option value="azulão">Azulão</option>
-                <option value="cacatua">Cacatua</option>
-                <option value="cacatua-rosa">Cacatua Rosa</option>
-                <option value="calopsita">Calopsita</option>
-                <option value="canario">Canário</option>
-                <option value="coleiro">Coleiro</option>
-                <option value="curica">Curica</option>
-                <option value="curio">Curió</option>
-                <option value="diamante-gould">Diamante de Gould</option>
-                <option value="jacutinga">Jacutinga</option>
-                <option value="jandaia">Jandaia</option>
-                <option value="lóris">Lóris</option>
-                <option value="maina">Mainá</option>
-                <option value="mandarim">Mandarim</option>
-                <option value="maritaca">Maritaca</option>
-                <option value="papagaio">Papagaio</option>
-                <option value="papagaio-do-mangue">Papagaio-do-Mangue</option>
-                <option value="periquitão">Periquitão</option>
-                <option value="periquito">Periquito</option>
-                <option value="periquito-australiano">Periquito Australiano</option>
-                <option value="pombinha">Pombinha</option>
-                <option value="rolinha">Rolinha</option>
-                <option value="sabia">Sabiá</option>
-                <option value="trinca-ferro">Trinca-Ferro</option>
-                <option value="tucano">Tucano</option>
-              </optgroup>
+              <option value="">Selecione a Raça</option>
+              {racasFiltradas.length === 0 ? (
+                <option disabled>Selecione a Espécie primeiro</option>
+              ) : (
+                racasFiltradas.map((raca) => (
+                  <option key={raca} value={raca}>
+                    {raca.charAt(0).toUpperCase() + raca.slice(1)}
+                  </option>
+                ))
+              )}
             </select>
           </div>
 
-          {/* 🆕 Campo de idade */}
           <div>
             <label>Idade (em anos):</label>
             <input
@@ -196,7 +131,9 @@ function AdicionarPet({ onClose, onSalvar }) {
               id="sexo"
               value={formData.sexo}
               onChange={handleChange}
+              required
             >
+              <option value="">Selecione o Sexo</option>
               <option value="M">Macho</option>
               <option value="F">Fêmea</option>
             </select>

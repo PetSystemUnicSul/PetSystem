@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CirclePlus, Funnel } from "lucide-react";
+import { CirclePlus, Funnel, Trash2 } from "lucide-react";
 import AdicionarAgendamento from "../components/adicionarAgendamento";
 import DetalhesAgendamento from "../components/detalhesAgendamento";
 import CardAgendamentoDashboard from "./cardAgendamentoDashboard";
@@ -12,7 +12,7 @@ function AgendaDashboard() {
 
   const [dadosAgendamentos, setDadosAgendamentos] = useState([]);
   const [agendamentosFiltrados, setAgendamentosFiltrados] = useState([]);
-  const [dataFiltro, setDataFiltro] = useState(new Date().toISOString().split("T")[0]);
+  const [dataFiltro, setDataFiltro] = useState(null);
   const [statusFiltro, setStatusFiltro] = useState("todos");
 
   const abrirPopupDetalhes = (agendamento) => {
@@ -35,46 +35,59 @@ function AgendaDashboard() {
         },
       });
       setDadosAgendamentos(response.data);
-      filtrarAgendamentos(dataFiltro, response.data, statusFiltro);
     } catch (err) {
       console.error("Erro ao buscar agendamentos:", err);
     }
   }
+
+  const formatarDataLocal = (dataUTC) => {
+    const data = new Date(dataUTC);
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, "0");
+    const dia = String(data.getDate()).padStart(2, "0");
+    return `${ano}-${mes}-${dia}`;
+  };
+  
 
   const filtrarAgendamentos = (
     dataSelecionada,
     agendamentos = dadosAgendamentos,
     statusSelecionado = statusFiltro
   ) => {
-    const dataISO = new Date(dataSelecionada).toISOString().split("T")[0];
-
+    const dataFiltroFormatada = dataSelecionada || null;
+  
     const filtrados = agendamentos.filter((agendamento) => {
-      const dataAgendamento = new Date(agendamento.data).toISOString().split("T")[0];
-      const status = agendamento.status?.toLowerCase();
-      const correspondeData = dataAgendamento === dataISO;
-      const correspondeStatus = statusSelecionado === "todos" || status === statusSelecionado;
-
+      const dataAgendamentoLocal = formatarDataLocal(agendamento.data);
+      const status = (agendamento.status || "").toLowerCase();
+  
+      const correspondeData = !dataFiltroFormatada || dataAgendamentoLocal === dataFiltroFormatada;
+      const correspondeStatus = statusSelecionado === "todos" || status === statusSelecionado.toLowerCase();
+  
       return correspondeData && correspondeStatus;
     });
-
+  
     setAgendamentosFiltrados(filtrados);
   };
-
+  
+  
+  
   const handleDataChange = (e) => {
-    const data = e.target.value;
+    const data = e.target.value || null;
     setDataFiltro(data);
-    filtrarAgendamentos(data, dadosAgendamentos, statusFiltro);
   };
 
   const handleStatusChange = (e) => {
     const status = e.target.value;
     setStatusFiltro(status);
-    filtrarAgendamentos(dataFiltro, dadosAgendamentos, status);
   };
 
   useEffect(() => {
     buscarDadosAgendamentos();
   }, []);
+
+  useEffect(() => {
+    filtrarAgendamentos(dataFiltro, dadosAgendamentos, statusFiltro);
+  }, [dataFiltro, dadosAgendamentos, statusFiltro]);
 
   return (
     <main className="mainDashboard">
@@ -94,12 +107,19 @@ function AgendaDashboard() {
             <input
               type="date"
               id="inputdate"
-              className="filtroData"
-              value={dataFiltro}
+              className="inputData"
+              value={dataFiltro || ""}
               onChange={handleDataChange}
             />
           </label>
         </div>
+
+        <button
+          className={`lixeira ${dataFiltro ? "ativo" : ""}`}
+          onClick={() => setDataFiltro(null)}
+        >
+          <Trash2 size={27} />
+        </button>
 
         <div className="campoFiltro">
           <select
@@ -110,13 +130,14 @@ function AgendaDashboard() {
             onChange={handleStatusChange}
           >
             <option value="todos">Todos</option>
-            <option value="agendado">Agendados</option>
-            <option value="concluído">Concluídos</option>
-            <option value="cancelado">Cancelados</option>
+            <option value="agendado">Agendado</option>
+            <option value="Concluído">Concluído</option>
+            <option value="cancelado">Cancelado</option>
           </select>
           <Funnel size={40} className="iconFiltro" />
         </div>
       </div>
+
       <div className="listAgendamentos">
         {agendamentosFiltrados.map((agendamento, index) => (
           <CardAgendamentoDashboard

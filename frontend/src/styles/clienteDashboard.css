@@ -36,7 +36,7 @@
 
 .searchEfiltro {
     display:  flex;
-    gap: 30px;
+    gap: 10px;
     align-items: start;
 }
 
@@ -133,3 +133,17 @@
         display: none;
     }
 }
+
+.lixeira {
+    cursor: pointer;
+    opacity: 0.4;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lixeira.ativo {
+    opacity: 1;
+    pointer-events: auto;
+    color: var(--primary-color);
+}
+

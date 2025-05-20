@@ -167,3 +167,5 @@ Este projeto está sob a licença [MIT](https://choosealicense.com/licenses/mit/
 
 ## ℹ️ Mais informações
 Trabalho Acadêmico para menção parcial do primeiro Semestre de 2025, da disciplina de Tópicos Avançados em Sistemas de Informação 1 (TASI1) do Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) da Universidade Cruzeiro do Sul, orientado pelo professor Luis Fernando Dos Santos Pires.
+
+Acompanhe o projeto também no Instagram: [@petsystem.unicsul](https://www.instagram.com/petsystem.app)

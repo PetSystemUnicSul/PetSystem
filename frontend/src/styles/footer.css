@@ -1,6 +1,7 @@
 footer{
     background-color: var(--primary-color);
     padding: 20px;
+    color: var(--white);
 }
 
 .div-redes-sociais{

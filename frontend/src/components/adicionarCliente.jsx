@@ -73,17 +73,14 @@ function AdicionarCliente({ onClose, onAtualizarCliete, clienteParaEditar }) {
           pet_nome: pet.pet_nome || pet.nomePet,
           especie: pet.especie,
           raca: pet.raca,
+          idade: pet.idade ? Number(pet.idade) : 0,  // Garantindo que a idade seja enviada e convertida para número
           sexo: pet.sexo,
           observacao: pet.observacao || pet.observacoesPet,
         })),
       };
 
-      // console.log("dadosCliente:", dadosCliente); // Debugging dadosCliente
 
       if (clienteParaEditar) {
-        // console.log("clienteParaEditar:", clienteParaEditar); // Verificando o cliente para editar
-        // console.log("ID do cliente:", clienteParaEditar.id); // Verificando ID do cliente
-
         const response = await axios.put(
           `https://petsystem-backend.onrender.com/clientes/${clienteParaEditar.id}`,
           dadosCliente,
@@ -93,7 +90,7 @@ function AdicionarCliente({ onClose, onAtualizarCliete, clienteParaEditar }) {
             },
           }
         );
-        // console.log("Resposta da atualização:", response.data);
+
       } else {
         const response = await axios.post(
           "https://petsystem-backend.onrender.com/clientes",

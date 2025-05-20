@@ -34,6 +34,13 @@ function CardPetDashboard({ dadoPet, onClick }) {
             {dadoPet.sexo}
           </p>
         </div>
+        <div className="infosCards">
+         <PawPrint strokeWidth={3} size={15} className="iconsCards"/>
+          <p>
+            <span>Ano:</span>
+            {dadoPet.idade ? dadoPet.idade : "N/A"}
+          </p>
+        </div>
       </div>
       <div className="btns-info-edit">
         <button className="btn-info" onClick={onClick}>
@@ -45,4 +52,4 @@ function CardPetDashboard({ dadoPet, onClick }) {
   );
 }
 
-export default CardPetDashboard; // Changed name to match file purpose
+export default CardPetDashboard;

@@ -2,6 +2,11 @@ import { SquareX } from "lucide-react";
 import "../styles/detalhesCliente.css";
 
 function DetalhesCliente({ onClose, pet }) {
+    const calcularIdade = (anoNascimento) => {
+      if (!anoNascimento) return "N/A";
+      const anoAtual = new Date().getFullYear();
+      return anoAtual - Number(anoNascimento);
+    };
 
     return (
       <div className="popup-overlay">
@@ -30,8 +35,13 @@ function DetalhesCliente({ onClose, pet }) {
             </div>
 
             <div className="detalhe">
-              <label>Idade:</label>
+              <label>Ano de nascimento:</label>
               <p>{pet?.idade || "N/A"}</p>
+            </div>
+
+            <div className="detalhe">
+              <label>Idade:</label>
+              <p>{pet?.idade ? calcularIdade(pet.idade) + " anos" : "N/A"}</p>
             </div>
   
             <div className="detalhe">
@@ -40,13 +50,13 @@ function DetalhesCliente({ onClose, pet }) {
             </div>
   
             <div className="detalhe">
-              <label>Obaservação:</label>
-              <p>{pet?.observacao|| "N/A"}</p>
+              <label>Observação:</label>
+              <p>{pet?.observacao || "N/A"}</p>
             </div>
   
             <div className="detalhe">
               <label>Tutor:</label>
-              <p>{pet?.clienteId.cliente_nome || "N/A"}</p>
+              <p>{pet?.clienteId?.cliente_nome || "N/A"}</p>
             </div>
   
           </div>

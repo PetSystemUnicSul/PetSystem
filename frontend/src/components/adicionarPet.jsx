@@ -111,12 +111,12 @@ function AdicionarPet({ onClose, onSalvar }) {
           </div>
 
           <div>
-            <label>Idade (em anos):</label>
+            <label>Ano de nascimento:</label>
             <input
               type="number"
               name="idade"
               id="idade"
-              placeholder="Ex: 3"
+              placeholder="Ex: 2006"
               value={formData.idade}
               onChange={handleChange}
               min="0"

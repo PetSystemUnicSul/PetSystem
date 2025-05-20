@@ -124,9 +124,10 @@ function Home() {
                   <li>Cadastro de até 50 animais.</li>
                   <li>Até 20 agendamentos mensais</li>
                   <li>Suporte básico via e-mail.</li>
+                  <li>Suporte básico via e-mail.</li>
                 </ul>
               </div>
-              <div className="btn-plano">Assinar</div>
+              <BotaoPagamento/>
             </div>
             {/* ------- Plano 2 ------- */}
             <div className="plano">

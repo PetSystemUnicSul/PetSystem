@@ -7,12 +7,16 @@ import axios from "axios";
 import "../styles/clienteDashboard.css";
 
 function AgendaDashboard() {
+  // Define a data inicial como hoje (formato YYYY-MM-DD)
+  const hoje = new Date().toISOString().split('T')[0];
+  
   const [popupAberto, setPopupAberto] = useState(null);
   const [agendamentoSelecionado, setAgendamentoSelecionado] = useState(null);
 
   const [dadosAgendamentos, setDadosAgendamentos] = useState([]);
   const [agendamentosFiltrados, setAgendamentosFiltrados] = useState([]);
-  const [dataFiltro, setDataFiltro] = useState(null);
+  // Usa o filtro de data iniciando com hoje
+  const [dataFiltro, setDataFiltro] = useState(hoje);
   const [statusFiltro, setStatusFiltro] = useState("todos");
 
   const abrirPopupDetalhes = (agendamento) => {
@@ -47,7 +51,6 @@ function AgendaDashboard() {
     const dia = String(data.getDate()).padStart(2, "0");
     return `${ano}-${mes}-${dia}`;
   };
-  
 
   const filtrarAgendamentos = (
     dataSelecionada,
@@ -55,22 +58,20 @@ function AgendaDashboard() {
     statusSelecionado = statusFiltro
   ) => {
     const dataFiltroFormatada = dataSelecionada || null;
-  
+
     const filtrados = agendamentos.filter((agendamento) => {
       const dataAgendamentoLocal = formatarDataLocal(agendamento.data);
       const status = (agendamento.status || "").toLowerCase();
-  
+
       const correspondeData = !dataFiltroFormatada || dataAgendamentoLocal === dataFiltroFormatada;
       const correspondeStatus = statusSelecionado === "todos" || status === statusSelecionado.toLowerCase();
-  
+
       return correspondeData && correspondeStatus;
     });
-  
+
     setAgendamentosFiltrados(filtrados);
   };
-  
-  
-  
+
   const handleDataChange = (e) => {
     const data = e.target.value || null;
     setDataFiltro(data);
@@ -108,17 +109,18 @@ function AgendaDashboard() {
               type="date"
               id="inputdate"
               className="inputData"
-              value={dataFiltro || ""}
+              value={dataFiltro || ''}
               onChange={handleDataChange}
             />
           </label>
         </div>
 
         <button
-          className={`lixeira ${dataFiltro ? "ativo" : ""}`}
-          onClick={() => setDataFiltro(null)}
+          className={`btn-lixeira ${dataFiltro ? 'ativo' : ''}`}
+          // Agora reinicia para o dia de hoje em vez de limpar totalmente
+          onClick={() => setDataFiltro(hoje)}
         >
-          <Trash2 size={27} />
+          <Trash2 size={25} />
         </button>
 
         <div className="campoFiltro">
@@ -131,7 +133,7 @@ function AgendaDashboard() {
           >
             <option value="todos">Todos</option>
             <option value="agendado">Agendado</option>
-            <option value="Concluído">Concluído</option>
+            <option value="concluído">Concluído</option>
             <option value="cancelado">Cancelado</option>
           </select>
           <Funnel size={40} className="iconFiltro" />

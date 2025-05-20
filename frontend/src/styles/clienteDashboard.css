@@ -100,24 +100,18 @@
 }
 
 
-
-.bar {
-    display: flex;
-    background-color: var(--gray-light);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-light);
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 15px 20% 15px 15px;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 1.2rem;
+.btn-lixeira {
+    border: 2px solid black;
+    border-radius: var(--border-radius-sm);
+    background-color: none;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.bar > p{
-    display: block;
+.btn-lixeira:hover {
+    transform: scale(1.05);
 }
-
 
 @media (max-width: 800px) {
     .mainDashboard {

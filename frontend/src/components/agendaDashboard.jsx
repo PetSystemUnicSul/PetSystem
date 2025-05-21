@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CirclePlus, Funnel, Trash2 } from "lucide-react";
+import { CirclePlus, Funnel, RotateCcw } from "lucide-react";
 import AdicionarAgendamento from "../components/adicionarAgendamento";
 import DetalhesAgendamento from "../components/detalhesAgendamento";
 import CardAgendamentoDashboard from "./cardAgendamentoDashboard";
@@ -7,7 +7,6 @@ import axios from "axios";
 import "../styles/clienteDashboard.css";
 
 function AgendaDashboard() {
-  // Define a data inicial como hoje (formato YYYY-MM-DD)
   const hoje = new Date().toISOString().split('T')[0];
   
   const [popupAberto, setPopupAberto] = useState(null);
@@ -116,11 +115,10 @@ function AgendaDashboard() {
         </div>
 
         <button
-          className={`btn-lixeira ${dataFiltro ? 'ativo' : ''}`}
-          // Agora reinicia para o dia de hoje em vez de limpar totalmente
+          className={`btn-lixeira button ${dataFiltro ? 'ativo' : ''}`}
           onClick={() => setDataFiltro(hoje)}
         >
-          <Trash2 size={25} />
+          <RotateCcw size={25} />
         </button>
 
         <div className="campoFiltro">

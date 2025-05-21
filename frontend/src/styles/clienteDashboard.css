@@ -101,21 +101,10 @@
 
 
 
-.bar {
-    display: flex;
-    background-color: var(--gray-light);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-light);
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 15px 20% 15px 15px;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.bar > p{
-    display: block;
+.btn-lixeira {
+    padding: 3px;
+    border-radius: var(--border-radius-sm);
+    margin-top: 2px;
 }
 
 

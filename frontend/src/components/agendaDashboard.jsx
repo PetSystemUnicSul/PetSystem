@@ -60,10 +60,14 @@ function AgendaDashboard() {
   }
 
   const formatarDataLocal = (dataUTC) => {
+    if (typeof dataUTC === 'string' && dataUTC.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      return dataUTC;
+    }
+    
     const data = new Date(dataUTC);
-    const ano = data.getFullYear();
-    const mes = String(data.getMonth() + 1).padStart(2, "0");
-    const dia = String(data.getDate()).padStart(2, "0");
+    const ano = data.getUTCFullYear();
+    const mes = String(data.getUTCMonth() + 1).padStart(2, "0");
+    const dia = String(data.getUTCDate()).padStart(2, "0");
     return `${ano}-${mes}-${dia}`;
   };
 

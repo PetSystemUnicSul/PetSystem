@@ -12,7 +12,21 @@ function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
 
   const petNome = petId?.pet_nome || "Desconhecido";
   const clienteNome = clienteId?.cliente_nome || "Desconhecido";
-  const dataBR = new Date(data).toLocaleDateString("pt-BR");
+  
+  const formatarDataBrasileira = (dataString) => {
+    if (typeof dataString === 'string' && dataString.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      const [ano, mes, dia] = dataString.split('-');
+      return `${dia}/${mes}/${ano}`;
+    }
+    
+    const data = new Date(dataString);
+    const dia = String(data.getUTCDate()).padStart(2, "0");
+    const mes = String(data.getUTCMonth() + 1).padStart(2, "0");
+    const ano = data.getUTCFullYear();
+    return `${dia}/${mes}/${ano}`;
+  };
+  
+  const dataBR = formatarDataBrasileira(data);
 
   return (
     <div className="cardDashboard" onClick={onClick}>
@@ -20,7 +34,13 @@ function CardAgendamentoDashboard({ dadosAgendamento, onClick }) {
         <h4>{servico}</h4>
         <span
           className="statusSpan"
-          style={{backgroundColor: dadosAgendamento.status === "Concluído" ? "#4CAF50": dadosAgendamento.status === "Cancelado" ? "#F44336": "#FF9800",}}>
+          style={{
+            backgroundColor: 
+              dadosAgendamento.status === "Concluído" ? "#4CAF50" : 
+              dadosAgendamento.status === "Cancelado" ? "#F44336" : 
+              "#FF9800"
+          }}
+        >
           {dadosAgendamento.status || "Agendado"}
         </span>
       </div>

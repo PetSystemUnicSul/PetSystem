@@ -32,7 +32,7 @@ const petSchema = new mongoose.Schema({
   raca: { type: String },
   idade: { type: Number },
   sexo: {type: String, required: true},
-  observacao: {type: String, required: true},
+  observacao: {type: String},
   clienteId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cliente', required: true },
   petshopId: { type: mongoose.Schema.Types.ObjectId, ref: 'Petshop', required: true }
 });

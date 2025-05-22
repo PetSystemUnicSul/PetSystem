@@ -51,7 +51,7 @@ function DetalhesCliente({ onClose, pet }) {
   
             <div className="detalhe">
               <label>Observação:</label>
-              <p>{pet?.observacao || "N/A"}</p>
+              <p>{pet?.observacao || "Sem obsevação"}</p>
             </div>
   
             <div className="detalhe">

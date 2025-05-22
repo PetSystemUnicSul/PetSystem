@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/detalhesCliente.css";
 
-function DetalhesAgendamento({ onClose, dados, onAtualizarAgendamentos, setPopupAberto, setAgendamentoSelecionado }) {
+function DetalhesAgendamento({ onClose, dados, onAtualizarAgendamentos, onEditar }) {
   const [processando, setProcessando] = useState(false);
 
   const atualizarStatus = async (novoStatus) => {
@@ -44,9 +44,16 @@ function DetalhesAgendamento({ onClose, dados, onAtualizarAgendamentos, setPopup
   const handleCancelar = () => atualizarStatus("Cancelado");
 
   const handleEditar = () => {
-    setAgendamentoSelecionado(dados);
-    setPopupAberto("adicionar");
+    onEditar(dados);
   };
+
+  const formatarData = (dataISO) => {
+    return new Date(dataISO).toLocaleDateString("pt-BR");
+  };
+
+  const podeEditar = dados.status !== "Concluído" && dados.status !== "Cancelado";
+  const podeConcluir = dados.status !== "Concluído";
+  const podeCancelar = dados.status !== "Cancelado";
 
   return (
     <div className="popup-overlay">
@@ -65,53 +72,72 @@ function DetalhesAgendamento({ onClose, dados, onAtualizarAgendamentos, setPopup
         <div className="popup-detalhes">
           <div className="detalhe">
             <label>Serviço:</label>
-            <p>{dados.servico}</p>
+            <p>{dados.servico || "Não informado"}</p>
           </div>
 
           <div className="detalhe">
             <label>Data:</label>
-            <p>{dados.data}</p>
+            <p>{formatarData(dados.data)}</p>
           </div>
 
           <div className="detalhe">
             <label>Hora:</label>
-            <p>{dados.horario}</p>
+            <p>{dados.horario || "Não informado"}</p>
           </div>
 
           <div className="detalhe">
             <label>Pet:</label>
-            <p>{dados.petId.pet_nome}</p>
+            <p>{dados.petId?.pet_nome || "Não informado"}</p>
           </div>
 
           <div className="detalhe">
-            <label>Especie:</label>
-            <p>{dados.petId.especie}</p>
+            <label>Espécie:</label>
+            <p>{dados.petId?.especie || "Não informado"}</p>
           </div>
 
           <div className="detalhe">
             <label>Tutor:</label>
-            <p>{dados.clienteId.cliente_nome}</p>
+            <p>{dados.clienteId?.cliente_nome || "Não informado"}</p>
           </div>
 
           <div className="detalhe">
             <label>Status:</label>
-            <p className={`status-${dados.status?.toLowerCase()}`}>
+            <p className={`status-${dados.status?.toLowerCase() || 'agendado'}`}>
               {dados.status || "Agendado"}
             </p>
           </div>
         </div>
 
         <div className="btn-detalhes-agendamento">
-          <button
-            className="button button-sm btn-concluido"
-            onClick={handleConcluir}
-          >
-            {processando ? "Processando..." : "Concluído"}
-          </button>
-          <button className="danger-btn-sm" onClick={handleCancelar}>
-            {processando ? "Processando..." : "Cancelar"}
-          </button>
-          <button className="button button-sm" onClick={handleEditar}>Editar</button>
+          {podeConcluir && (
+            <button
+              className="button button-sm btn-concluido"
+              onClick={handleConcluir}
+              disabled={processando}
+            >
+              {processando ? "Processando..." : "Concluído"}
+            </button>
+          )}
+          
+          {podeCancelar && (
+            <button 
+              className="danger-btn-sm" 
+              onClick={handleCancelar}
+              disabled={processando}
+            >
+              {processando ? "Processando..." : "Cancelar"}
+            </button>
+          )}
+          
+          {podeEditar && (
+            <button 
+              className="button button-sm" 
+              onClick={handleEditar}
+              disabled={processando}
+            >
+              Editar
+            </button>
+          )}
         </div>
       </div>
     </div>

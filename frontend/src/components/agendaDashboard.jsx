@@ -14,23 +14,36 @@ function AgendaDashboard() {
 
   const [dadosAgendamentos, setDadosAgendamentos] = useState([]);
   const [agendamentosFiltrados, setAgendamentosFiltrados] = useState([]);
-  // Usa o filtro de data iniciando com hoje
   const [dataFiltro, setDataFiltro] = useState(hoje);
   const [statusFiltro, setStatusFiltro] = useState("todos");
+  const [loading, setLoading] = useState(false);
 
   const abrirPopupDetalhes = (agendamento) => {
     setAgendamentoSelecionado(agendamento);
     setPopupAberto("detalhes");
   };
 
-  const abrirPopupAdicionar = () => setPopupAberto("adicionar");
-  const fecharPopup = () => setPopupAberto(null);
+  const abrirPopupAdicionar = () => {
+    setAgendamentoSelecionado(null); 
+    setPopupAberto("adicionar");
+  };
 
-  const handleAtualizarAgendamentos = () => {
-    buscarDadosAgendamentos();
+  const abrirPopupEditar = (agendamento) => {
+    setAgendamentoSelecionado(agendamento);
+    setPopupAberto("adicionar");
+  };
+
+  const fecharPopup = () => {
+    setPopupAberto(null);
+    setAgendamentoSelecionado(null); 
+  };
+
+  const handleAtualizarAgendamentos = async () => {
+    await buscarDadosAgendamentos();
   };
 
   async function buscarDadosAgendamentos() {
+    setLoading(true);
     try {
       const response = await axios.get("https://petsystem-backend.onrender.com/agendamentos", {
         headers: {
@@ -40,6 +53,9 @@ function AgendaDashboard() {
       setDadosAgendamentos(response.data);
     } catch (err) {
       console.error("Erro ao buscar agendamentos:", err);
+      alert("Erro ao carregar agendamentos. Tente novamente.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -81,6 +97,11 @@ function AgendaDashboard() {
     setStatusFiltro(status);
   };
 
+  const resetarFiltros = () => {
+    setDataFiltro(hoje);
+    setStatusFiltro("todos");
+  };
+
   useEffect(() => {
     buscarDadosAgendamentos();
   }, []);
@@ -115,8 +136,9 @@ function AgendaDashboard() {
         </div>
 
         <button
-          className={`btn-lixeira button ${dataFiltro ? 'ativo' : ''}`}
-          onClick={() => setDataFiltro(hoje)}
+          className={`btn-lixeira button ${dataFiltro !== hoje ? 'ativo' : ''}`}
+          onClick={resetarFiltros}
+          title="Resetar filtros"
         >
           <RotateCcw size={25} />
         </button>
@@ -139,16 +161,23 @@ function AgendaDashboard() {
       </div>
 
       <div className="listAgendamentos">
-        {agendamentosFiltrados.map((agendamento, index) => (
-          <CardAgendamentoDashboard
-            key={index}
-            dadosAgendamento={agendamento}
-            onClick={() => abrirPopupDetalhes(agendamento)}
-          />
-        ))}
-
-        {agendamentosFiltrados.length === 0 && (
-          <div className="mensagem-sem-resultados">Nenhum agendamento encontrado.</div>
+        {loading ? (
+          <div className="mensagem-carregando">Carregando agendamentos...</div>
+        ) : agendamentosFiltrados.length > 0 ? (
+          agendamentosFiltrados.map((agendamento, index) => (
+            <CardAgendamentoDashboard
+              key={agendamento._id || index}
+              dadosAgendamento={agendamento}
+              onClick={() => abrirPopupDetalhes(agendamento)}
+            />
+          ))
+        ) : (
+          <div className="mensagem-sem-resultados">
+            {dadosAgendamentos.length === 0 
+              ? "Nenhum agendamento cadastrado." 
+              : "Nenhum agendamento encontrado com os filtros aplicados."
+            }
+          </div>
         )}
       </div>
 
@@ -165,8 +194,7 @@ function AgendaDashboard() {
           dados={agendamentoSelecionado}
           onClose={fecharPopup}
           onAtualizarAgendamentos={handleAtualizarAgendamentos}
-          setPopupAberto={setPopupAberto}
-          setAgendamentoSelecionado={setAgendamentoSelecionado}
+          onEditar={abrirPopupEditar}
         />
       )}
     </main>

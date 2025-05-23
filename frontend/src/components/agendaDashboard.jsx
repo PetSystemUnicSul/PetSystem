@@ -7,7 +7,10 @@ import axios from "axios";
 import "../styles/clienteDashboard.css";
 
 function AgendaDashboard() {
-  const hoje = new Date().toISOString().split('T')[0];
+  const dataLocal = new Date();
+  const hoje = dataLocal.toLocaleDateString('sv-SE');
+
+  console.log(hoje);
   
   const [popupAberto, setPopupAberto] = useState(null);
   const [agendamentoSelecionado, setAgendamentoSelecionado] = useState(null);
@@ -71,6 +74,21 @@ function AgendaDashboard() {
     return `${ano}-${mes}-${dia}`;
   };
 
+  const converterHorarioParaMinutos = (horario) => {
+    if (!horario || typeof horario !== 'string') return 0;
+    
+    const [horas, minutos] = horario.split(':').map(Number);
+    return (horas || 0) * 60 + (minutos || 0);
+  };
+
+  const ordenarPorHorario = (agendamentos) => {
+    return [...agendamentos].sort((a, b) => {
+      const horarioA = converterHorarioParaMinutos(a.horario);
+      const horarioB = converterHorarioParaMinutos(b.horario);
+      return horarioA - horarioB;
+    });
+  };
+
   const filtrarAgendamentos = (
     dataSelecionada,
     agendamentos = dadosAgendamentos,
@@ -88,7 +106,8 @@ function AgendaDashboard() {
       return correspondeData && correspondeStatus;
     });
 
-    setAgendamentosFiltrados(filtrados);
+    const filtradosOrdenados = ordenarPorHorario(filtrados);
+    setAgendamentosFiltrados(filtradosOrdenados);
   };
 
   const handleDataChange = (e) => {
@@ -140,7 +159,7 @@ function AgendaDashboard() {
         </div>
 
         <button
-          className={`btn-lixeira button ${dataFiltro !== hoje ? 'ativo' : ''}`}
+          className={`btn-reset button`}
           onClick={resetarFiltros}
           title="Resetar filtros"
         >
